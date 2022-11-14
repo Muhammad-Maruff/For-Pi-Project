@@ -30,3 +30,13 @@ a.actionview {
   color: red !important;
   display: flex;
 }
+
+.containerr {
+  padding: 10px;
+}
+
+.wrapperr {
+  width: 90%;
+  height: 650px;
+  margin: 0 auto;
+}
