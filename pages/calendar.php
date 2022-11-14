@@ -1,3 +1,16 @@
+<?php
+  //Koneksi database
+  $server = "localhost";
+  $user = "root";
+  $password = "";
+  $database = "kinerjapegawai";
+
+  //buat koneksi
+  $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,6 +19,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../dist/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
     <script src="../dist/js/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="../dist/js/fullcalendar/lib/main.css" />
@@ -120,8 +142,60 @@
   <body>
     <div class="containerr">
       <div class="wrapperr">
+        <h1 class="text-center">CALENDAR</h1>
         <div id="calendar"></div>
       </div>
     </div>
+
+    <table class="table table-striped table:hover table-bordered">
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>URL</th>
+              <th>Start</th>
+              <th>End</th>
+
+            </tr>
+            <?php
+            $no = 1;
+              //persiapan menampilkan data
+            $user = mysqli_query($koneksi, "SELECT * FROM events order by id asc");
+            while($account = mysqli_fetch_array($user)) :
+            ?>
+
+            <tr>
+              <td><?= $no++?></td>
+              <td><?= $account['title'] ?></td>
+              <td><?= $account['description'] ?></td>
+              <td><?= $account['url'] ?></td>
+              <td><?= $account['start'] ?></td>
+              <td><?= $account['end'] ?></td>
+              
+            </tr>
+            <?php endwhile; ?>
+
+
+      </table>
+      <script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../plugins/jszip/jszip.min.js"></script>
+<script src="../plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
   </body>
 </html>
