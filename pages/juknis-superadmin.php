@@ -16,7 +16,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sijuki</title>
+  <title>For-Pi | Juknis</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -137,7 +137,7 @@ logout
       </div>
 
      <!-- Sidebar Menu -->
-    <nav class="mt-2">
+     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -151,7 +151,57 @@ logout
             </a>
           </li>
 
-           <li class="nav-item  menu-open">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Master
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item menu-open">
+                <a href="jabatan-superadmin.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jabatan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="kategori-satuan.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kategori Satuan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tipe-kpi.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipe Kpi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tipe-target.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipe Target</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="frekuensi.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Frekuensi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="polaritas.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Polaritas</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+           <li class="nav-item menu-open">
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
@@ -160,17 +210,11 @@ logout
 
           <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>User</p>
+            <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="tools-super.php" class="nav-link">
-             <i class="nav-icon fas fa-screwdriver-wrench"></i>
-            <p>Tools</p>
-            </a>
-          </li>
+
 
         </ul>
       </nav>
