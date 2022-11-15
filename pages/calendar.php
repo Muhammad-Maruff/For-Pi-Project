@@ -381,20 +381,22 @@ logout
           </div>
         </div>
         <div class="card-body">
-
         <div class="containerr">
       <div class="wrapperr">
         <h1 class="text-center">CALENDAR</h1>
         <div id="calendar"></div>
       </div>
     </div>
-
-    <table class="table table-striped table:hover table-bordered">
+    </div>
+    </div>
+    </div>
+    <div class="containerr mx-auto">
+      <div class="wrapperr">
+    <table class="table table-striped">
+      <h1 class="text-center">List</h1>
             <tr>
               <th>#</th>
               <th>Title</th>
-              <th>Description</th>
-              <th>URL</th>
               <th>Start</th>
               <th>End</th>
 
@@ -409,8 +411,6 @@ logout
             <tr>
               <td><?= $no++?></td>
               <td><?= $account['title'] ?></td>
-              <td><?= $account['description'] ?></td>
-              <td><?= $account['url'] ?></td>
               <td><?= $account['start'] ?></td>
               <td><?= $account['end'] ?></td>
               
@@ -419,7 +419,8 @@ logout
 
 
       </table>
-      
+            </div>
+            </div>
 
 
 
