@@ -92,3 +92,13 @@ a.actionview {
 .nav-year li a {
   color: white;
 }
+
+button.bittun a {
+  color: white;
+  margin: 0 2px;
+  font-size: 20px;
+}
+
+button.bittun a i {
+  margin-right: 10px;
+}

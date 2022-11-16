@@ -315,7 +315,7 @@ logout
 
                   <button class="bitton"><i class="fa fa-download"></i> Download</button>
 
-                  <button class="bittun"><i class="fa fa-trash"></i> Trash</button>
+                  <button class="bittun"><a href="view.php"><i class="fa fa-eye"></i>View</a></button>
 
 
               <div class="wrapperrr">
