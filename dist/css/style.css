@@ -27,7 +27,7 @@
 }
 
 a.actionview {
-  color: red !important;
+  color: white !important;
   display: flex;
 }
 
@@ -43,8 +43,6 @@ a.actionview {
 
 .wrapperrr {
   display: grid;
-  heights: 10px;
-  weights: 10px;
 }
 
 .bitton {
@@ -54,6 +52,10 @@ a.actionview {
   padding: 12px 30px;
   cursor: pointer;
   font-size: 20px;
+}
+
+td button.bittun {
+  background-color: blue !important;
 }
 
 .bitton:hover {
@@ -72,4 +74,25 @@ a.actionview {
 /* Darker background on mouse-over */
 .bittun:hover {
   background-color: RoyalBlue;
+}
+
+.nav-year {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.nav-year li {
+  list-style: none;
+  border: 1px solid black;
+  padding: 5px;
+  width: 100px;
+  text-align: center;
+  background-color: cadetblue;
+  border-radius: 5px;
+}
+
+.nav-year li a {
+  color: white;
 }

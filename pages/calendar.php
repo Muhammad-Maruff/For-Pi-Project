@@ -369,15 +369,16 @@ logout
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Calendar </h3>
+          
+          </nav>
 
           <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
+          <nav>
+            <ul class="nav-year">
+              <li><a href="#">2022</a></li>
+              <li><a href="#">2021</a></li>
+              <li><a href="#">2020</a></li>
+            </ul>
           </div>
         </div>
         <div class="card-body">
