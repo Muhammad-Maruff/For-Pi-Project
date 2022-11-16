@@ -29,6 +29,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../dist/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -310,6 +312,31 @@ logout
                   }
                   ?>
                   <td>
+
+                  <button class="bitton"><i class="fa fa-download"></i> Download</button>
+
+                  <button class="bittun"><i class="fa fa-trash"></i> Trash</button>
+
+
+              <div class="wrapperrr">
+
+                  <div class="buttonnn">
+                    <div class="icon"> <i class="fa-regular fa-regular fa-eye"></i>
+                  </div> <span>View</span>
+                </div>
+
+                <div class="buttonnn">
+                    <div class="icon"> <i class="fa-solid fa-pen"></i>
+                  </div> <span>Edit</span>
+                </div>
+
+                <div class="buttonnn">
+                    <div class="icon"> <i class="fa-solid fa-trash"></i>
+                  </div> <span>Trash</span>
+                </div>
+
+                  </div>
+
                   <div class="viewaction">
                     <a href="view-superadmin.php?hal=view&id=<?=$data['id_data2']?>" class="actionview"><i class="fa-regular fa-regular fa-eye"></i>View</a>
                     </div>

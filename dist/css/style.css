@@ -40,3 +40,36 @@ a.actionview {
   height: 650px;
   margin: 0 auto;
 }
+
+.wrapperrr {
+  display: grid;
+  heights: 10px;
+  weights: 10px;
+}
+
+.bitton {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.bitton:hover {
+  background-color: RoyalBlue;
+}
+
+.bittun {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.bittun:hover {
+  background-color: RoyalBlue;
+}
