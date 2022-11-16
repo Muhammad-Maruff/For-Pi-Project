@@ -54,10 +54,6 @@ a.actionview {
   font-size: 20px;
 }
 
-td button.bittun {
-  background-color: blue !important;
-}
-
 .bitton:hover {
   background-color: RoyalBlue;
 }
