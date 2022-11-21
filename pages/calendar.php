@@ -10,14 +10,6 @@
 
 
 ?>
-<?php
-session_start();
-	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
-		header("location:../login.php?pesan=gagal");
-	}
-?>
-
 
 
 <!DOCTYPE html>
@@ -35,121 +27,37 @@ session_start();
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../dist/css/style.css">
-  <script src="../dist/js/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="../dist/js/fullcalendar/lib/main.css" />
-    <script src="../dist/js/fullcalendar/lib/main.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var calendarEl = document.getElementById("calendar");
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: "dayGridMonth",
-          height: 650,
-          events: "fetchEvents.php",
-
-          selectable: true,
-          select: async function (start, end, allDay) {
-            const { value: formValues } = await Swal.fire({
-              title: "Add Event",
-              html:
-                '<input id="swalEvtTitle" class="swal2-input" placeholder="Enter title">' +
-                '<textarea id="swalEvtDesc" class="swal2-input" placeholder="Enter description"></textarea>' +
-                '<input id="swalEvtURL" class="swal2-input" placeholder="Enter URL">',
-              focusConfirm: false,
-              preConfirm: () => {
-                return [
-                  document.getElementById("swalEvtTitle").value,
-                  document.getElementById("swalEvtDesc").value,
-                  document.getElementById("swalEvtURL").value,
-                ];
-              },
-            });
-
-            if (formValues) {
-              // Add event
-              fetch("eventHandler.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  request_type: "addEvent",
-                  start: start.startStr,
-                  end: start.endStr,
-                  event_data: formValues,
-                }),
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                  if (data.status == 1) {
-                    Swal.fire("Event added successfully!", "", "success");
-                  } else {
-                    Swal.fire(data.error, "", "error");
-                  }
-
-                  // Refetch events from all sources and rerender
-                  calendar.refetchEvents();
-                })
-                .catch(console.error);
-            }
-          },
-
-          eventClick: function (info) {
-            info.jsEvent.preventDefault();
-
-            // change the border color
-            info.el.style.borderColor = "red";
-
-            Swal.fire({
-              title: info.event.title,
-              icon: "info",
-              html:
-                "<p>" +
-                info.event.extendedProps.description +
-                '</p><a href="' +
-                info.event.url +
-                '">Visit event page</a>',
-              showCloseButton: true,
-              showCancelButton: true,
-              cancelButtonText: "Close",
-              confirmButtonText: "Delete Event",
-            }).then((result) => {
-              if (result.isConfirmed) {
-                // Delete event
-                fetch("eventHandler.php", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    request_type: "deleteEvent",
-                    event_id: info.event.id,
-                  }),
-                })
-                  .then((response) => response.json())
-                  .then((data) => {
-                    if (data.status == 1) {
-                      Swal.fire("Event deleted successfully!", "", "success");
-                    } else {
-                      Swal.fire(data.error, "", "error");
-                    }
-
-                    // Refetch events from all sources and rerender
-                    calendar.refetchEvents();
-                  })
-                  .catch(console.error);
-              } else {
-                Swal.close();
-              }
-            });
-          },
-        });
-
-        calendar.render();
-      });
-    </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <!-- Bootstrap Core CSS -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+ 
+	<!-- FullCalendar -->
+	<link href='css/fullcalendar.css' rel='stylesheet' />
+
+
+    <!-- Custom CSS -->
+    <style>
+	#calendar {
+		max-width: 800px;
+	}
+	.col-centered{
+		float: none;
+		margin: 0 auto;
+	}
+    </style>
+
 </head>
+
+<?php
+session_start();
+	// cek apakah yang mengakses halaman ini sudah login
+	if($_SESSION['level']==""){
+		header("location:../login.php?pesan=gagal");
+	}
+?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -262,7 +170,7 @@ logout
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -325,13 +233,12 @@ logout
             </a>
           </li>
 
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="calendar.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
           </li>
-
 
 
         </ul>
@@ -348,12 +255,12 @@ logout
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Calendar</h1>
+            <h1>Data Karyawan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="superadmin.php">Home</a></li>
-              <li class="breadcrumb-item active">Calendar</li>
+              <li class="breadcrumb-item active">Jabatan</li>
             </ol>
           </div>
         </div>
@@ -369,59 +276,171 @@ logout
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          
-          </nav>
+          <h3 class="card-title">Daftarkan Akun </h3>
 
           <div class="card-tools">
-          <nav>
-            <ul class="nav-year">
-              <li><a href="#">2022</a></li>
-              <li><a href="#">2021</a></li>
-              <li><a href="#">2020</a></li>
-            </ul>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
           </div>
         </div>
         <div class="card-body">
-        <div class="containerr">
-      <div class="wrapperr">
-        <h1 class="text-center">CALENDAR</h1>
-        <div id="calendar"></div>
-      </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="containerr mx-auto">
-      <div class="wrapperr">
-    <table class="table table-striped">
-      <h1 class="text-center">List</h1>
-            <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Start</th>
-              <th>End</th>
+</div>
 
-            </tr>
-            <?php
-            $no = 1;
-              //persiapan menampilkan data
-            $user = mysqli_query($koneksi, "SELECT * FROM events order by id asc");
-            while($account = mysqli_fetch_array($user)) :
-            ?>
-
-            <tr>
-              <td><?= $no++?></td>
-              <td><?= $account['title'] ?></td>
-              <td><?= $account['start'] ?></td>
-              <td><?= $account['end'] ?></td>
-              
-            </tr>
-            <?php endwhile; ?>
+<?php
+require_once('bdd.php');
 
 
-      </table>
+$sql = "SELECT id, title, start, end, color FROM events ";
+
+$req = $bdd->prepare($sql);
+$req->execute();
+
+$events = $req->fetchAll();
+
+?>
+
+
+
+
+
+    
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>FullCalendar BS3 PHP MySQL</h1>
+                <p class="lead">Complete with pre-defined file paths that you won't have to change!</p>
+                <div id="calendar" class="col-centered">
+                </div>
             </div>
-            </div>
+			
+        </div>
+        <!-- /.row -->
+		
+		<!-- Modal -->
+		<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<form class="form-horizontal" method="POST" action="addEvent.php">
+			
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Add Event</h4>
+			  </div>
+			  <div class="modal-body">
+				
+				  <div class="form-group">
+					<label for="title" class="col-sm-2 control-label">Title</label>
+					<div class="col-sm-10">
+					  <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="color" class="col-sm-2 control-label">Color</label>
+					<div class="col-sm-10">
+					  <select name="color" class="form-control" id="color">
+						  <option value="">Choose</option>
+						  <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
+						  <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
+						  <option style="color:#008000;" value="#008000">&#9724; Green</option>						  
+						  <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
+						  <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
+						  <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
+						  <option style="color:#000;" value="#000">&#9724; Black</option>
+						  
+						</select>
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="start" class="col-sm-2 control-label">Start date</label>
+					<div class="col-sm-10">
+					  <input type="text" name="start" class="form-control" id="start" readonly>
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="end" class="col-sm-2 control-label">End date</label>
+					<div class="col-sm-10">
+					  <input type="text" name="end" class="form-control" id="end" readonly>
+					</div>
+				  </div>
+				
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Save changes</button>
+			  </div>
+			</form>
+			</div>
+		  </div>
+		</div>
+		
+		
+		
+		<!-- Modal -->
+		<div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<form class="form-horizontal" method="POST" action="editEventTitle.php">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Edit Event</h4>
+			  </div>
+			  <div class="modal-body">
+				
+				  <div class="form-group">
+					<label for="title" class="col-sm-2 control-label">Title</label>
+					<div class="col-sm-10">
+					  <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="color" class="col-sm-2 control-label">Color</label>
+					<div class="col-sm-10">
+					  <select name="color" class="form-control" id="color">
+						  <option value="">Choose</option>
+						  <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
+						  <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
+						  <option style="color:#008000;" value="#008000">&#9724; Green</option>						  
+						  <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
+						  <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
+						  <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
+						  <option style="color:#000;" value="#000">&#9724; Black</option>
+						  
+						</select>
+					</div>
+				  </div>
+				    <div class="form-group"> 
+						<div class="col-sm-offset-2 col-sm-10">
+						  <div class="checkbox">
+							<label class="text-danger"><input type="checkbox"  name="delete"> Delete event</label>
+						  </div>
+						</div>
+					</div>
+				  
+				  <input type="hidden" name="id" class="form-control" id="id">
+				
+				
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Save changes</button>
+			  </div>
+			</form>
+			</div>
+		  </div>
+		</div>
+
+    </div>
+    <!-- /.container -->
+
+    
+
 
 
 
@@ -496,5 +515,126 @@ var auto_complete = new Autocomplete(document.getElementById('divisi'), {
     highlightClass : 'fw-bold text-primary'
 });
 </script>
+
+  <!-- jQuery Version 1.11.1 -->
+  <script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- FullCalendar -->
+<script src='js/moment.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+
+  <!-- jQuery Version 1.11.1 -->
+  <script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- FullCalendar -->
+<script src='js/moment.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+
+<script>
+
+$(document).ready(function() {
+    
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,basicWeek,basicDay'
+        },
+  
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        selectable: true,
+        selectHelper: true,
+        select: function(start, end) {
+            
+            $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
+            $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
+            $('#ModalAdd').modal('show');
+        },
+        eventRender: function(event, element) {
+            element.bind('dblclick', function() {
+                $('#ModalEdit #id').val(event.id);
+                $('#ModalEdit #title').val(event.title);
+                $('#ModalEdit #color').val(event.color);
+                $('#ModalEdit').modal('show');
+            });
+        },
+        eventDrop: function(event, delta, revertFunc) { // si changement de position
+
+            edit(event);
+
+        },
+        eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
+
+            edit(event);
+
+        },
+        events: [
+        <?php foreach($events as $event): 
+        
+            $start = explode(" ", $event['start']);
+            $end = explode(" ", $event['end']);
+            if($start[1] == '00:00:00'){
+                $start = $start[0];
+            }else{
+                $start = $event['start'];
+            }
+            if($end[1] == '00:00:00'){
+                $end = $end[0];
+            }else{
+                $end = $event['end'];
+            }
+        ?>
+            {
+                id: '<?php echo $event['id']; ?>',
+                title: '<?php echo $event['title']; ?>',
+                start: '<?php echo $start; ?>',
+                end: '<?php echo $end; ?>',
+                color: '<?php echo $event['color']; ?>',
+            },
+        <?php endforeach; ?>
+        ]
+    });
+    
+    function edit(event){
+        start = event.start.format('YYYY-MM-DD HH:mm:ss');
+        if(event.end){
+            end = event.end.format('YYYY-MM-DD HH:mm:ss');
+        }else{
+            end = start;
+        }
+        
+        id =  event.id;
+        
+        Event = [];
+        Event[0] = id;
+        Event[1] = start;
+        Event[2] = end;
+        
+        $.ajax({
+         url: 'editEventDate.php',
+         type: "POST",
+         data: {Event:Event},
+         success: function(rep) {
+                if(rep == 'OK'){
+                    alert('Saved');
+                }else{
+                    alert('Could not be saved. try again.'); 
+                }
+            }
+        });
+    }
+    
+});
+
+</script>
+
+
 </body>
 </html>
