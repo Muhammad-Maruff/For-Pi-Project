@@ -74,25 +74,14 @@ a.actionview {
   background-color: RoyalBlue;
 }
 
-.nav-year {
-  display: flex;
-  justify-content: space-evenly;
-  font-size: 20px;
-  margin: 0 auto;
-}
-
-.nav-year li {
-  list-style: none;
-  border: 1px solid black;
+.btn-year {
   padding: 5px;
-  width: 100px;
-  text-align: center;
-  background-color: cadetblue;
+  background-color: aquamarine;
   border-radius: 5px;
 }
 
-.nav-year li a {
-  color: white;
+.btn-year a {
+  color: black;
 }
 
 button.bittun a {
