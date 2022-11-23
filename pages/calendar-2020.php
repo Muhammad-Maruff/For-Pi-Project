@@ -332,7 +332,9 @@ $events = $req->fetchAll();
 
             <tr>
               <td><?= $no++?></td>
-              <td><?= $account['color'] ?></td>
+              <td>
+              <span style="background-color:<?=$account['color']?>;text-align:center;color:<?=$account['color']?>;" class="table-color">color</span>
+              </td>
               <td><?= $account['title'] ?></td>
               <td><?= $account['start'] ?></td>
               <td><?= $account['end'] ?></td>
