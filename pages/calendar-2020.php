@@ -276,9 +276,9 @@ logout
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <button class="btn-year"><a href="#">2020</a></button>
-          <button class="btn-year"><a href="#">2021</a></button>
-          <button class="btn-year"><a href="#">2022</a></button>
+          <button class="btn-year"><a href="calendar-2020.php">2020</a></button>
+          <button class="btn-year"><a href="calendar-2021.php">2021</a></button>
+          <button class="btn-year"><a href="calendar-2022.php">2022</a></button>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -326,7 +326,7 @@ $events = $req->fetchAll();
             <?php
             $no = 1;
               //persiapan menampilkan data
-            $user = mysqli_query($koneksi, "SELECT * FROM events order by id asc");
+            $user = mysqli_query($koneksi, "SELECT * FROM events WHERE YEAR(start) = 2020");
             while($account = mysqli_fetch_array($user)) :
             ?>
 
