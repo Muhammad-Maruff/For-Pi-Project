@@ -290,6 +290,7 @@ logout
             <tr>
               <th>#</th>
               <th>Tipe Target</th>
+              <th>Aksi</th>
 
             </tr>
             <?php
@@ -302,6 +303,10 @@ logout
             <tr>
               <td><?= $no++?></td>
               <td><?= $account['tipe_target'] ?></td>
+              <td>
+              <a href="" class="btn btn-warning">Edit</a>
+              <a href="" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
+              </td>
             </tr>
             <?php endwhile; ?>
 

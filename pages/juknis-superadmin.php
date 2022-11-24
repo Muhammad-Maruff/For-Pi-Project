@@ -314,7 +314,7 @@ session_start();
                   <td>
 
 
-                  <button class="bittun"  ><a href="view-superadmin.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
+                  <button class="bittun" class='inline-block'  ><a href="view-superadmin.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
 
 
                   <button class="bitton"><a href="edit-superadmin.php?hal=edit&id=<?=$data['id_data2']?>"><i class="fa fa-pen"></i>Edit</a></button>

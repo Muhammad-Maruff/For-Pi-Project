@@ -331,18 +331,24 @@ logout
             <tr>
               <th>ID</th>
               <th>Jabatan</th>
+              <th>Aksi</th>
 
             </tr>
             <?php
               //persiapan menampilkan data
             $user = mysqli_query($koneksi, "SELECT * FROM tb_divisi order by id asc");
-            while($account = mysqli_fetch_array($user)) :
+            while($data = mysqli_fetch_array($user)) :
             ?>
 
             <tr>
-              <td><?= $account['id'] ?></td>
-              <td><?= $account['divisi'] ?></td>
-            </tr>
+              <td><?= $data['id'] ?></td>
+              <td><?= $data['divisi'] ?></td>
+              <td>
+                <a href="edit-jabatan-super.php?hal=edit&id=<?=$data['id']?>" class="btn btn-warning">Edit</a>
+
+                <a href="delete-jabatan-super.php?hal=delete&id=<?=$data['id']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
+
+              </td>            </tr>
             <?php endwhile; ?>
 
 

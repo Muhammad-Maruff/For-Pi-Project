@@ -108,7 +108,7 @@ logout
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">SIJUKI</span>
+      <span class="brand-text font-weight-light">For-PI</span>
     </a>
 
     <!-- Sidebar -->
@@ -291,18 +291,22 @@ logout
             <tr>
               <th>#</th>
               <th>Kategori Satuan</th>
+              <th>Aksi</th>
 
             </tr>
             <?php
             $no = 1;
               //persiapan menampilkan data
             $user = mysqli_query($koneksi, "SELECT * FROM tb_kategori order by id_kategori asc");
-            while($account = mysqli_fetch_array($user)) :
+            while($data = mysqli_fetch_array($user)) :
             ?>
 
             <tr>
               <td><?= $no++?></td>
-              <td><?= $account['kategori_satuan'] ?></td>
+              <td><?= $data['kategori_satuan'] ?></td>
+              <td>
+              <a href="edit-kategori-satuan.php?hal=edit&id=<?=$data['id_kategori']?>" class="btn btn-warning">Edit</a>
+              <a href="delete-kategori-satuan.php?hal=delete&id=<?=$data['id_kategori']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a></td>
             </tr>
             <?php endwhile; ?>
 

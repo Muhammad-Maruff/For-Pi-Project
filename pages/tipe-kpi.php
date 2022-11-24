@@ -289,18 +289,22 @@ logout
             <tr>
               <th>#</th>
               <th>Tipe KPI</th>
-
+              <th>Aksi</th>
             </tr>
             <?php
             $no = 1;
               //persiapan menampilkan data
             $user = mysqli_query($koneksi, "SELECT * FROM tb_tipekpi order by id_kpi asc");
-            while($account = mysqli_fetch_array($user)) :
+            while($data = mysqli_fetch_array($user)) :
             ?>
 
             <tr>
               <td><?= $no++?></td>
-              <td><?= $account['tipe_kpi'] ?></td>
+              <td><?= $data['tipe_kpi'] ?></td>
+              <td>
+              <a href="edit-tipe-kpi.php?hal=edit&id=<?=$data['id_kpi']?>" class="btn btn-warning">Edit</a>
+              <a href="delete-tipe-kpi.php?hal=delete&id=<?=$data['id_kpi']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
+            </td>
             </tr>
             <?php endwhile; ?>
 
