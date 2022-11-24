@@ -291,16 +291,20 @@ logout
     </div>
   </div>
 
-  <div class="checkbox">
   <div class="row mb-3">
     <label for="password" class="col-sm-2 col-form-label">Level</label>
     <div class="col-sm-10">
-      <label><input type="checkbox" value="superadmin" name="level">Superadmin</label><br>
-      <label><input type="checkbox" value="admin" name="level">Admin</label><br>
-      <label><input type="checkbox" value="user" name="level">User</label>
-</div>
-</div>
-</div>
+    <select class="form-control level" aria-label="Default select example" name="level">
+  <option selected disabled>Level</option>
+  <option value="superadmin">Superadmin</option>
+  <option value="level">Admin</option>
+  <option value="user">User</option>
+</select>
+    </div>
+  </div>
+
+    
+
 
   <div class="text-center">
   <input type="submit" class="btn btn-primary btn-register">
