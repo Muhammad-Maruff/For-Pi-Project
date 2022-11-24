@@ -233,7 +233,7 @@ document.location='frekuensi.php'
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-opengi">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
