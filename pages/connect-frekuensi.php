@@ -12,7 +12,7 @@
 		$stmt->bind_param("s", $frekuensi);
 		$execval = $stmt->execute();
 		echo $execval;
-		echo '<script>alert("Add Kategori Satuan Successfully...!")</script>';
+		echo '<script>alert("Add Frekuensi Successfully...!")</script>';
         echo '<script>window.location="frekuensi.php"</script>';
 		$stmt->close();
 		$conn->close();
