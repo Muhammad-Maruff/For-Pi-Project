@@ -246,9 +246,14 @@ logout
                   }
                   ?>
                   <td>
-                    <a href="view-admin.php?hal=view&id=<?=$data['id_data2']?>" <button class="btn btn"> <i class="fa-sharp fa-solid fa-eye"></i> </button>
-                    <a href="edit-admin.php?hal=edit&id=<?=$data['id_data2']?>" class="btn btn-warning">Edit</a>
-                    <a href="delete-admin.php?hal=delete&id=<?=$data['id_data2']?>>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
+<button class="bittun"><a href="view-admin.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
+
+
+<button class="bitton"><a href="edit-admin.php?hal=edit&id=<?=$data['id_data2']?>"><i class="fa fa-pen"></i>Edit</a></button>
+
+
+<button class="bitten"><a href="delete-admin.php?hal=delete&id=<?=$data['id_data2']?>>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">  <i class="fa fa-trash"></i>Delete</a></button>
+
                   </td>
                   <?php endwhile; ?>
                   </tbody>

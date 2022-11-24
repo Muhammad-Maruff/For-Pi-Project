@@ -95,12 +95,12 @@ foreach($resultt as $row)
     if($simpan){
       echo "<script>
       alert('data berhasil disimpan!');
-      document.location='juknis-superadmin.php';
+      document.location='juknis-admin.php';
       </script>";
     } else{
       echo "<script>
         alert('Simpan data gagal');
-        document.location='juknis-superadmin.php'
+        document.location='juknis-admin.php'
       </script>";
     }
     $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data order by id_data asc");
@@ -140,7 +140,7 @@ foreach($resultt as $row)
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>For-Pi | New Data</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -165,10 +165,10 @@ foreach($resultt as $row)
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin.php" class="nav-link">Home</a>
+        <a href="superadmin.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="juknis-admin.php" class="nav-link">Juknis</a>
+        <a href="juknis-superadmin.php" class="nav-link">Juknis</a>
       </li>
     </ul>
 
@@ -217,9 +217,9 @@ foreach($resultt as $row)
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../index3.html" class="brand-link">
-      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="superadmin.php" class="brand-link">
+      <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">For-Pi</span>
     </a>
 
       <!-- Sidebar -->
@@ -263,7 +263,58 @@ foreach($resultt as $row)
               </p>
             </a>
           </li>
-           <li class="nav-item  menu-open">
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Master
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item menu-open">
+                <a href="jabatan-superadmin.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jabatan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="kategori-satuan.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kategori Satuan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tipe-kpi.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipe Kpi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tipe-target.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipe Target</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="frekuensi.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Frekuensi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="polaritas.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Polaritas</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+           <li class="nav-item menu-open">
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
@@ -272,17 +323,17 @@ foreach($resultt as $row)
 
           <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>User</p>
+            <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="jabatan-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
-            <p>Jabatan</p>
+            <a href="calendar.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Calendar</p>
             </a>
           </li>
+
 
         </ul>
       </nav>
@@ -290,7 +341,6 @@ foreach($resultt as $row)
     </div>
     <!-- /.sidebar -->
   </aside>
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -346,12 +396,9 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="tkategori">
   <option selected disabled>Kategori Satuan</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['kategori_satuan']."'>".$data['kategori_satuan']."</option>";
-  }
-  ?>
+  <option value="Jumlah">Jumlah</option>
+  <option value="Persentase">Persentase</option>
+  <option value="Rupiah">Rupiah</option>
 </select>
 </div>
   </div>
@@ -375,12 +422,9 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="ttipe">
   <option selected disabled>Tipe KPI</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_tipekpi");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['tipe_kpi']."'>".$data['tipe_kpi']."</option>";
-  }
-  ?>
+  <option value="EXACT">EXACT</option>
+  <option value="PROXY">PROXY</option>
+  <option value="ACTIVITY">ACTIVITY</option>
 </select>
 </div>
   </div>
@@ -390,12 +434,8 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="ttarget">
   <option selected disabled>Tipe Target</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_tipetarget");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['tipe_target']."'>".$data['tipe_target']."</option>";
-  }
-  ?>
+  <option value="Akumulatif">Akumulatif</option>
+  <option value="Non Akumulatif">Non Akumulatif</option>
 </select>
 </div>
   </div>
@@ -405,12 +445,9 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="tfrekuensi">
   <option selected disabled>Frekuensi</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_frekuensi");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['frekuensi']."'>".$data['frekuensi']."</option>";
-  }
-  ?>
+  <option value="Bulanan">Bulanan</option>
+  <option value="Triwulan">Triwulan</option>
+  <option value="Semesteran">Semesteran</option>
 </select>
 </div>
   </div>
@@ -421,12 +458,9 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="tpolaritas">
   <option selected disabled>Polaritas</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_polaritas");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['polaritas']."'>".$data['polaritas']."</option>";
-  }
-  ?>
+  <option value="POSITIF">POSITIF</option>
+  <option value="NEGATIF">NEGATIF</option>
+  <option value="RANGE">RANGE</option>
 </select>
 </div>
   </div>

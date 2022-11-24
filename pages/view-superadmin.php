@@ -388,7 +388,7 @@ logout
               <table id="example1" class="table table-striped table:hover table-bordered">
               <thead>
             <tr>
-              <th align="left">Deskripsi</th>
+              <th align="left">Deskripsi KPI</th>
               <td><?= $data['deskripsi2'] ?></td>
             </tr>
 </thead>
@@ -398,12 +398,12 @@ logout
             </tr>
 
             <tr>
-              <th align="left">Definisi</th>
+              <th align="left">Definisi KPI</th>
               <td><?= $data['definisi2'] ?></td>
             </tr>
 
             <tr>
-              <th align="left">Tujuan</th>
+              <th align="left">Tujuan KPI</th>
               <td><?= $data['tujuan2'] ?></td>
             </tr>
 
@@ -448,12 +448,12 @@ logout
             </tr>
 
             <tr>
-              <th align="left">Divisi</th>
+              <th align="left">Jabatan Pemilik KPI</th>
               <td><?= $data['divisi2'] ?></td>
             </tr>
 
             <tr>
-              <th align="left">Pemilik</th>
+              <th align="left">Pemilik KPI</th>
               <td><?= $data['pemilik2'] ?></td>
             </tr>
 

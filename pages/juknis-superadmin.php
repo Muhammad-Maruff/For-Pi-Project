@@ -96,7 +96,7 @@ session_start();
           <div class="dropdown-divider"></div>
           <a href="keluar.php" class="dropdown-item">
           <i class="fa-solid fa-right-from-bracket"></i>
-logout
+          logout
           </a>
       </li>
     </ul>
@@ -106,7 +106,7 @@ logout
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="superadmin.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -317,10 +317,10 @@ logout
                   <button class="bittun"  ><a href="view-superadmin.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
 
 
-                  <button class="bittun"><a href="edit-superadmin.php?hal=edit&id=<?=$data['id_data2']?>"><i class="fa fa-pen"></i>Edit</a></button>
+                  <button class="bitton"><a href="edit-superadmin.php?hal=edit&id=<?=$data['id_data2']?>"><i class="fa fa-pen"></i>Edit</a></button>
 
 
-                  <button class="bittun"><a href="delete-superadmin.php?hal=delete&id=<?=$data['id_data2']?>>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">  <i class="fa fa-trash"></i>Trash</a></button>
+                  <button class="bitten"><a href="delete-superadmin.php?hal=delete&id=<?=$data['id_data2']?>>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">  <i class="fa fa-trash"></i>Delete</a></button>
 
 
 

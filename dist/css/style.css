@@ -46,7 +46,7 @@ a.actionview {
 }
 
 .bitton {
-  background-color: DodgerBlue;
+  background-color: #54b435;
   border: none;
   color: white;
   padding: 12px 30px;
@@ -60,6 +60,28 @@ a.actionview {
 
 .bittun {
   background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  width: 120px;
+  border-radius: 75px;
+}
+
+.bitton {
+  background-color: #f49d1a;
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  width: 120px;
+  border-radius: 75px;
+}
+
+.bitten {
+  background-color: #cf0a0a;
   border: none; /* Remove borders */
   color: white; /* White text */
   padding: 12px 16px; /* Some padding */
@@ -95,6 +117,36 @@ button.bittun a i {
 }
 
 button.bittun {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button.bitton a {
+  color: white;
+  margin: 0 2px;
+  font-size: 20px;
+}
+
+button.bitton a i {
+  margin-right: 10px;
+}
+
+button.bitton {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+button.bitten a {
+  color: white;
+  margin: 0 2px;
+  font-size: 20px;
+}
+
+button.bitten a i {
+  margin-right: 10px;
+}
+
+button.bitten {
   margin-top: 10px;
   margin-bottom: 10px;
 }
