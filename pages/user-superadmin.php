@@ -169,6 +169,14 @@ logout
                   <p>Jabatan</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+              
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -212,7 +220,8 @@ logout
 
           <li class="nav-item menu-open">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>              <p>User</p>
+            <i class="nav-icon fas fa-users"></i>          
+                <p>User</p>
             </a>
           </li>
 
@@ -222,6 +231,7 @@ logout
               <p>Calendar</p>
             </a>
           </li>
+
 
         </ul>
       </nav>

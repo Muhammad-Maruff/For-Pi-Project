@@ -235,8 +235,20 @@ document.location='juknis-admin.php'
         <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
         <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
         <script src="../library/autocomplete.js"></script>
-        <title>Typeahead Autocomplete using JavaScript in PHP for Bootstrap 5</title>
-    </head>
+         <!-- Google Font: Source Sans Pro -->
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+          <!-- Font Awesome -->
+          <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+          <!-- DataTables -->
+          <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+          <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+          <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+          <!-- Theme style -->
+          <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+          <link rel="stylesheet" href="../dist/css/style.css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <title>For-Pi | Edit Data Juknis</title>
+      </head>
 
     <?php
 	session_start();
@@ -247,28 +259,6 @@ document.location='juknis-admin.php'
 	}
 
 	?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
-
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="../dist/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Preloader -->
@@ -283,8 +273,14 @@ document.location='juknis-admin.php'
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+
       <li class="nav-item d-none d-sm-inline-block">
         <a href="superadmin.php" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="juknis-superadmin.php" class="nav-link">Juknis</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
 
@@ -393,12 +389,20 @@ logout
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="jabatan-superadmin.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+              
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -442,7 +446,8 @@ logout
 
           <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>              <p>User</p>
+            <i class="nav-icon fas fa-users"></i>              
+            <p>User</p>
             </a>
           </li>
 
@@ -452,7 +457,6 @@ logout
               <p>Calendar</p>
             </a>
           </li>
-
 
         </ul>
       </nav>

@@ -59,6 +59,9 @@ session_start();
       <li class="nav-item d-none d-sm-inline-block">
         <a href="superadmin.php" class="nav-link">Home</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="pemilik.php" class="nav-link">Pemilik</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -162,7 +165,7 @@ logout
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <li class="nav-item menu-open">
                 <a href="jabatan-superadmin.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
@@ -250,7 +253,7 @@ logout
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="superadmin.php">Home</a></li>
-              <li class="breadcrumb-item active">Jabatan</li>
+              <li class="breadcrumb-item active">Pemilik</li>
             </ol>
           </div>
         </div>
@@ -266,7 +269,7 @@ logout
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Tambahkan Polaritas</h3>
+          <h3 class="card-title">Tambahkan Frekuensi</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -279,41 +282,43 @@ logout
         </div>
         <div class="card-body">
 
-        <form action="connect-polaritas.php" method="post">
+        <form action="connect-pemilik.php" method="post">
+            <div class="row mb-3">
+            <label for="nama" class="col-sm-2 col-form-label nama" name="nama">Pemilik</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" name="pemilik" id="pemilik">
+            </div>
+            </div>
+            <div class="text-center">
+            <input type="submit" class="btn btn-primary btn-register">
+        </form>
 
-<div class="row mb-3">
-<label for="nama" class="col-sm-2 col-form-label nama" name="nama">Polaritas</label>
-<div class="col-sm-10">
-<input type="text" class="form-control" name="polaritas" id="polaritas">
-</div>
-</div>
-
-<div class="text-center">
-<input type="submit" class="btn btn-primary btn-register">
-</form>
 
 </div>
+<br>
 
         <table class="table table-striped table:hover table-bordered">
             <tr>
               <th>#</th>
-              <th>Polaritas</th>
+              <th>Pemilik</th>
               <th>Aksi</th>
 
             </tr>
             <?php
             $no = 1;
               //persiapan menampilkan data
-            $user = mysqli_query($koneksi, "SELECT * FROM tb_polaritas order by id_polaritas asc");
-            while($account = mysqli_fetch_array($user)) :
+            $user = mysqli_query($koneksi, "SELECT * FROM tb_pemilik order by id_pemilik asc");
+            while($data = mysqli_fetch_array($user)) :
             ?>
 
             <tr>
               <td><?= $no++?></td>
-              <td><?= $account['polaritas'] ?></td>
+              <td><?= $data['pemilik'] ?></td>
               <td>
-              <a href="" class="btn btn-warning">Edit</a>
-              <a href="" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
+                <a href="editpemilik-superadmin.php?hal=edit&id=<?=$data['id_pemilik']?>" class="btn btn-warning">Edit</a>
+
+                <a href="deletepemilik-superadmin.php?hal=delete&id=<?=$data['id_pemilik']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
+
               </td>
             </tr>
             <?php endwhile; ?>
@@ -366,31 +371,6 @@ logout
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
-<script>
-var auto_complete = new Autocomplete(document.getElementById('divisi'), {
-    data:<?php echo json_encode($data); ?>,
-    maximumItems:10,
-    highlightTyped:true,
-    highlightClass : 'fw-bold text-primary'
-});
-</script>
+
 </body>
 </html>

@@ -49,7 +49,7 @@ session_start();
         <a class="nav-link" data-widget="pushmenu" href="admin.php" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin.php" class="nav-link">Home</a>
+        <a href="superadmin.php" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -145,7 +145,7 @@ session_start();
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -161,6 +161,14 @@ session_start();
                   <p>Jabatan</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+              
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -195,7 +203,7 @@ session_start();
             </ul>
           </li>
 
-           <li class="nav-item menu-open">
+           <li class="nav-item">
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
@@ -216,6 +224,7 @@ session_start();
           </li>
 
 
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -234,7 +243,7 @@ session_start();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="juknis-admin.php">Juknis</a></li>
+              <li class="breadcrumb-item"><a href="juknis-superadmin.php">Juknis</a></li>
               <li class="breadcrumb-item active">Export</li>
             </ol>
           </div>
@@ -340,8 +349,7 @@ session_start();
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+
 <!-- Page specific script -->
 <script>
   $(function () {

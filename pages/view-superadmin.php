@@ -1,32 +1,4 @@
 <?php
-
-//index.php
-
-
-$connect = new PDO("mysql:host=localhost; dbname=kinerjapegawai", "root", "");
-
-$query = "
-SELECT divisi FROM tb_divisi
-ORDER BY divisi ASC
-";
-
-$result = $connect->query($query);
-
-$data = array();
-
-foreach($result as $row)
-{
-    $data[] = array(
-        'label'     =>  $row['divisi'],
-        'value'     =>  $row['divisi']
-    );
-}
-
-
-?>
-
-
-<?php
   //Koneksi database
   $server = "localhost";
   $user = "root";
@@ -35,45 +7,6 @@ foreach($result as $row)
 
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
-
-  //jika button simpan diklik
-  if(isset($_POST['btn-simpan'])){
-    //Data akan disimpan
-    $simpan = mysqli_query($koneksi, "INSERT INTO tb_data (deskripsi,usulan_deskripsi,definisi,tujuan,satuan,kategori_satuan,formula,sumber_target,tipe_kpi,tipe_target,frekuensi,polaritas,divisi,pemilik,eviden,syarat_ketentuan,kpi_parent)
-                                      VALUE ( '$_POST[tdeskripsi]',
-                                              '$_POST[tusulan_deskripsi]',
-                                              '$_POST[tdefinisi]',
-                                              '$_POST[ttujuan]',
-                                              '$_POST[tsatuan]',
-                                              '$_POST[tkategori]',
-                                              '$_POST[tformula]',
-                                              '$_POST[tsumber]',
-                                              '$_POST[ttipe]',
-                                              '$_POST[ttarget]',
-                                              '$_POST[tfrekuensi]',
-                                              '$_POST[tpolaritas]',
-                                              '$_POST[tdivisi]',
-                                              '$_POST[tpemilik]',
-                                              '$_POST[teviden]',
-                                              '$_POST[tsyarat]',
-                                              '$_POST[tparent]')
-                                  ");
-
-    //uji jika simpan data sukses
-    if($simpan){
-      echo "<script>
-      alert('data berhasil disimpan!');
-      document.location='superadmin.php';
-      </script>";
-    } else{
-      echo "<script>
-        alert('Simpan data gagal');
-        document.location='superadmin.php'
-      </script>";
-    }
-    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data order by id_data asc");
-            while($data = mysqli_fetch_array($tampil));
-  }
 
   //deklarasi variabel untuk menampung data yang akan diedit
   $vid = "";
@@ -139,7 +72,7 @@ foreach($result as $row)
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>For-Pi | View Data</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -287,12 +220,20 @@ logout
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="jabatan-superadmin.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+              
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -336,7 +277,8 @@ logout
 
           <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>              <p>User</p>
+            <i class="nav-icon fas fa-users"></i>              
+            <p>User</p>
             </a>
           </li>
 
@@ -346,7 +288,6 @@ logout
               <p>Calendar</p>
             </a>
           </li>
-
 
         </ul>
       </nav>
@@ -367,7 +308,7 @@ logout
           <div class="col-sm-6">
 
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="juknis-admin.php">Juknis</a></li>
+              <li class="breadcrumb-item"><a href="juknis-superadmin.php">Juknis</a></li>
               <li class="breadcrumb-item active">Data Karyawan</li>
             </ol>
           </div>
@@ -534,25 +475,6 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+
 </body>
 </html>

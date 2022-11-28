@@ -168,6 +168,14 @@ logout
                   <p>Jabatan</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+              
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -180,6 +188,7 @@ logout
                   <p>Tipe Kpi</p>
                 </a>
               </li>
+
               <li class="nav-item">
                 <a href="tipe-target.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

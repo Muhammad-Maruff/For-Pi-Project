@@ -1,32 +1,4 @@
 <?php
-
-//index.php
-
-
-$connect = new PDO("mysql:host=localhost; dbname=kinerjapegawai", "root", "");
-
-$query = "
-SELECT divisi FROM tb_divisi
-ORDER BY divisi ASC
-";
-
-$result = $connect->query($query);
-
-$data = array();
-
-foreach($result as $row)
-{
-    $data[] = array(
-        'label'     =>  $row['divisi'],
-        'value'     =>  $row['divisi']
-    );
-}
-
-
-?>
-
-
-<?php
   //Koneksi database
   $server = "localhost";
   $user = "root";
@@ -35,208 +7,6 @@ foreach($result as $row)
 
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
-
-  //jika button simpan diklik
-  if(isset($_POST['btn-simpan'])){
-    if(isset($_GET['hal']) == "edit"){
-
-          $edit = mysqli_query($koneksi, "UPDATE tb_data2 SET
-          deskripsi2 = '$_POST[tdeskripsi]',
-          usulan_deskripsi2 = '$_POST[tusulan_deskripsi]',
-          definisi2 = '$_POST[tdefinisi]',
-          tujuan2 = '$_POST[ttujuan]',
-          satuan2 = '$_POST[tsatuan]',
-          kategori_satuan2 = '$_POST[tkategori]',
-          formula2 = '$_POST[tformula]',
-          sumber_target2 = '$_POST[tsumber]',
-          tipe_kpi2 = '$_POST[ttipe]',
-          tipe_target2 = '$_POST[ttarget]',
-          frekuensi2 = '$_POST[tfrekuensi]',
-          polaritas2 = '$_POST[tpolaritas]',
-          divisi2 = '$_POST[tdivisi]',
-          pemilik2 = '$_POST[tpemilik]',
-          eviden2 = '$_POST[teviden]',
-          syarat_ketentuan2 = '$_POST[tsyarat]',
-          kpi_parent2 = '$_POST[tparent]'
-          WHERE id_data2 = '$_GET[id]'
-          ");
-
-
-          if($edit){
-            echo "<script>
-              alert('Data berhasil edit!');
-              document.location='juknis-admin.php'
-            </script>";
-          }
-          else{
-            echo "<script>
-              alert('Data gagal edit!');
-              document.location='juknis-admin.php'
-            </script>";
-          }
-    }
-    //Data akan disimpan
-
-    else{
-      $simpan = mysqli_query($koneksi, "INSERT INTO tb_data (id_data,deskripsi,usulan_deskripsi,definisi,tujuan,satuan,kategori_satuan,formula,sumber_target,tipe_kpi,tipe_target,frekuensi,polaritas,divisi,pemilik,eviden,syarat_ketentuan,kpi_parent)
-      VALUE ( '$_POST[tid]',
-              '$_POST[tdeskripsi]',
-              '$_POST[tusulan_deskripsi]',
-              '$_POST[tdefinisi]',
-              '$_POST[ttujuan]',
-              '$_POST[tsatuan]',
-              '$_POST[tkategori]',
-              '$_POST[tformula]',
-              '$_POST[tsumber]',
-              '$_POST[ttipe]',
-              '$_POST[ttarget]',
-              '$_POST[tfrekuensi]',
-              '$_POST[tpolaritas]',
-              '$_POST[tdivisi]',
-              '$_POST[tpemilik]',
-              '$_POST[teviden]',
-              '$_POST[tsyarat]',
-              '$_POST[tparent]')
-  ");
-  $simpan2 = mysqli_query($koneksi, "INSERT INTO tb_data2 (deskripsi2,definisi2,tujuan2,satuan2,kategori_satuan2,formula2,sumber_target2,tipe_kpi2,tipe_target2,frekuensi2,polaritas2,divisi2,pemilik2,eviden2,syarat_ketentuan2,kpi_parent2)
-  VALUE ( '$_POST[tdeskripsi]',
-          '$_POST[tdefinisi]',
-          '$_POST[ttujuan]',
-          '$_POST[tsatuan]',
-          '$_POST[tkategori]',
-          '$_POST[tformula]',
-          '$_POST[tsumber]',
-          '$_POST[ttipe]',
-          '$_POST[ttarget]',
-          '$_POST[tfrekuensi]',
-          '$_POST[tpolaritas]',
-          '$_POST[tdivisi]',
-          '$_POST[tpemilik]',
-          '$_POST[teviden]',
-          '$_POST[tsyarat]',
-          '$_POST[tparent]')
-  ");
-
-
-
-
-//uji jika simpan data sukses
-if($simpan){
-echo "<script>
-alert('data berhasil disimpan!');
-document.location='juknis-admin.php';
-</script>";
-} else{
-echo "<script>
-alert('Simpan data gagal');
-document.location='juknis-admin.php'
-</script>";
-}
-    }
-
-    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 order by id_data asc");
-            while($data = mysqli_fetch_array($tampil));
-  }
-
-  //deklarasi variabel untuk menampung data yang akan diedit
-  $vid = "";
-  $vdeskripsi = "";
-  $vusulan_deskripsi = "";
-  $vdefinisi = "";
-  $vtujuan = "";
-  $vsatuan = "";
-  $vkategori_satuan = "";
-  $vformula = "";
-  $vsumber_target = "";
-  $vtipe_kpi = "";
-  $vtipe_target="";
-  $vfrekuensi = "";
-  $vpolaritas ="";
-  $vdivisi = "";
-  $vpemilik = "";
-  $veviden = "";
-  $vsyarat_ketentuan = "";
-  $vkpi_parent = "";
-
-  $vid2 = "";
-  $vdeskripsi2 = "";
-  $vusulan_deskripsi2 = "";
-  $vdefinisi2 = "";
-  $vtujuan2 = "";
-  $vsatuan2 = "";
-  $vkategori_satuan2 = "";
-  $vformula2 = "";
-  $vsumber_target2 = "";
-  $vtipe_kpi2 = "";
-  $vtipe_target2 ="";
-  $vfrekuensi2 = "";
-  $vpolaritas2 ="";
-  $vdivisi2 = "";
-  $vpemilik2 = "";
-  $veviden2 = "";
-  $vsyarat_ketentuan2 = "";
-  $vkpi_parent2 = "";
-
-
-  //jika tombol edit diedit/hapus
-  if(isset($_GET['hal'])){
-    //jika edit data
-    if($_GET['hal'] == "edit"){
-      //tampilkan data yang akan diedit
-
-
-      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_data WHERE id_data = '$_GET[id]'");
-      $tampil2=mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE id_data2 = '$_GET[id]'");
-
-      $data = mysqli_fetch_array($tampil);
-      $data2 = mysqli_fetch_array($tampil2);
-      if($data){
-        //jika data ditemukan, maka data ditampung kedalam variabel
-        $vid = $data['id_data'];
-        $vdeskripsi = $data['deskripsi'];
-        $vusulan_deskripsi = $data['usulan_deskripsi'];
-        $vdefinisi = $data['definisi'];
-        $vtujuan = $data['tujuan'];
-        $vsatuan = $data['satuan'];
-        $vkategori_satuan = $data['kategori_satuan'];
-        $vformula = $data['formula'];
-        $vsumber_target = $data['sumber_target'];
-        $vtipe_kpi = $data['tipe_kpi'];
-        $vtipe_target = $data['tipe_target'];
-        $vfrekuensi = $data['frekuensi'];
-        $vpolaritas = $data['polaritas'];
-        $vdivisi = $data['divisi'];
-        $vpemilik = $data['pemilik'];
-        $veviden = $data['eviden'];
-        $vsyarat_ketentuan = $data['syarat_ketentuan'];
-        $vkpi_parent = $data['kpi_parent'];
-      }
-
-      else if($data2){
-        //jika data ditemukan, maka data ditampung kedalam variabel
-        $vid2 = $data2['id_data2'];
-        $vdeskripsi2 = $data2['deskripsi2'];
-        $vusulan_deskripsi2 = $data2['usulan_deskripsi2'];
-        $vdefinisi2 = $data2['definisi2'];
-        $vtujuan2 = $data2['tujuan2'];
-        $vsatuan2 = $data2['satuan2'];
-        $vkategori_satuan2 = $data2['kategori_satuan2'];
-        $vformula2 = $data2['formula2'];
-        $vsumber_target2 = $data2['sumber_target2'];
-        $vtipe_kpi2 = $data2['tipe_kpi2'];
-        $vtipe_target2 = $data2['tipe_target2'];
-        $vfrekuensi2 = $data2['frekuensi2'];
-        $vpolaritas2 = $data2['polaritas2'];
-        $vdivisi2 = $data2['divisi2'];
-        $vpemilik2 = $data2['pemilik2'];
-        $veviden2 = $data2['eviden2'];
-        $vsyarat_ketentuan2 = $data2['syarat_ketentuan2'];
-        $vkpi_parent2 = $data2['kpi_parent2'];
-      }
-    }
-  }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -378,24 +148,83 @@ if (empty($_GET['hash'])){
               </p>
             </a>
           </li>
-           <li class="nav-item  menu-open">
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Master
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="jabatan-superadmin.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jabatan</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="kategori-satuan.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kategori Satuan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tipe-kpi.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipe Kpi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tipe-target.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipe Target</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="frekuensi.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Frekuensi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="polaritas.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Polaritas</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+           <li class="nav-item menu-open">
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                User
-              </p>
+            <i class="nav-icon fas fa-users"></i>              
+            <p>User</p>
             </a>
           </li>
-           <li class="nav-item">
-            <a href="tools-super.php" class="nav-link">
-              <i class="nav-icon fas fa-user"></i>
-              <p>Tools</p>
+
+          <li class="nav-item">
+            <a href="calendar.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Calendar</p>
             </a>
           </li>
         </ul>
