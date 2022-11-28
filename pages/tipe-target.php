@@ -168,14 +168,6 @@ logout
                   <p>Jabatan</p>
                 </a>
               </li>
-
-              <li class="nav-item">
-                <a href="pemilik.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pemilik</p>
-                </a>
-              </li>
-              
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -305,16 +297,16 @@ logout
             $no = 1;
               //persiapan menampilkan data
             $user = mysqli_query($koneksi, "SELECT * FROM tb_tipetarget order by id_tipetarget asc");
-            while($account = mysqli_fetch_array($user)) :
+            while($data = mysqli_fetch_array($user)) :
             ?>
 
             <tr>
               <td><?= $no++?></td>
-              <td><?= $account['tipe_target'] ?></td>
+              <td><?= $data['tipe_target'] ?></td>
               <td>
-              <a href="" class="btn btn-warning">Edit</a>
-              <a href="" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
-              </td>
+              <a href="edit-tipe-target.php?hal=edit&id=<?=$data['id_tipetarget']?>" class="btn btn-warning">Edit</a>
+              <a href="delete-tipe-target.php?hal=delete&id=<?=$data['id_tipetarget']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
+            </td>
             </tr>
             <?php endwhile; ?>
 

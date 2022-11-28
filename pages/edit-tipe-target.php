@@ -12,32 +12,32 @@
   if(isset($_POST['btn-simpan'])){
     if(isset($_GET['hal']) == "edit"){
 
-      $edit = mysqli_query($koneksi, "UPDATE tb_tipekpi SET
+      $edit = mysqli_query($koneksi, "UPDATE tb_tipetarget SET
 
-                                              tipe_kpi = '$_POST[ttipe]'
+                                              tipe_target = '$_POST[ttarget]'
 
-                                              WHERE id_kpi = '$_GET[id]'
+                                              WHERE id_tipetarget = '$_GET[id]'
           ");
 
           if($edit){
             echo "<script>
               alert('Data berhasil edit!');
-              document.location='tipe-kpi.php'
+              document.location='tipe-target.php'
             </script>";
           }
           else{
             echo "<script>
               alert('Data gagal edit!');
-              document.location='tipe-kpi.php'
+              document.location='tipe-target.php'
             </script>";
           }
     }
     //Data akan disimpan
 
     else{
-      $simpan = mysqli_query($koneksi, "INSERT INTO tb_tipekpi (tipe_kpi)
+      $simpan = mysqli_query($koneksi, "INSERT INTO tb_tipetarget (tipe_target)
       VALUE ( ]
-              '$_POST[ttipe]',
+              '$_POST[ttarget]'
 
   ");
 
@@ -45,23 +45,23 @@
 if($simpan){
 echo "<script>
 alert('data berhasil disimpan!');
-document.location='tipe-kpi.php';
+document.location='tipe-target.php';
 </script>";
 } else{
 echo "<script>
 alert('Simpan data gagal');
-document.location='tipe-kpi.php';
+document.location='tipe-target.php';
 </script>";
 }
     }
 
-    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_tipekpi order by id_kpi asc");
+    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_tipetarget order by id_tipetarget asc");
             while($data = mysqli_fetch_array($tampil));
 
   }
 
   //deklarasi variabel untuk menampung data yang akan diedit
-  $vtipekpi = "";
+  $vtipetarget = "";
 
 
   //jika tombol edit diedit/hapus
@@ -71,13 +71,13 @@ document.location='tipe-kpi.php';
       //tampilkan data yang akan diedit
 
 
-      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_tipekpi WHERE id_kpi = '$_GET[id]'");
+      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_tipetarget WHERE id_tipetarget = '$_GET[id]'");
 
       $data = mysqli_fetch_array($tampil);
       if($data){
         //jika data ditemukan, maka data ditampung kedalam variabel
 
-        $vtipekpi = $data['tipe_kpi'];
+        $vtipetarget = $data['tipe_target'];
 
       }
 
@@ -99,7 +99,7 @@ document.location='tipe-kpi.php';
         <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
         <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
         <script src="../library/autocomplete.js"></script>
-        <title>For-Pi | Edit Tipe KPI</title>
+        <title>For-Pi | Edit Tipe Target</title>
     </head>
 
     <?php
@@ -118,7 +118,7 @@ document.location='tipe-kpi.php';
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Tipe KPI</title>
+  <title>For-Pi | Tipe Target</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -338,7 +338,7 @@ logout
 
             <div class="card">
               <div class="card-header mx-auto">
-                <h1>Edit Tipe KPI</h1>
+                <h1>Edit Tipe Target</h1>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -347,9 +347,9 @@ logout
 
 
   <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Tipe KPI</label>
+    <label for="" class="col-sm-2 col-form-label">Tipe Target</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="ttipe" value="<?= $vtipekpi ?>">
+      <input type="text" class="form-control" name="ttarget" value="<?= $vtipetarget ?>">
     </div>
   </div>
 
