@@ -7,31 +7,39 @@
 
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | User</title>
+  <title>For-Pi | Home</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="../plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="../dist/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
@@ -39,11 +47,11 @@ session_start();
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
- <!-- Preloader -->
- <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" height="60" width="60">
   </div>
 
@@ -58,7 +66,7 @@ session_start();
         <a href="superadmin.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="user-superadmin.php" class="nav-link">User</a>
+
       </li>
     </ul>
 
@@ -86,7 +94,8 @@ session_start();
         </div>
       </li>
 
-      <!-- Messages Dropdown Menu -->
+
+      <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <?php
@@ -107,14 +116,14 @@ logout
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="superadmin.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user (optional) -->
+      <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -124,6 +133,7 @@ logout
          echo $_SESSION['username'];
           ?></a>
         </div>
+
       </div>
 
       <!-- SidebarSearch Form -->
@@ -138,13 +148,13 @@ logout
         </div>
       </div>
 
-     <!-- Sidebar Menu -->
-     <nav class="mt-2">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item">
+               <li class="nav-item menu-open">
             <a href="superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -170,7 +180,7 @@ logout
                 </a>
               </li>
 
-              <li class="nav-item">
+              <li class="nav-item menu-open">
                 <a href="pemilik.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pemilik</p>
@@ -212,16 +222,15 @@ logout
           </li>
 
            <li class="nav-item">
-            <a href="juknis-superadmin.php" class="nav-link">
+            <a href="juknis-niaga.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-                <p>User</p>
+            <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>
           </li>
 
@@ -243,136 +252,98 @@ logout
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Akun Karyawan</h1>
-          </div>
+            <h1 class="m-0">Selamat Datang,
+            <?php
+           echo $_SESSION['username'];
+            ?>
+            !
+            </h1>
+          </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="superadmin.php">Home</a></li>
-              <li class="breadcrumb-item active">User</li>
+              <li class="breadcrumb-item active"><a href="#">Home</a></li>
             </ol>
-          </div>
-        </div>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </section>
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Daftarkan Akun </h3>
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
+
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+              <?php
+                require '../config.php';
+                $query = "SELECT id_data FROM tb_data ORDER BY id_data";
+                $query_run = mysqli_query($koneksi, $query);
+
+                $row = mysqli_num_rows($query_run);
+                echo '<h3> '.$row. '<h3>';
+                ?>
+
+                <p>Data KPI</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="juknis-superadmin.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
           </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <?php
+                require '../config.php';
+                $query = "SELECT is_updated FROM tb_data2 WHERE NOT is_updated = '' ";
+                $query_run = mysqli_query($koneksi, $query);
+
+                $row = mysqli_num_rows($query_run);
+                echo '<h3> '.$row. '<h3>';
+                ?>
+                <p>Perubahan Data</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="juknis-superadmin.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
         </div>
-        <div class="card-body">
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
 
-          <form action="connect.php" method="post">
-<br>
-        <div class="row mb-3">
-    <label for="nama" class="col-sm-2 col-form-label nama" name="nama">Nama</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="nama">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="username" class="col-sm-2 col-form-label">Username</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control username" name="username">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="password" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control password" name="password">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="password" class="col-sm-2 col-form-label">Level</label>
-    <div class="col-sm-10">
-    <select class="form-control level" aria-label="Default select example" name="level">
-  <option selected disabled>Level</option>
-  <option value="superadmin">Superadmin</option>
-  <option value="admin">Admin</option>
-  <option value="admin niaga">Admin Niaga</option>
-  <option value="user">User</option>
-
-</select>
-    </div>
-  </div>
-
-  <div class="text-center">
-  <input type="submit" class="btn btn-primary btn-register">
-</form>
-<br>
-<br>
-        </div>
-
-        <table class="table table-striped table:hover table-bordered">
-            <tr>
-              <th>ID</th>
-              <th>Nama</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>Level</th>
-              <th>Action</th>
-            </tr>
-            <?php
-              //persiapan menampilkan data
-            $user = mysqli_query($koneksi, "SELECT * FROM tb_login order by id asc");
-            while($data = mysqli_fetch_array($user)) :
-            ?>
-
-            <tr>
-              <td><?= $data['id'] ?></td>
-              <td><?= $data['nama'] ?></td>
-              <td><?= $data['username'] ?></td>
-              <td>Password Encryption...</td>
-              <td><?= $data['level'] ?></td>
-              <td>
-                <a href="edituser-superadmin.php?hal=edit&id=<?=$data['id']?>" class="btn btn-warning">Edit</a>
-
-                <a href="deleteuser-superadmin.php?hal=delete&id=<?=$data['id']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
-
-              </td>
-            </tr>
-            <?php endwhile; ?>
-
-
-      </table>
-
-        <!-- /.card-body -->
-              <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
-    </div>
+    <!-- /.content -->
   </div>
 </div>
-</section>
-  </div>
+</div>
+
+
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>PLN Kantor Pusat</b>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2022 <a href="#">PT PLN (PERSERO)</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -385,23 +356,36 @@ logout
 
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../plugins/jszip/jszip.min.js"></script>
-<script src="../plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- ChartJS -->
+<script src="../plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="../plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="../plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../plugins/moment/moment.min.js"></script>
+<script src="../plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="../plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
+<script src="../dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../dist/js/pages/dashboard.js"></script>
 </body>
 </html>

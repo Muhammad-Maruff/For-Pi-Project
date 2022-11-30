@@ -37,6 +37,13 @@ if($cek > 0){
 		// alihkan ke halaman dashboard pegawai
 		header("location:pages/admin.php");
 
+  }else if($data['level']=="admin niaga"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "admin niaga";
+		// alihkan ke halaman dashboard pengurus
+		header("location:pages/admin-niaga.php");
+
 	// cek jika user login sebagai pengurus
 	}else if($data['level']=="user"){
 		// buat session login dan username
@@ -44,6 +51,8 @@ if($cek > 0){
 		$_SESSION['level'] = "user";
 		// alihkan ke halaman dashboard pengurus
 		header("location:pages/guest.php");
+
+
 
 	}else{
 		// alihkan ke halaman login kembali

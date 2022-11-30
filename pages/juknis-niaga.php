@@ -16,7 +16,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | User</title>
+  <title>For-Pi | Juknis</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -29,6 +29,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../dist/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -56,9 +58,6 @@ session_start();
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="superadmin.php" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="user-superadmin.php" class="nav-link">User</a>
       </li>
     </ul>
 
@@ -97,7 +96,7 @@ session_start();
           <div class="dropdown-divider"></div>
           <a href="keluar.php" class="dropdown-item">
           <i class="fa-solid fa-right-from-bracket"></i>
-logout
+          logout
           </a>
       </li>
     </ul>
@@ -107,10 +106,11 @@ logout
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="superadmin.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
+
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -211,17 +211,16 @@ logout
             </ul>
           </li>
 
-           <li class="nav-item">
+           <li class="nav-item menu-open">
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-                <p>User</p>
+            <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>
           </li>
 
@@ -240,6 +239,8 @@ logout
     <!-- /.sidebar -->
   </aside>
 
+
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -247,12 +248,14 @@ logout
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Akun Karyawan</h1>
+            <h1>Data Karyawan</h1>
+
           </div>
           <div class="col-sm-6">
+          <a href="create-superadmin.php" class="btn-create">New Data+</a>
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="superadmin.php">Home</a></li>
-              <li class="breadcrumb-item active">User</li>
+              <li class="breadcrumb-item active">Juknis</li>
             </ol>
           </div>
         </div>
@@ -261,118 +264,97 @@ logout
 
     <!-- Main content -->
     <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Daftarkan Akun </h3>
+            <div class="card">
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
+              <!-- /.card-header -->
+              <div class="card-body text-center">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                  <th>#</th>
+                  <th>Deskripsi KPI</th>
+                  <th>Satuan KPI</th>
+                  <th>Kategori Satuan</th>
+                  <th>Tipe KPI</th>
+                  <th>Tipe Target</th>
+                  <th>Polaritas</th>
+                  <th>Jabatan Pemilik KPI</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+
+            //persiapan menampilkan data
+            $no = 1;
+          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE pemilik2 = 'DIV NIAGA'");
+          while($data = mysqli_fetch_array($tampil)) :
+          ?>
+                  <tr>
+                  <td><?= $no++?></td>
+                  <?php
+                    if ($data['usulan_deskripsi2'] == '') {
+                        echo '<td>'. $data['deskripsi2']. '</td>';
+                    }else{
+                        echo '<td>'. $data['usulan_deskripsi2']. '</td>';
+                    }
+                    ?>
+                  <td><?= $data['satuan2'] ?></td>
+                  <td><?= $data['kategori_satuan2'] ?></td>
+                  <td><?= $data['tipe_kpi2'] ?></td>
+                  <td><?= $data['tipe_target2'] ?></td>
+                  <td><?= $data['polaritas2'] ?></td>
+                  <td><?= $data['divisi2'] ?></td>
+                  <?php
+
+                  if ($data['usulan_deskripsi2'] == '') {
+                    echo '<td>'.'</td>';
+                  }else{
+                    echo '<td>'. '<a href="log-data-super.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Terdapat Perubahan Data' . '</a>' .'</td>';
+                  }
+                  ?>
+                  <td>
+
+
+                  <button class="bittun" class='inline-block'  ><a href="view-superadmin.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
+
+
+                  <button class="bitton"><a href="edit-superadmin.php?hal=edit&id=<?=$data['id_data2']?>"><i class="fa fa-pen"></i>Edit</a></button>
+
+
+                  <button class="bitten"><a href="delete-superadmin.php?hal=delete&id=<?=$data['id_data2']?>>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">  <i class="fa fa-trash"></i>Delete</a></button>
+
+
+
+                  </td>
+                  <?php endwhile; ?>
+                  </tbody>
+                </table>
+                <a href="export-superadmin.php"><button class="btn btn-success">Export</button></a>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
           </div>
+          <!-- /.col -->
         </div>
-        <div class="card-body">
-
-          <form action="connect.php" method="post">
-<br>
-        <div class="row mb-3">
-    <label for="nama" class="col-sm-2 col-form-label nama" name="nama">Nama</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="nama">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="username" class="col-sm-2 col-form-label">Username</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control username" name="username">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="password" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control password" name="password">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="password" class="col-sm-2 col-form-label">Level</label>
-    <div class="col-sm-10">
-    <select class="form-control level" aria-label="Default select example" name="level">
-  <option selected disabled>Level</option>
-  <option value="superadmin">Superadmin</option>
-  <option value="admin">Admin</option>
-  <option value="admin niaga">Admin Niaga</option>
-  <option value="user">User</option>
-
-</select>
-    </div>
-  </div>
-
-  <div class="text-center">
-  <input type="submit" class="btn btn-primary btn-register">
-</form>
-<br>
-<br>
-        </div>
-
-        <table class="table table-striped table:hover table-bordered">
-            <tr>
-              <th>ID</th>
-              <th>Nama</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>Level</th>
-              <th>Action</th>
-            </tr>
-            <?php
-              //persiapan menampilkan data
-            $user = mysqli_query($koneksi, "SELECT * FROM tb_login order by id asc");
-            while($data = mysqli_fetch_array($user)) :
-            ?>
-
-            <tr>
-              <td><?= $data['id'] ?></td>
-              <td><?= $data['nama'] ?></td>
-              <td><?= $data['username'] ?></td>
-              <td>Password Encryption...</td>
-              <td><?= $data['level'] ?></td>
-              <td>
-                <a href="edituser-superadmin.php?hal=edit&id=<?=$data['id']?>" class="btn btn-warning">Edit</a>
-
-                <a href="deleteuser-superadmin.php?hal=delete&id=<?=$data['id']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
-
-              </td>
-            </tr>
-            <?php endwhile; ?>
-
-
-      </table>
-
-        <!-- /.card-body -->
-              <!-- /.card-footer-->
+        <!-- /.row -->
       </div>
-      <!-- /.card -->
-    </div>
-  </div>
-</div>
-</section>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>PLN Kantor Pusat</b>
+      <b>Version</b> 3.2.0
     </div>
-    <strong>Copyright &copy; 2022 <a href="#">PT PLN (PERSERO)</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -402,6 +384,22 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>

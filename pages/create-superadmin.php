@@ -280,6 +280,14 @@ foreach($resultt as $row)
                   <p>Jabatan</p>
                 </a>
               </li>
+
+              <li class="nav-item menu-open">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
