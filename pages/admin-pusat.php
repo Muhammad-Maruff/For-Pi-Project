@@ -222,7 +222,7 @@ logout
           </li>
 
            <li class="nav-item">
-            <a href="juknis-niaga.php" class="nav-link">
+            <a href="juknis-adminpusat.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>

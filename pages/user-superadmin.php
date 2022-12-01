@@ -310,7 +310,7 @@ logout
     <select class="form-control level" aria-label="Default select example" name="level">
   <option selected disabled>Level</option>
   <option value="superadmin">Superadmin</option>
-  <option value="admin">Admin</option>
+  <option value="admin pusat">Admin Pusat</option>
   <option value="admin niaga">Admin Niaga</option>
   <option value="user">User</option>
 

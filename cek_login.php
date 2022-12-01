@@ -37,12 +37,12 @@ if($cek > 0){
 		// alihkan ke halaman dashboard pegawai
 		header("location:pages/admin.php");
 
-  }else if($data['level']=="admin niaga"){
+  }else if($data['level']=="admin pusat"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
-		$_SESSION['level'] = "admin niaga";
+		$_SESSION['level'] = "admin pusat";
 		// alihkan ke halaman dashboard pengurus
-		header("location:pages/admin-niaga.php");
+		header("location:pages/admin-pusat.php");
 
 	// cek jika user login sebagai pengurus
 	}else if($data['level']=="user"){

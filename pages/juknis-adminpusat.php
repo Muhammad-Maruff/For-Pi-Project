@@ -254,7 +254,7 @@ session_start();
           <div class="col-sm-6">
           <a href="create-superadmin.php" class="btn-create">New Data+</a>
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="superadmin.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="admin-pusat.php">Home</a></li>
               <li class="breadcrumb-item active">Juknis</li>
             </ol>
           </div>
@@ -292,7 +292,7 @@ session_start();
 
             //persiapan menampilkan data
             $no = 1;
-          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE pemilik2 = 'DIV NIAGA'");
+            $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 order by id_data2 asc");
           while($data = mysqli_fetch_array($tampil)) :
           ?>
                   <tr>
