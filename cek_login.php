@@ -44,6 +44,27 @@ if($cek > 0){
 		// alihkan ke halaman dashboard pengurus
 		header("location:pages/admin-pusat.php");
 
+  }else if($data['level']=="admin setper"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "admin setper";
+		// alihkan ke halaman dashboard pengurus
+		header("location:pages/admin-setper.php");
+
+  }else if($data['level']=="admin div tco"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "admin div tco";
+		// alihkan ke halaman dashboard pengurus
+		header("location:pages/admin-div-tco.php");
+
+  }else if($data['level']=="admin div shb"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "admin div shb";
+		// alihkan ke halaman dashboard pengurus
+		header("location:pages/admin-div-shb.php");
+
 	// cek jika user login sebagai pengurus
 	}else if($data['level']=="user"){
 		// buat session login dan username
