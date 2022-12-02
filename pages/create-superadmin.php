@@ -95,12 +95,12 @@ foreach($resultt as $row)
     if($simpan){
       echo "<script>
       alert('data berhasil disimpan!');
-      document.location='juknis-admin.php';
+      document.location='juknis-superadmin.php';
       </script>";
     } else{
       echo "<script>
         alert('Simpan data gagal');
-        document.location='juknis-admin.php'
+        document.location='juknis-superadmin.php'
       </script>";
     }
     $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data order by id_data asc");
@@ -121,7 +121,7 @@ foreach($resultt as $row)
         <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
         <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
         <script src="../library/autocomplete.js"></script>
-        <title>Typeahead Autocomplete using JavaScript in PHP for Bootstrap 5</title>
+        <title> For-Pi</title>
     </head>
 
     <?php

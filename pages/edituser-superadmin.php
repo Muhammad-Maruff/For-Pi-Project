@@ -369,15 +369,17 @@ document.location='user-superadmin.php'
     <label for="password" class="col-sm-2 col-form-label">Level</label>
     <div class="col-sm-10">
     <select class="form-control level" aria-label="Default select example" name="level">
-  <option selected disabled>Level</option>
-  <option value="superadmin">Superadmin</option>
-  <option value="admin">Admin</option>
-  <option value="user">User</option>
+    <option selected disabled>Level</option>
+  <option value="superadmin">SUPERADMIN</option>
+  <option value="admin pusat">ADMIN PUSAT</option>
+  <option value="admin setper">ADMIN SETPER</option>
+  <option value="admin tco">ADMIN DIV TCO</option>
+  <option value="user">USER</option>
 </select>
     </div>
   </div>
 
-  
+
   <div class="text-center">
       <hr>
       <button class="btn btn-success" name="btn-simpan" type="submit">Save</button>

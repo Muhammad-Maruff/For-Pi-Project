@@ -10,7 +10,13 @@ SELECT divisi FROM tb_divisi
 ORDER BY divisi ASC
 ";
 
+$queri = "
+SELECT pemilik FROM tb_pemilik
+ORDER BY pemilik ASC
+";
+
 $result = $connect->query($query);
+$resultt = $connect->query($queri);
 
 $data = array();
 
@@ -22,6 +28,13 @@ foreach($result as $row)
     );
 }
 
+foreach($resultt as $row)
+{
+    $data[] = array(
+        'label'     =>  $row['pemilik'],
+        'value'     =>  $row['pemilik']
+    );
+}
 
 ?>
 
@@ -39,11 +52,11 @@ foreach($result as $row)
   //jika button simpan diklik
   if(isset($_POST['btn-simpan'])){
     //Data akan disimpan
-    $simpan = mysqli_query($koneksi, "INSERT INTO tb_data (deskripsi,usulan_deskripsi,definisi,tujuan,satuan,kategori_satuan,formula,sumber_target,tipe_kpi,tipe_target,frekuensi,polaritas,divisi,pemilik,eviden,syarat_ketentuan,kpi_parent)
+    $tujuan2 = htmlspecialchars($_POST['ttujuan']);
+    $simpan = mysqli_query($koneksi, "INSERT INTO tb_data (deskripsi,definisi,tujuan,satuan,kategori_satuan,formula,sumber_target,tipe_kpi,tipe_target,frekuensi,polaritas,divisi,pemilik,eviden,syarat_ketentuan,kpi_parent)
                                       VALUE ( '$_POST[tdeskripsi]',
-                                              '$_POST[tusulan_deskripsi]',
                                               '$_POST[tdefinisi]',
-                                              '$_POST[ttujuan]',
+                                              '$tujuan2',
                                               '$_POST[tsatuan]',
                                               '$_POST[tkategori]',
                                               '$_POST[tformula]',
@@ -59,87 +72,75 @@ foreach($result as $row)
                                               '$_POST[tparent]')
                                   ");
 
+  $simpan2 = mysqli_query($koneksi, "INSERT INTO tb_data2 (deskripsi2,definisi2,tujuan2,satuan2,kategori_satuan2,formula2,sumber_target2,tipe_kpi2,tipe_target2,frekuensi2,polaritas2,divisi2,pemilik2,eviden2,syarat_ketentuan2,kpi_parent2)
+                                    VALUE ( '$_POST[tdeskripsi]',
+                                            '$_POST[tdefinisi]',
+                                            '$_POST[ttujuan]',
+                                            '$_POST[tsatuan]',
+                                            '$_POST[tkategori]',
+                                            '$_POST[tformula]',
+                                            '$_POST[tsumber]',
+                                            '$_POST[ttipe]',
+                                            '$_POST[ttarget]',
+                                            '$_POST[tfrekuensi]',
+                                            '$_POST[tpolaritas]',
+                                            '$_POST[tdivisi]',
+                                            '$_POST[tpemilik]',
+                                            '$_POST[teviden]',
+                                            '$_POST[tsyarat]',
+                                            '$_POST[tparent]')
+  ");
+
     //uji jika simpan data sukses
     if($simpan){
       echo "<script>
       alert('data berhasil disimpan!');
-      document.location='superadmin.php';
+      document.location='juknis-admintco.php';
       </script>";
     } else{
       echo "<script>
         alert('Simpan data gagal');
-        document.location='superadmin.php'
+        document.location='juknis-admintco.php'
       </script>";
     }
-    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 order by id_data2 asc");
+    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data order by id_data asc");
             while($data = mysqli_fetch_array($tampil));
+    $tampil2 = mysqli_query($koneksi, "SELECT * FROM tb_data2 order by id_data2 asc");
+            while($data2 = mysqli_fetch_array($tampil));
   }
-
-  //deklarasi variabel untuk menampung data yang akan diedit
-  $vid = "";
-  $vdeskripsi = "";
-  $vusulan_deskripsi = "";
-  $vdefinisi = "";
-  $vtujuan = "";
-  $vsatuan = "";
-  $vkategori_satuan = "";
-  $vformula = "";
-  $vsumber_target = "";
-  $vtipe_kpi = "";
-  $vtipe_target="";
-  $vfrekuensi = "";
-  $vpolaritas ="";
-  $vdivisi = "";
-  $vpemilik = "";
-  $veviden = "";
-  $vsyarat_ketentuan = "";
-  $vkpi_parent = "";
-
-
-
-  //jika tombol edit diedit/hapus
-  if(isset($_GET['hal'])){
-    //jika edit data
-    if($_GET['hal'] == "view"){
-      //tampilkan data yang akan diedit
-
-
-      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE id_data2 = '$_GET[id]'");
-
-      $data = mysqli_fetch_array($tampil);
-      if($data){
-        //jika data ditemukan, maka data ditampung kedalam variabel
-        $vid = $data['id_data2'];
-        $vdeskripsi = $data['deskripsi2'];
-        $vusulan_deskripsi = $data['usulan_deskripsi2'];
-        $vdefinisi = $data['definisi2'];
-        $vtujuan = $data['tujuan2'];
-        $vsatuan = $data['satuan2'];
-        $vkategori_satuan = $data['kategori_satuan2'];
-        $vformula = $data['formula2'];
-        $vsumber_target = $data['sumber_target2'];
-        $vtipe_kpi = $data['tipe_kpi2'];
-        $vtipe_target = $data['tipe_target2'];
-        $vfrekuensi = $data['frekuensi2'];
-        $vpolaritas = $data['polaritas2'];
-        $vdivisi = $data['divisi2'];
-        $vpemilik = $data['pemilik2'];
-        $veviden = $data['eviden2'];
-        $vsyarat_ketentuan = $data['syarat_ketentuan2'];
-        $vkpi_parent = $data['kpi_parent2'];
-      }
-    }
-  }
-
-
 ?>
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
+        <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
+        <script src="../library/autocomplete.js"></script>
+        <title>Create Admin TCO</title>
+    </head>
+
+    <?php
+	session_start();
+
+	// cek apakah yang mengakses halaman ini sudah login
+	if($_SESSION['level']==""){
+		header("location:../login.php?pesan=gagal");
+	}
+
+	?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | DataTablesz</title>
+  <title>For-Pi</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -154,15 +155,6 @@ foreach($result as $row)
   <link rel="stylesheet" href="../dist/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
-<?php
-session_start();
-	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
-		header("location:../login.php?pesan=gagal");
-	}
-?>
-
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -173,7 +165,10 @@ session_start();
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin.php" class="nav-link">Home</a>
+        <a href="admin-div-tco.php" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="juknis-admintco.php" class="nav-link">Juknis</a>
       </li>
     </ul>
 
@@ -222,13 +217,13 @@ session_start();
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="admin.php" class="brand-link">
+    <a href="admin-div-tco.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
 
       <!-- Sidebar -->
-      <div class="sidebar">
+    <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -239,6 +234,7 @@ session_start();
          echo $_SESSION['username'];
           ?></a>
         </div>
+
       </div>
 
       <!-- SidebarSearch Form -->
@@ -260,7 +256,7 @@ session_start();
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="admin.php" class="nav-link">
+            <a href="admin-div-tco.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -268,7 +264,7 @@ session_start();
             </a>
           </li>
            <li class="nav-item  menu-open">
-            <a href="juknis-admin.php" class="nav-link">
+            <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
@@ -283,22 +279,7 @@ session_start();
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Detail KPI</h1>
-          </div>
-          <div class="col-sm-6">
 
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="juknis-admin.php">Juknis</a></li>
-              <li class="breadcrumb-item active">Detail KPI</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -307,108 +288,157 @@ session_start();
           <div class="col-12">
 
             <div class="card">
-
+              <div class="card-header mx-auto">
+                <h1>Input Data Karyawan</h1>
+              </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <table class="table table-striped table:hover table-bordered">
-            <tr>
-              <th align="left">Deskripsi</th>
-              <td><?= $data['deskripsi2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Usulan Deskripsi</th>
-              <td><?= $data['usulan_deskripsi2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Definisi</th>
-              <td><?= $data['definisi2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Tujuan</th>
-              <td><?= $data['tujuan2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Satuan</th>
-              <td><?= $data['satuan2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Kategori Satuan</th>
-              <td><?= $data['kategori_satuan2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Formula</th>
-              <td><?= $data['formula2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Sumber Target</th>
-              <td><?= $data['sumber_target2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Tipe KPI</th>
-              <td><?= $data['tipe_kpi2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Tipe Target</th>
-              <td><?= $data['tipe_target2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Frekuensi</th>
-              <td><?= $data['frekuensi2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Polaritas</th>
-              <td><?= $data['polaritas2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Divisi</th>
-              <td><?= $data['divisi2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Pemilik</th>
-              <td><?= $data['pemilik2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Eviden</th>
-              <td><?= $data['eviden2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">Syarat & Ketentuan</th>
-              <td><?= $data['syarat_ketentuan2'] ?></td>
-            </tr>
-
-            <tr>
-              <th align="left">KPI Parent</th>
-              <td><?= $data['kpi_parent2'] ?></td>
-            </tr>
+                 <!--Input Data-->
+        <form method="POST">
+  <div class="row mb-3">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Deskripsi KPI</label>
+    <div class="col-sm-10">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tdeskripsi"></textarea>
+    </div>
+  </div>
 
 
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Definisi KPI</label>
+    <div class="col-sm-10">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tdefinisi"></textarea>
+    </div>
+  </div>
 
-            <?php
 
-              //persiapan menampilkan data
-              $no = 1;
-            $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 order by id_data2 asc");
-            while($data = mysqli_fetch_array($tampil)) :
-            ?>
-            <?php endwhile; ?>
+        <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Tujuan KPI</label>
+    <div class="col-sm-10">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="ttujuan"></textarea>
+    </div>
+  </div>
 
-            </table>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Satuan</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="tsatuan">
+    </div>
+  </div>
 
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Kategori Satuan</label>
+    <div class="col-sm-10">
+    <select class="form-select" aria-label="Default select example" name="tkategori">
+  <option selected disabled>Kategori Satuan</option>
+  <option value="Jumlah">Jumlah</option>
+  <option value="Persentase">Persentase</option>
+  <option value="Rupiah">Rupiah</option>
+</select>
+</div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Formula</label>
+    <div class="col-sm-10">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tformula"></textarea>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Sumber Target</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="tsumber">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Tipe KPI</label>
+    <div class="col-sm-10">
+    <select class="form-select" aria-label="Default select example" name="ttipe">
+  <option selected disabled>Tipe KPI</option>
+  <option value="EXACT">EXACT</option>
+  <option value="PROXY">PROXY</option>
+  <option value="ACTIVITY">ACTIVITY</option>
+</select>
+</div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Tipe Target</label>
+    <div class="col-sm-10">
+    <select class="form-select" aria-label="Default select example" name="ttarget">
+  <option selected disabled>Tipe Target</option>
+  <option value="Akumulatif">Akumulatif</option>
+  <option value="Non Akumulatif">Non Akumulatif</option>
+</select>
+</div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Frekuensi</label>
+    <div class="col-sm-10">
+    <select class="form-select" aria-label="Default select example" name="tfrekuensi">
+  <option selected disabled>Frekuensi</option>
+  <option value="Bulanan">Bulanan</option>
+  <option value="Triwulan">Triwulan</option>
+  <option value="Semesteran">Semesteran</option>
+</select>
+</div>
+  </div>
+
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Polaritas</label>
+    <div class="col-sm-10">
+    <select class="form-select" aria-label="Default select example" name="tpolaritas">
+  <option selected disabled>Polaritas</option>
+  <option value="POSITIF">POSITIF</option>
+  <option value="NEGATIF">NEGATIF</option>
+  <option value="RANGE">RANGE</option>
+</select>
+</div>
+  </div>
+
+  <div class="row mb-3">
+      <label for="" class="col-sm-2 col-form-label">Jabatan Pemilik KPI</label>
+      <div class="col-sm-10">
+          <input type="text" name="tdivisi" id="divisi" class="form-control"/>
+      </div>
+  </div>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Pemilik KPI</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="tpemilik" id="pemilik">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Eviden</label>
+    <div class="col-sm-10">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="teviden"></textarea>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Syarat & Ketentuan</label>
+    <div class="col-sm-10">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tsyarat"></textarea>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">KPI Parent</label>
+    <div class="col-sm-10">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tparent"></textarea>
+    </div>
+  </div>
+  <div class="text-center">
+      <hr>
+      <button class="btn btn-success" name="btn-simpan" type="submit">Save</button>
+      <button class="btn btn-danger" name="btn-clear" type="reset">Clear</button>
+     </div>
+</form>
+        </div>
      <!--Akhir input data-->
               </div>
               <!-- /.card-body -->
@@ -424,12 +454,6 @@ session_start();
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -477,6 +501,42 @@ session_start();
       "responsive": true,
     });
   });
+</script>
+<script>
+var auto_complete = new Autocomplete(document.getElementById('divisi'), {
+    data:<?php echo json_encode($data); ?>,
+    maximumItems:10,
+    highlightTyped:true,
+    highlightClass : 'fw-bold text-primary'
+});
+
+var auto_pemilik = new Autocomplete(document.getElementById('pemilik'), {
+    data:<?php echo json_encode($data); ?>,
+    maximumItems:10,
+    highlightTyped:true,
+    highlightClass : 'fw-bold text-primary'
+});
+
+</script>
+<script src="../library/autocomplete.js"></script>
+<script src="../ckeditor/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('tdefinisi');
+  CKEDITOR.replace('ttujuan');
+  CKEDITOR.replace('tformula');
+  CKEDITOR.replace('teviden');
+  CKEDITOR.replace('tsyarat');
+  CKEDITOR.replace('tparent');
+</script>
+<script type="text/javascript">
+$(function() {
+    $('#your_textarea').ckeditor({
+        toolbar: 'Full',
+        enterMode : CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P
+    });
+});
+CKEDITOR.config.autoParagraph = false;
 </script>
 </body>
 </html>

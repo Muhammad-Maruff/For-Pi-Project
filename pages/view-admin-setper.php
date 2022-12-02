@@ -173,7 +173,7 @@ session_start();
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin.php" class="nav-link">Home</a>
+        <a href="admin-setper.php" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -260,7 +260,7 @@ session_start();
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="admin.php" class="nav-link">
+            <a href="admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -268,7 +268,7 @@ session_start();
             </a>
           </li>
            <li class="nav-item  menu-open">
-            <a href="juknis-admin.php" class="nav-link">
+            <a href="juknis-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
@@ -292,7 +292,7 @@ session_start();
           <div class="col-sm-6">
 
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="juknis-admin.php">Juknis</a></li>
+              <li class="breadcrumb-item"><a href="juknis-admin-setper.php">Juknis</a></li>
               <li class="breadcrumb-item active">Detail KPI</li>
             </ol>
           </div>

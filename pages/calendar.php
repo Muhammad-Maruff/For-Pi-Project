@@ -193,7 +193,7 @@ logout
                   <p>Pemilik</p>
                 </a>
               </li>
-              
+
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -237,7 +237,7 @@ logout
 
           <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>              
+            <i class="nav-icon fas fa-users"></i>
             <p>User</p>
             </a>
           </li>
