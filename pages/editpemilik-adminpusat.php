@@ -112,7 +112,7 @@ document.location='pemilik-adminpusat.php'
 	session_start();
 
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level'] != "admin pusat"){
 		header("location:../login.php?pesan=gagal");
 	}
 	?>
