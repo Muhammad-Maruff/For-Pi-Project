@@ -51,10 +51,10 @@ if($cek > 0){
 		// alihkan ke halaman dashboard pengurus
 		header("location:pages/admin-setper.php");
 
-  }else if($data['level']=="admin div tco"){
+  }else if($data['level']=="admin tco"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
-		$_SESSION['level'] = "admin div tco";
+		$_SESSION['level'] = "admin tco";
 		// alihkan ke halaman dashboard pengurus
 		header("location:pages/admin-div-tco.php");
 
