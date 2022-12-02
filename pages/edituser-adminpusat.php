@@ -380,6 +380,8 @@ document.location='user-adminpusat.php'
   <option value="admin pusat">ADMIN PUSAT</option>
   <option value="admin setper">ADMIN SETPER</option>
   <option value="admin tco">ADMIN DIV TCO</option>
+  <option value="user setper">USER SETPER</option>
+  <option value="user tco">USER DIV TCO</option>
   <option value="user">USER</option>
 </select>
     </div>

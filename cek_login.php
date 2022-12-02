@@ -57,8 +57,9 @@ if($cek > 0){
 		$_SESSION['level'] = "admin tco";
 		// alihkan ke halaman dashboard pengurus
 		header("location:pages/admin-div-tco.php");
-
-  }else if($data['level']=="admin div shb"){
+  }
+  
+  else if($data['level']=="admin div shb"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
 		$_SESSION['level'] = "admin div shb";
@@ -66,7 +67,27 @@ if($cek > 0){
 		header("location:pages/admin-div-shb.php");
 
 	// cek jika user login sebagai pengurus
-	}else if($data['level']=="user"){
+	}
+  else if($data['level']=="user tco"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "user tco";
+		// alihkan ke halaman dashboard pengurus
+		header("location:pages/user-div-tco.php");
+
+	// cek jika user login sebagai pengurus
+	}
+  else if($data['level']=="user setper"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "user setper";
+		// alihkan ke halaman dashboard pengurus
+		header("location:pages/user-div-setper.php");
+
+	// cek jika user login sebagai pengurus
+	}
+	
+	else if($data['level']=="user"){
 		// buat session login dan username
 		$_SESSION['username'] = $username;
 		$_SESSION['level'] = "user";
