@@ -252,7 +252,7 @@ session_start();
 
           </div>
           <div class="col-sm-6">
-          <a href="create-superadmin.php" class="btn-create">New Data+</a>
+          <a href="create-adminpusat.php" class="btn-create">New Data+</a>
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin-pusat.php">Home</a></li>
               <li class="breadcrumb-item active">Juknis</li>
@@ -321,13 +321,13 @@ session_start();
                   <td>
 
 
-                  <button class="bittun" class='inline-block'  ><a href="view-superadmin.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
+                  <button class="bittun" class='inline-block'  ><a href="view-adminpusat.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
 
 
-                  <button class="bitton"><a href="edit-superadmin.php?hal=edit&id=<?=$data['id_data2']?>"><i class="fa fa-pen"></i>Edit</a></button>
+                  <button class="bitton"><a href="edit-adminpusat.php?hal=edit&id=<?=$data['id_data2']?>"><i class="fa fa-pen"></i>Edit</a></button>
 
 
-                  <button class="bitten"><a href="delete-superadmin.php?hal=delete&id=<?=$data['id_data2']?>>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">  <i class="fa fa-trash"></i>Delete</a></button>
+                  <button class="bitten"><a href="delete-adminpusat.php?hal=delete&id=<?=$data['id_data2']?>>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">  <i class="fa fa-trash"></i>Delete</a></button>
 
 
 

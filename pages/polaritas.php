@@ -312,8 +312,8 @@ logout
               <td><?= $no++?></td>
               <td><?= $account['polaritas'] ?></td>
               <td>
-              <a href="" class="btn btn-warning">Edit</a>
-              <a href="" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
+              <a href="editpolaritas-superadmin.php?hal=edit&id=<?=$data['id_polaritas']?>" class="btn btn-warning">Edit</a>
+              <a href="deletepolaritas-superadmin.php?hal=edit&id=<?=$data['id_polaritas']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
               </td>
             </tr>
             <?php endwhile; ?>
