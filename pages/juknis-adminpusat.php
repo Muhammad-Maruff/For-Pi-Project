@@ -37,7 +37,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level'] != "admin pusat"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
@@ -57,7 +57,10 @@ session_start();
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="superadmin.php" class="nav-link">Home</a>
+        <a href="admin-pusat.php" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="juknis-adminpusat.php" class="nav-link">Juknis</a>
       </li>
     </ul>
 
@@ -145,7 +148,7 @@ session_start();
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="superadmin.php" class="nav-link">
+            <a href="admin-pusat.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -164,45 +167,45 @@ session_start();
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item menu-open">
-                <a href="jabatan-superadmin.php" class="nav-link">
+                <a href="jabatan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="pemilik.php" class="nav-link">
+                <a href="pemilik-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pemilik</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="kategori-satuan.php" class="nav-link">
+                <a href="kategori-satuan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori Satuan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tipe-kpi.php" class="nav-link">
+                <a href="tipe-kpi-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tipe Kpi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tipe-target.php" class="nav-link">
+                <a href="tipe-target-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tipe Target</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="frekuensi.php" class="nav-link">
+                <a href="frekuensi-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Frekuensi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="polaritas.php" class="nav-link">
+                <a href="polaritas-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Polaritas</p>
                 </a>
@@ -212,20 +215,20 @@ session_start();
           </li>
 
            <li class="nav-item menu-open">
-            <a href="juknis-superadmin.php" class="nav-link">
+            <a href="juknis-adminpusat.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="user-superadmin.php" class="nav-link">
+            <a href="user-adminpusat.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="calendar.php" class="nav-link">
+            <a href="calendar-adminpusat.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
@@ -335,7 +338,7 @@ session_start();
                   <?php endwhile; ?>
                   </tbody>
                 </table>
-                <a href="export-superadmin.php"><button class="btn btn-success">Export</button></a>
+                <a href="export-adminpusat.php"><button class="btn btn-success">Export</button></a>
               </div>
               <!-- /.card-body -->
             </div>
