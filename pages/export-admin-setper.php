@@ -16,7 +16,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sijuki</title>
+  <title>For-Pi</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -35,7 +35,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level']!="admin setper"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
@@ -151,10 +151,12 @@ session_start();
               <p>Juknis</p>
             </a>
           </li>
-
-
-
-
+          <li class="nav-item">
+            <a href="calendar-adminsetper.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Calendar</p>
+            </a>
+          </li>
 
         </ul>
       </nav>

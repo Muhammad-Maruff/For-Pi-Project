@@ -158,7 +158,7 @@ foreach($result as $row)
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level']!="admin setper"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
@@ -271,6 +271,13 @@ session_start();
             <a href="juknis-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="calendar-adminsetper.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Calendar</p>
             </a>
           </li>
         </ul>

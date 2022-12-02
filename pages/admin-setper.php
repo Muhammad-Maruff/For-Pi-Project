@@ -43,7 +43,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level']!="admin setper"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
@@ -169,6 +169,13 @@ logout
               <p>Juknis</p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="calendar-adminsetper.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Calendar</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -215,7 +222,7 @@ logout
               <div class="inner">
               <?php
                 require '../config.php';
-                $query = "SELECT id_data2 FROM tb_data2 WHERE pemilik2 = 'SETPER (SEKRETARIAT PERUSAHAAN)'";
+                $query = "SELECT id_data2 FROM tb_data2 WHERE pemilik2 = 'SETPER'";
                 $query_run = mysqli_query($koneksi, $query);
 
                 $row = mysqli_num_rows($query_run);

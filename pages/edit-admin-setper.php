@@ -105,12 +105,12 @@ foreach($result as $row)
 if($simpan){
 echo "<script>
 alert('data berhasil disimpan!');
-document.location='juknis-admin.php';
+document.location='juknis-admin-setper.php';
 </script>";
 } else{
 echo "<script>
 alert('Simpan data gagal');
-document.location='juknis-admin.php'
+document.location='juknis-admin-setper.php'
 </script>";
 }
     }
@@ -242,7 +242,7 @@ document.location='juknis-admin.php'
 	session_start();
 
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level']!="admin setper"){
 		header("location:../login.php?pesan=gagal");
 	}
 
@@ -380,6 +380,13 @@ document.location='juknis-admin.php'
             <a href="juknis-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="calendar-adminsetper.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Calendar</p>
             </a>
           </li>
         </ul>

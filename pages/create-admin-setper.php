@@ -95,12 +95,12 @@ foreach($resultt as $row)
     if($simpan){
       echo "<script>
       alert('data berhasil disimpan!');
-      document.location='juknis-admin.php';
+      document.location='juknis-admin-setper.php';
       </script>";
     } else{
       echo "<script>
         alert('Simpan data gagal');
-        document.location='juknis-admin.php'
+        document.location='juknis-admin-setper.php'
       </script>";
     }
     $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data order by id_data asc");
@@ -128,7 +128,7 @@ foreach($resultt as $row)
 	session_start();
 
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level']!="admin setper"){
 		header("location:../login.php?pesan=gagal");
 	}
 
@@ -267,6 +267,13 @@ foreach($resultt as $row)
             <a href="juknis-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="calendar-adminsetper.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Calendar</p>
             </a>
           </li>
         </ul>
