@@ -31,6 +31,23 @@
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../dist/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <!-- Bootstrap Core CSS -->
+
+	<!-- FullCalendar -->
+	<link href='css/fullcalendar.css' rel='stylesheet' />
+
+
+    <!-- Custom CSS -->
+    <style>
+	#calendar {
+		max-width: 800px;
+	}
+	.col-centered{
+		float: none;
+		margin: 0 auto;
+	}
+    </style>
+
 </head>
 
 <?php
@@ -60,7 +77,7 @@ session_start();
         <a href="admin-pusat.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="tipe-kpi-adminpusat.php" class="nav-link">Tipe KPI</a>
+        <a href="calendar-adminpusat.php" class="nav-link">Calendar</a>
       </li>
     </ul>
 
@@ -109,9 +126,9 @@ logout
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="admin-pusat.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">SIJUKI</span>
+      <span class="brand-text font-weight-light">For-Pi</span>
     </a>
 
     <!-- Sidebar -->
@@ -142,12 +159,12 @@ logout
 
      <!-- Sidebar Menu -->
      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="superadmin.php" class="nav-link">
+            <a href="admin-pusat.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -155,7 +172,7 @@ logout
             </a>
           </li>
 
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -178,7 +195,7 @@ logout
                   <p>Pemilik</p>
                 </a>
               </li>
-              
+
               <li class="nav-item">
                 <a href="kategori-satuan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -191,7 +208,6 @@ logout
                   <p>Tipe Kpi</p>
                 </a>
               </li>
-
               <li class="nav-item">
                 <a href="tipe-target-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -223,11 +239,12 @@ logout
 
           <li class="nav-item">
             <a href="user-adminpusat.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>              <p>User</p>
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="calendar-adminpusat.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
@@ -248,12 +265,12 @@ logout
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1></h1>
+            <h1>Data Karyawan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin-pusat.php">Home</a></li>
-              <li class="breadcrumb-item active">Tipe Kpi</li>
+              <li class="breadcrumb-item active">Calendar</li>
             </ol>
           </div>
         </div>
@@ -269,8 +286,6 @@ logout
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Tambahkan Tipe KPI</h3>
-
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
               <i class="fas fa-minus"></i>
@@ -281,47 +296,161 @@ logout
           </div>
         </div>
         <div class="card-body">
-
-        <form action="connect-tipekpi-pusat.php" method="post">
-
-<div class="row mb-3">
-<label for="nama" class="col-sm-2 col-form-label nama" name="nama">Tipe KPI</label>
-<div class="col-sm-10">
-<input type="text" class="form-control" name="tipe_kpi" id="tipe_kpi">
-</div>
 </div>
 
-<div class="text-center">
-<input type="submit" class="btn btn-primary btn-register">
-</form>
-
-</div>
-<br>
-        <table class="table table-striped table:hover table-bordered">
-            <tr>
-              <th>#</th>
-              <th>Tipe KPI</th>
-              <th>Aksi</th>
-            </tr>
-            <?php
-            $no = 1;
-              //persiapan menampilkan data
-            $user = mysqli_query($koneksi, "SELECT * FROM tb_tipekpi order by id_kpi asc");
-            while($data = mysqli_fetch_array($user)) :
-            ?>
-
-            <tr>
-              <td><?= $no++?></td>
-              <td><?= $data['tipe_kpi'] ?></td>
-              <td>
-              <a href="edit-tipe-kpi-adminpusat.php?hal=edit&id=<?=$data['id_kpi']?>" class="btn btn-warning">Edit</a>
-              <a href="delete-tipe-kpi-adminpusat.php?hal=delete&id=<?=$data['id_kpi']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
-            </td>
-            </tr>
-            <?php endwhile; ?>
+<?php
+require_once('bdd.php');
 
 
-      </table>
+$sql = "SELECT id, title, start, end, color FROM events ";
+
+$req = $bdd->prepare($sql);
+$req->execute();
+
+$events = $req->fetchAll();
+
+?>
+
+
+
+
+
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>CALENDAR</h1>
+                <p class="lead">Calendar PT.PLN Persero</p>
+                <div id="calendar" class="col-centered">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+		<!-- Modal -->
+		<div class="modal fade" id="ModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<form class="form-horizontal" method="POST" action="addEvent.php">
+
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+			  </div>
+			  <div class="modal-body">
+
+				  <div class="form-group">
+					<label for="title" class="col-sm-2 control-label">Title</label>
+					<div class="col-sm-10">
+					  <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="color" class="col-sm-2 control-label">Color</label>
+					<div class="col-sm-10">
+					  <select name="color" class="form-control" id="color">
+						  <option value="">Choose</option>
+						  <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
+						  <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
+						  <option style="color:#008000;" value="#008000">&#9724; Green</option>
+						  <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
+						  <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
+						  <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
+						  <option style="color:#000;" value="#000">&#9724; Black</option>
+
+						</select>
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="start" class="col-sm-2 control-label">Start date</label>
+					<div class="col-sm-10">
+					  <input type="text" name="start" class="form-control" id="start" readonly>
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="end" class="col-sm-2 control-label">End date</label>
+					<div class="col-sm-10">
+					  <input type="text" name="end" class="form-control" id="end" readonly>
+					</div>
+				  </div>
+
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Save changes</button>
+			  </div>
+			</form>
+			</div>
+		  </div>
+		</div>
+
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<form class="form-horizontal" method="POST" action="editEventTitle.php">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Edit Event</h4>
+			  </div>
+			  <div class="modal-body">
+
+				  <div class="form-group">
+					<label for="title" class="col-sm-2 control-label">Title</label>
+					<div class="col-sm-10">
+					  <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+					</div>
+				  </div>
+				  <div class="form-group">
+					<label for="color" class="col-sm-2 control-label">Color</label>
+					<div class="col-sm-10">
+					  <select name="color" class="form-control" id="color">
+						  <option value="">Choose</option>
+						  <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
+						  <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
+						  <option style="color:#008000;" value="#008000">&#9724; Green</option>
+						  <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
+						  <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
+						  <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
+						  <option style="color:#000;" value="#000">&#9724; Black</option>
+
+						</select>
+					</div>
+				  </div>
+				    <div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+						  <div class="checkbox">
+							<label class="text-danger"><input type="checkbox"  name="delete"> Delete event</label>
+						  </div>
+						</div>
+					</div>
+
+				  <input type="hidden" name="id" class="form-control" id="id">
+
+
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-primary">Save changes</button>
+			  </div>
+			</form>
+			</div>
+		  </div>
+		</div>
+
+    </div>
+    <!-- /.container -->
+
+
+
+
+
 
         <!-- /.card-body -->
               <!-- /.card-footer-->
@@ -367,6 +496,127 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+
+
+  <!-- jQuery Version 1.11.1 -->
+  <script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- FullCalendar -->
+<script src='js/moment.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+
+  <!-- jQuery Version 1.11.1 -->
+  <script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- FullCalendar -->
+<script src='js/moment.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+
+<script>
+
+$(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,basicWeek,basicDay'
+        },
+
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+        selectable: true,
+        selectHelper: true,
+        select: function(start, end) {
+
+            $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
+            $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
+            $('#ModalAdd').modal('show');
+        },
+        eventRender: function(event, element) {
+            element.bind('dblclick', function() {
+                $('#ModalEdit #id').val(event.id);
+                $('#ModalEdit #title').val(event.title);
+                $('#ModalEdit #color').val(event.color);
+                $('#ModalEdit').modal('show');
+            });
+        },
+        eventDrop: function(event, delta, revertFunc) { // si changement de position
+
+            edit(event);
+
+        },
+        eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
+
+            edit(event);
+
+        },
+        events: [
+        <?php foreach($events as $event):
+
+            $start = explode(" ", $event['start']);
+            $end = explode(" ", $event['end']);
+            if($start[1] == '00:00:00'){
+                $start = $start[0];
+            }else{
+                $start = $event['start'];
+            }
+            if($end[1] == '00:00:00'){
+                $end = $end[0];
+            }else{
+                $end = $event['end'];
+            }
+        ?>
+            {
+                id: '<?php echo $event['id']; ?>',
+                title: '<?php echo $event['title']; ?>',
+                start: '<?php echo $start; ?>',
+                end: '<?php echo $end; ?>',
+                color: '<?php echo $event['color']; ?>',
+            },
+        <?php endforeach; ?>
+        ]
+    });
+
+    function edit(event){
+        start = event.start.format('YYYY-MM-DD HH:mm:ss');
+        if(event.end){
+            end = event.end.format('YYYY-MM-DD HH:mm:ss');
+        }else{
+            end = start;
+        }
+
+        id =  event.id;
+
+        Event = [];
+        Event[0] = id;
+        Event[1] = start;
+        Event[2] = end;
+
+        $.ajax({
+         url: 'editEventDate.php',
+         type: "POST",
+         data: {Event:Event},
+         success: function(rep) {
+                if(rep == 'OK'){
+                    alert('Saved');
+                }else{
+                    alert('Could not be saved. try again.');
+                }
+            }
+        });
+    }
+
+});
+
 </script>
+
+
 </body>
 </html>

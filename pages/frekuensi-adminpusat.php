@@ -227,7 +227,7 @@ logout
           </li>
 
           <li class="nav-item">
-            <a href="calendar.php" class="nav-link">
+            <a href="calendar-adminpusat.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>

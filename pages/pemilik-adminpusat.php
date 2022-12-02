@@ -192,19 +192,19 @@ logout
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tipe-target.php" class="nav-link">
+                <a href="tipe-target-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tipe Target</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="frekuensi.php" class="nav-link">
+                <a href="frekuensi-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Frekuensi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="polaritas.php" class="nav-link">
+                <a href="polaritas-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Polaritas</p>
                 </a>
@@ -227,7 +227,7 @@ logout
           </li>
 
           <li class="nav-item">
-            <a href="calendar.php" class="nav-link">
+            <a href="calendar-adminpusat.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
