@@ -33,7 +33,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level']!="admin tco"){
 		header("location:../login.php?pesan=gagal");
 	}
 
@@ -165,6 +165,13 @@ logout
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="calendar-admintco.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Calendar</p>
             </a>
           </li>
 

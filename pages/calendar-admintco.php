@@ -17,7 +17,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Master</title>
+  <title>For-Pi</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -53,7 +53,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level']!="admin tco"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
@@ -74,7 +74,7 @@ session_start();
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="superadmin.php" class="nav-link">Home</a>
+        <a href="admin-div-tco.php" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -123,7 +123,7 @@ logout
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="superadmin.php" class="brand-link">
+    <a href="admin-div-tco.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -161,7 +161,7 @@ logout
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="superadmin.php" class="nav-link">
+            <a href="admin-div-tco.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -172,21 +172,14 @@ logout
 
 
            <li class="nav-item">
-            <a href="juknis-superadmin.php" class="nav-link">
+            <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>User</p>
-            </a>
-          </li>
-
           <li class="nav-item menu-open">
-            <a href="calendar.php" class="nav-link">
+            <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
@@ -210,7 +203,7 @@ logout
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="superadmin.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="admin-div-tco.php">Home</a></li>
               <li class="breadcrumb-item active">Jabatan</li>
             </ol>
           </div>
@@ -266,8 +259,8 @@ $events = $req->fetchAll();
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>FullCalendar BS3 PHP MySQL</h1>
-                <p class="lead">Complete with pre-defined file paths that you won't have to change!</p>
+                <h1>Calendar</h1>
+                <p class="lead"></p>
                 <div id="calendar" class="col-centered">
                 </div>
             </div>

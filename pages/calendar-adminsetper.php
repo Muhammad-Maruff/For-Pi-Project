@@ -17,7 +17,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Master</title>
+  <title>For-Pi</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -74,7 +74,7 @@ session_start();
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="superadmin.php" class="nav-link">Home</a>
+        <a href="admin-setper.php" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -161,7 +161,7 @@ logout
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="superadmin.php" class="nav-link">
+            <a href="admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -172,18 +172,13 @@ logout
 
 
            <li class="nav-item">
-            <a href="juknis-superadmin.php" class="nav-link">
+            <a href="juknis-adminsetper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>User</p>
-            </a>
-          </li>
+
 
           <li class="nav-item">
             <a href="calendar-adminsetper.php" class="nav-link">
@@ -210,7 +205,7 @@ logout
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="superadmin.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="admin-setper.php">Home</a></li>
               <li class="breadcrumb-item active">Jabatan</li>
             </ol>
           </div>
@@ -268,8 +263,8 @@ $events = $req->fetchAll();
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>FullCalendar BS3 PHP MySQL</h1>
-                <p class="lead">Complete with pre-defined file paths that you won't have to change!</p>
+                <h1>Calendar</h1>
+                <p class="lead"></p>
                 <div id="calendar" class="col-centered">
                 </div>
             </div>
