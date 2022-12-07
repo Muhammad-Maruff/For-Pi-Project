@@ -16,7 +16,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Export</title>
+  <title>For-pi | Juknis</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -35,24 +35,30 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']!="user setper"){
+	if($_SESSION['level'] != "user tco"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" height="60" width="60">
+  </div>
+
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="user-div-setper.php" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="user-div-setper.php" class="nav-link">Home</a>
+        <a href="user-div-tco.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="juknis-user-setper.php" class="nav-link">Juknis</a>
+        <a href="juknis-user-tco.php" class="nav-link">Juknis</a>
       </li>
     </ul>
 
@@ -80,7 +86,8 @@ session_start();
         </div>
       </li>
 
-      <!-- Messages Dropdown Menu -->
+
+      <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <?php
@@ -90,8 +97,8 @@ session_start();
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
           <a href="keluar.php" class="dropdown-item">
-          <i class="fa-solid fa-door-open"></i>
-          logout
+          <i class="fa-solid fa-right-from-bracket"></i>
+logout
           </a>
       </li>
     </ul>
@@ -101,14 +108,14 @@ session_start();
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="user-div-setper.php" class="brand-link">
+    <a href="user-div-tco.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
 
-      <!-- Sidebar -->
-      <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -118,7 +125,6 @@ session_start();
          echo $_SESSION['username'];
           ?></a>
         </div>
-
       </div>
 
       <!-- SidebarSearch Form -->
@@ -133,14 +139,14 @@ session_start();
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
+     <!-- Sidebar Menu -->
+     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="user-div-setper.php" class="nav-link">
+            <a href="user-div-tco.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -148,14 +154,15 @@ session_start();
             </a>
           </li>
 
-           <li class="nav-item">
-            <a href="juknis-user-setper.php" class="nav-link">
+           <li class="nav-item  menu-open">
+            <a href="juknis-user-tco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="calendar-usersetper.php" class="nav-link">
+            <a href="calendar-usertco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
@@ -179,8 +186,8 @@ session_start();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="juknis-user-setper.php">Juknis</a></li>
-              <li class="breadcrumb-item active">Export</li>
+              <li class="breadcrumb-item"><a href="user-div-tco.php">Home</a></li>
+              <li class="breadcrumb-item active">Juknis</li>
             </ol>
           </div>
         </div>
@@ -200,7 +207,7 @@ session_start();
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                  <th>ID</th>
+                  <th>#</th>
                   <th>Deskripsi KPI</th>
                   <th>Satuan KPI</th>
                   <th>Kategori Satuan</th>
@@ -208,6 +215,8 @@ session_start();
                   <th>Tipe Target</th>
                   <th>Polaritas</th>
                   <th>Jabatan Pemilik KPI</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -215,13 +224,12 @@ session_start();
 
             //persiapan menampilkan data
             $no = 1;
-          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE pemilik2= 'SETPER'");
+          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE Pemilik2 ='DIV TCO'" );
           while($data = mysqli_fetch_array($tampil)) :
           ?>
                   <tr>
-                  <td><?= $no++ ?></td>
+                  <td><?= $no++?></td>
                   <?php
-
                     if ($data['usulan_deskripsi2'] == '') {
                         echo '<td>'. $data['deskripsi2']. '</td>';
                     }else{
@@ -234,10 +242,21 @@ session_start();
                   <td><?= $data['tipe_target2'] ?></td>
                   <td><?= $data['polaritas2'] ?></td>
                   <td><?= $data['divisi2'] ?></td>
+                  <?php
+
+                  if ($data['usulan_deskripsi2'] == '') {
+                    echo '<td></td>';
+                  }else{
+                    echo '<td>'. '<a href="log-data-usertco.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Terdapat Perubahan Data' . '</a>' .'</td>';
+                  }
+                  ?>
+                  <td>
+                    <button class="bittun"><a href="view-user-tco.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
+                  </td>
                   <?php endwhile; ?>
                   </tbody>
                 </table>
-
+                <a href="export-user-tco.php"><button class="btn btn-success">Export</button></a>
               </div>
               <!-- /.card-body -->
             </div>
@@ -286,13 +305,11 @@ session_start();
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-
 <!-- Page specific script -->
 <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,

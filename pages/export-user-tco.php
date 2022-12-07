@@ -35,7 +35,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']!="user setper"){
+	if($_SESSION['level'] != "user tco"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
@@ -46,13 +46,13 @@ session_start();
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="user-div-setper.php" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="user-div-tco.php" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="user-div-setper.php" class="nav-link">Home</a>
+        <a href="user-div-tco.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="juknis-user-setper.php" class="nav-link">Juknis</a>
+        <a href="juknis-user-tco.php" class="nav-link">Juknis</a>
       </li>
     </ul>
 
@@ -101,7 +101,7 @@ session_start();
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="user-div-setper.php" class="brand-link">
+    <a href="user-div-tco.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -140,7 +140,7 @@ session_start();
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="user-div-setper.php" class="nav-link">
+            <a href="user-div-tco.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -149,13 +149,13 @@ session_start();
           </li>
 
            <li class="nav-item">
-            <a href="juknis-user-setper.php" class="nav-link">
+            <a href="juknis-user-tco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="calendar-usersetper.php" class="nav-link">
+            <a href="calendar-usertco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
@@ -179,7 +179,7 @@ session_start();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="juknis-user-setper.php">Juknis</a></li>
+              <li class="breadcrumb-item"><a href="juknis-user-tco.php">Juknis</a></li>
               <li class="breadcrumb-item active">Export</li>
             </ol>
           </div>

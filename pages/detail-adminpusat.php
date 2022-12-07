@@ -7,8 +7,6 @@
 
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
-
-
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +14,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Juknis</title>
+  <title>For-Pi | Detail</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -29,8 +27,6 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../dist/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
@@ -40,15 +36,16 @@ session_start();
 	if($_SESSION['level'] != "admin pusat"){
 		header("location:../login.php?pesan=gagal");
 	}
+
+
+if (empty($_GET['hash'])){
+  header("location:juknis-adminpusat.php");
+}
+
 ?>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
- <!-- Preloader -->
- <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" height="60" width="60">
-  </div>
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -58,9 +55,6 @@ session_start();
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="admin-pusat.php" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="juknis-adminpusat.php" class="nav-link">Juknis</a>
       </li>
     </ul>
 
@@ -98,8 +92,8 @@ session_start();
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
           <a href="keluar.php" class="dropdown-item">
-          <i class="fa-solid fa-right-from-bracket"></i>
-          logout
+          <i class="fa-solid fa-door-open">logout</i>
+
           </a>
       </li>
     </ul>
@@ -109,15 +103,14 @@ session_start();
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="superadmin.php" class="brand-link">
+    <a href="admin-pusat.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
 
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
+      <!-- Sidebar -->
+      <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -141,8 +134,8 @@ session_start();
         </div>
       </div>
 
-     <!-- Sidebar Menu -->
-     <nav class="mt-2">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -166,7 +159,7 @@ session_start();
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="jabatan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
@@ -179,7 +172,7 @@ session_start();
                   <p>Pemilik</p>
                 </a>
               </li>
-
+              
               <li class="nav-item">
                 <a href="kategori-satuan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -223,7 +216,8 @@ session_start();
 
           <li class="nav-item">
             <a href="user-adminpusat.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>              <p>User</p>
+            <i class="nav-icon fas fa-users"></i>              
+            <p>User</p>
             </a>
           </li>
 
@@ -233,16 +227,12 @@ session_start();
               <p>Calendar</p>
             </a>
           </li>
-
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
-
-
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -251,14 +241,23 @@ session_start();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Karyawan</h1>
-
+            <h1>Details</h1>
           </div>
           <div class="col-sm-6">
-          <a href="create-adminpusat.php" class="btn-create">New Data+</a>
+
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="admin-pusat.php">Home</a></li>
-              <li class="breadcrumb-item active">Juknis</li>
+            <li class="breadcrumb-item"><a href="admin.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="juknis-adminpusat.php">Juknis</a></li>
+              <?php
+
+          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2  order by id_data2 asc");
+          $data = mysqli_fetch_array($tampil);
+          ?>
+              <?php
+              echo '<li class="breadcrumb-item">'. '<a href="log-data-adminpusat.php?hash='.$data['is_updated'].'" >' . 'Perubahan Data' . '</a>' .'</li>';
+              ?>
+
+              <li class="breadcrumb-item active">Details</li>
             </ol>
           </div>
         </div>
@@ -274,71 +273,198 @@ session_start();
             <div class="card">
 
               <!-- /.card-header -->
-              <div class="card-body text-center">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                  <th>#</th>
-                  <th>Deskripsi KPI</th>
-                  <th>Satuan KPI</th>
-                  <th>Kategori Satuan</th>
-                  <th>Tipe KPI</th>
-                  <th>Tipe Target</th>
-                  <th>Polaritas</th>
-                  <th>Jabatan Pemilik KPI</th>
-                  <th>Status</th>
-                  <th>Aksi</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <?php
+              <div class="card-body">
+              <table class="table table-striped table:hover table-bordered">
+              <?php
 
             //persiapan menampilkan data
             $no = 1;
-            $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 order by id_data2 asc");
-          while($data = mysqli_fetch_array($tampil)) :
-          ?>
-                  <tr>
-                  <td><?= $no++?></td>
-                  <?php
-                    if ($data['usulan_deskripsi2'] == '') {
-                        echo '<td>'. $data['deskripsi2']. '</td>';
-                    }else{
-                        echo '<td>'. $data['usulan_deskripsi2']. '</td>';
+          // $tampil = mysqli_query($koneksi, "SELECT tb_data2.*,tb_data.* FROM tb_data2,tb_data LIMIT 10");
+
+          $hash = $_GET['hash'];
+
+          $tampil = mysqli_query($koneksi, "SELECT tb_data.*,tb_data2.* FROM tb_data INNER JOIN tb_data2 ON tb_data.is_updated = tb_data2.is_updated WHERE tb_data.is_updated= '$hash' AND tb_data.is_updated != ''");
+          // Percepatan pemenuhan FTK Struktural SPV Dasar yang kosong pada UI kewenangan
+          // Percepatan pemenuhan FTK Struktural SPV Dasar yang kosong pada UI kewenangan
+          // var_dump($tampil);
+          // die;
+
+          // $tampill = mysqli_query($koneksi, "SELECT * FROM tb_data order by id_data asc");
+
+          while( $data = mysqli_fetch_array($tampil)):?>
+            <tr>
+
+              <?php
+                    if ($data['definisi'] != $data['definisi2']) {
+                      echo '<th align="left">'.'Definisi'.'</th>';
+                      echo '<td>'. $data['definisi']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['definisi2'] .'</td>';
                     }
                     ?>
-                  <td><?= $data['satuan2'] ?></td>
-                  <td><?= $data['kategori_satuan2'] ?></td>
-                  <td><?= $data['tipe_kpi2'] ?></td>
-                  <td><?= $data['tipe_target2'] ?></td>
-                  <td><?= $data['polaritas2'] ?></td>
-                  <td><?= $data['divisi2'] ?></td>
-                  <?php
+            </tr>
 
-                  if ($data['usulan_deskripsi2'] == '') {
-                    echo '<td>'.'</td>';
-                  }else{
-                    echo '<td>'. '<a href="log-data-adminpusat.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Terdapat Perubahan Data' . '</a>' .'</td>';
-                  }
-                  ?>
-                  <td>
+            <tr>
+              <?php
+                    if ($data['tujuan'] != $data['tujuan2']) {
+                      echo '<th align="left">'.'Tujuan'.'</th>';
+                      echo '<td>'. $data['tujuan']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['tujuan2'] .'</td>';
+                    }
+                    ?>
+            </tr>
 
+            <tr>
+            <?php
+                    if ($data['satuan'] != $data['satuan2']) {
+                      echo '<th align="left">'.'Satuan'.'</th>';
+                      echo '<td>'. $data['satuan']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['satuan2'] .'</td>';
 
-                  <button class="bittun" class='inline-block'  ><a href="view-adminpusat.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
+                    }
+                    ?>
+            </tr>
 
+            <tr>
+            <?php
+                    if ($data['kategori_satuan'] != $data['kategori_satuan2']) {
+                      echo '<th align="left">'.'Kategori Satuan'.'</th>';
+                      echo '<td>'. $data['kategori_satuan']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['kategori_satuan2'] .'</td>';
+                    }
+                    ?>
+            </tr>
 
-                  <button class="bitton"><a href="edit-adminpusat.php?hal=edit&id=<?=$data['id_data2']?>"><i class="fa fa-pen"></i>Edit</a></button>
+            <tr>
+            <?php
+                    if ($data['formula'] != $data['formula2']) {
+                      echo '<th align="left">'.'Formula'.'</th>';
+                      echo '<td>'. $data['formula']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['formula2'] .'</td>';
+                    }
+                    ?>
+            </tr>
 
+            <tr>
+            <?php
+                    if ($data['sumber_target'] != $data['sumber_target2']) {
+                      echo '<th align="left">'.'Sumber Target'.'</th>';
+                      echo '<td>'. $data['sumber_target']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['sumber_target2'] .'</td>';
+                    }
+                    ?>
+            </tr>
 
-                  <button class="bitten"><a href="delete-adminpusat.php?hal=delete&id=<?=$data['id_data2']?>>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">  <i class="fa fa-trash"></i>Delete</a></button>
+            <tr>
+            <?php
+                    if ($data['tipe_kpi'] != $data['tipe_kpi2']) {
+                      echo '<th align="left">'.'Tipe KPI'.'</th>';
+                      echo '<td>'. $data['tipe_kpi']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['tipe_kpi2'] .'</td>';
+                    }
+                    ?>
+            </tr>
 
+            <tr>
+            <?php
+                    if ($data['tipe_target'] != $data['tipe_target2']) {
+                      echo '<th align="left">'.'Tipe Target'.'</th>';
+                      echo '<td>'. $data['tipe_target']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['tipe_target2'] .'</td>';
+                    }
+                    ?>
+            </tr>
 
+            <tr>
+            <?php
+                    if ($data['frekuensi'] != $data['frekuensi2']) {
+                      echo '<th align="left">'.'Frekuensi'.'</th>';
+                      echo '<td>'. $data['frekuensi']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['frekuensi2'] .'</td>';
 
-                  </td>
-                  <?php endwhile; ?>
-                  </tbody>
-                </table>
-                <a href="export-adminpusat.php"><button class="btn btn-success">Export</button></a>
+                    }
+                    ?>
+            </tr>
+
+            <tr>
+            <?php
+                    if ($data['polaritas'] != $data['polaritas2']) {
+                      echo '<th align="left">'.'Polaritas'.'</th>';
+                      echo '<td>'. $data['polaritas']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['polaritas2'] .'</td>';
+                    }
+                    ?>
+            </tr>
+
+            <tr>
+            <?php
+                    if ($data['divisi'] != $data['divisi2']) {
+                      echo '<th align="left">'.'Jabatan'.'</th>';
+                      echo '<td>'. $data['divisi']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['divisi2'] .'</td>';
+                    }
+                    ?>
+            </tr>
+
+            <tr>
+            <?php
+                    if ($data['pemilik'] != $data['pemilik2']) {
+                      echo '<th align="left">'.'Pemilik'.'</th>';
+                      echo '<td>'. $data['pemilik']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['pemilik2'] .'</td>';
+                    }
+                    ?>
+            </tr>
+
+            <tr>
+            <?php
+                    if ($data['eviden'] != $data['eviden2']) {
+                      echo '<th align="left">'.'Eviden'.'</th>';
+                      echo '<td>'. $data['eviden']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['eviden2'] .'</td>';
+                    }
+                    ?>
+            </tr>
+
+            <tr>
+            <?php
+                    if ($data['syarat_ketentuan'] != $data['syarat_ketentuan2']) {
+                      echo '<th align="left">'.'Syarat & Ketentuan'.'</th>';
+                      echo '<td>'. $data['syarat_ketentuan']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['syarat_ketentuan2'] .'</td>';
+                    }
+                    ?>
+            </tr>
+
+            <tr>
+            <?php
+                    if ($data['kpi_parent'] != $data['kpi_parent2']) {
+                      echo '<th align="left">'.'KPI Parent'.'</th>';
+                      echo '<td>'. $data['kpi_parent']. '</td>';
+                      echo '<td>'.'<p class="btn text-success">'  . 'Sudah diubah menjadi'  .'</p>'.'</td>';
+                      echo '<td>'. $data['kpi_parent2'] .'</td>';
+                    }
+                    ?>
+            </tr>
+
+           <?php endwhile; ?>
+
+            </table>
+
+     <!--Akhir input data-->
               </div>
               <!-- /.card-body -->
             </div>
@@ -387,11 +513,14 @@ session_start();
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,

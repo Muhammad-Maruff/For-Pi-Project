@@ -108,7 +108,7 @@ logout
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="admin.php" class="brand-link">
+    <a href="user-div-setper.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -247,7 +247,7 @@ logout
                   if ($data['usulan_deskripsi2'] == '') {
                     echo '<td></td>';
                   }else{
-                    echo '<td>'. '<a href="log-data-admin-setper.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Terdapat Perubahan Data' . '</a>' .'</td>';
+                    echo '<td>'. '<a href="log-data-usersetper.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Terdapat Perubahan Data' . '</a>' .'</td>';
                   }
                   ?>
                   <td>

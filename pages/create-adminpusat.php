@@ -121,7 +121,7 @@ foreach($resultt as $row)
         <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
         <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
         <script src="../library/autocomplete.js"></script>
-        <title>Typeahead Autocomplete using JavaScript in PHP for Bootstrap 5</title>
+        <title> For-Pi</title>
     </head>
 
     <?php
@@ -217,7 +217,7 @@ foreach($resultt as $row)
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="superadmin.php" class="brand-link">
+    <a href="admin-pusat.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -275,7 +275,7 @@ foreach($resultt as $row)
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item menu-open">
-                <a href="jabatan-superadmin.php" class="nav-link">
+                <a href="jabatan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
@@ -336,7 +336,7 @@ foreach($resultt as $row)
           </li>
 
           <li class="nav-item">
-            <a href="calendar.php" class="nav-link">
+            <a href="calendar-adminpusat.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
@@ -404,12 +404,9 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="tkategori">
   <option selected disabled>Kategori Satuan</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['kategori_satuan']."'>".$data['kategori_satuan']."</option>";
-  }
-  ?>
+  <option value="Jumlah">Jumlah</option>
+  <option value="Persentase">Persentase</option>
+  <option value="Rupiah">Rupiah</option>
 </select>
 </div>
   </div>
@@ -433,12 +430,9 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="ttipe">
   <option selected disabled>Tipe KPI</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_tipekpi");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['tipe_kpi']."'>".$data['tipe_kpi']."</option>";
-  }
-  ?>
+  <option value="EXACT">EXACT</option>
+  <option value="PROXY">PROXY</option>
+  <option value="ACTIVITY">ACTIVITY</option>
 </select>
 </div>
   </div>
@@ -448,12 +442,8 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="ttarget">
   <option selected disabled>Tipe Target</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_tipetarget");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['tipe_target']."'>".$data['tipe_target']."</option>";
-  }
-  ?>
+  <option value="Akumulatif">Akumulatif</option>
+  <option value="Non Akumulatif">Non Akumulatif</option>
 </select>
 </div>
   </div>
@@ -463,12 +453,9 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="tfrekuensi">
   <option selected disabled>Frekuensi</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_frekuensi");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['frekuensi']."'>".$data['frekuensi']."</option>";
-  }
-  ?>
+  <option value="Bulanan">Bulanan</option>
+  <option value="Triwulan">Triwulan</option>
+  <option value="Semesteran">Semesteran</option>
 </select>
 </div>
   </div>
@@ -479,12 +466,9 @@ foreach($resultt as $row)
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="tpolaritas">
   <option selected disabled>Polaritas</option>
-  <?php
-  $records = mysqli_query($koneksi, "SELECT * FROM tb_polaritas");
-  while($data = mysqli_fetch_array($records)){
-    echo "<option value='".$data['polaritas']."'>".$data['polaritas']."</option>";
-  }
-  ?>
+  <option value="POSITIF">POSITIF</option>
+  <option value="NEGATIF">NEGATIF</option>
+  <option value="RANGE">RANGE</option>
 </select>
 </div>
   </div>
@@ -572,8 +556,7 @@ foreach($resultt as $row)
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+
 <!-- Page specific script -->
 <script>
   $(function () {

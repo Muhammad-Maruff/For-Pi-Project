@@ -113,7 +113,7 @@ logout
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="admin-setper.php" class="brand-link">
+    <a href="user-div-setper.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -230,7 +230,7 @@ logout
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="juknis-admin-setper.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="juknis-user-setper.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

@@ -6,7 +6,41 @@
   $database = "kinerjapegawai";
 
   //buat koneksi
-  $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
+  $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));  
+
+  //jika tombol edit diedit/hapus
+  if(isset($_GET['hal'])){
+    //jika edit data
+    if($_GET['hal'] == "view"){
+      //tampilkan data yang akan diedit
+
+
+      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE id_data2 = '$_GET[id]'");
+
+      $data = mysqli_fetch_array($tampil);
+      if($data){
+        //jika data ditemukan, maka data ditampung kedalam variabel
+        $vid = $data['id_data2'];
+        $vdeskripsi = $data['deskripsi2'];
+        $vusulan_deskripsi = $data['usulan_deskripsi2'];
+        $vdefinisi = $data['definisi2'];
+        $vtujuan = $data['tujuan2'];
+        $vsatuan = $data['satuan2'];
+        $vkategori_satuan = $data['kategori_satuan2'];
+        $vformula = $data['formula2'];
+        $vsumber_target = $data['sumber_target2'];
+        $vtipe_kpi = $data['tipe_kpi2'];
+        $vtipe_target = $data['tipe_target2'];
+        $vfrekuensi = $data['frekuensi2'];
+        $vpolaritas = $data['polaritas2'];
+        $vdivisi = $data['divisi2'];
+        $vpemilik = $data['pemilik2'];
+        $veviden = $data['eviden2'];
+        $vsyarat_ketentuan = $data['syarat_ketentuan2'];
+        $vkpi_parent = $data['kpi_parent2'];
+      }
+    }
+  }
 
 
 ?>
@@ -16,7 +50,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Export</title>
+  <title>For-Pi | Views</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -35,10 +69,11 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']!="user setper"){
+	if($_SESSION['level'] != "user tco"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -46,13 +81,10 @@ session_start();
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="user-div-setper.php" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="user-div-setper.php" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="juknis-user-setper.php" class="nav-link">Juknis</a>
+        <a href="user-div-tco.php" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -90,8 +122,8 @@ session_start();
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
           <a href="keluar.php" class="dropdown-item">
-          <i class="fa-solid fa-door-open"></i>
-          logout
+          <i class="fa-solid fa-door-open">logout</i>
+
           </a>
       </li>
     </ul>
@@ -101,7 +133,7 @@ session_start();
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="user-div-setper.php" class="brand-link">
+    <a href="user-div-tco.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -118,7 +150,6 @@ session_start();
          echo $_SESSION['username'];
           ?></a>
         </div>
-
       </div>
 
       <!-- SidebarSearch Form -->
@@ -140,7 +171,7 @@ session_start();
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="user-div-setper.php" class="nav-link">
+            <a href="user-div-tco.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -148,19 +179,19 @@ session_start();
             </a>
           </li>
 
-           <li class="nav-item">
-            <a href="juknis-user-setper.php" class="nav-link">
+           <li class="nav-item  menu-open">
+            <a href="juknis-user-tco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="calendar-usersetper.php" class="nav-link">
+            <a href="calendar-usertco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
           </li>
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -175,12 +206,13 @@ session_start();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data KPI</h1>
+            <h1>Detail KPI</h1>
           </div>
           <div class="col-sm-6">
+
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="juknis-user-setper.php">Juknis</a></li>
-              <li class="breadcrumb-item active">Export</li>
+              <li class="breadcrumb-item"><a href="juknis-user-tco.php">Juknis</a></li>
+              <li class="breadcrumb-item active">Detail KPI</li>
             </ol>
           </div>
         </div>
@@ -197,47 +229,106 @@ session_start();
 
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                  <th>ID</th>
-                  <th>Deskripsi KPI</th>
-                  <th>Satuan KPI</th>
-                  <th>Kategori Satuan</th>
-                  <th>Tipe KPI</th>
-                  <th>Tipe Target</th>
-                  <th>Polaritas</th>
-                  <th>Jabatan Pemilik KPI</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <?php
+              <table class="table table-striped table:hover table-bordered">
+            <tr>
+              <th align="left">Deskripsi</th>
+              <td><?= $data['deskripsi2'] ?></td>
+            </tr>
 
-            //persiapan menampilkan data
-            $no = 1;
-          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE pemilik2= 'SETPER'");
-          while($data = mysqli_fetch_array($tampil)) :
-          ?>
-                  <tr>
-                  <td><?= $no++ ?></td>
-                  <?php
+            <tr>
+              <th align="left">Usulan Deskripsi</th>
+              <td><?= $data['usulan_deskripsi2'] ?></td>
+            </tr>
 
-                    if ($data['usulan_deskripsi2'] == '') {
-                        echo '<td>'. $data['deskripsi2']. '</td>';
-                    }else{
-                        echo '<td>'. $data['usulan_deskripsi2']. '</td>';
-                    }
-                    ?>
-                  <td><?= $data['satuan2'] ?></td>
-                  <td><?= $data['kategori_satuan2'] ?></td>
-                  <td><?= $data['tipe_kpi2'] ?></td>
-                  <td><?= $data['tipe_target2'] ?></td>
-                  <td><?= $data['polaritas2'] ?></td>
-                  <td><?= $data['divisi2'] ?></td>
-                  <?php endwhile; ?>
-                  </tbody>
-                </table>
+            <tr>
+              <th align="left">Definisi</th>
+              <td><?= $data['definisi2'] ?></td>
+            </tr>
 
+            <tr>
+              <th align="left">Tujuan</th>
+              <td><?= $data['tujuan2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Satuan</th>
+              <td><?= $data['satuan2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Kategori Satuan</th>
+              <td><?= $data['kategori_satuan2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Formula</th>
+              <td><?= $data['formula2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Sumber Target</th>
+              <td><?= $data['sumber_target2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Tipe KPI</th>
+              <td><?= $data['tipe_kpi2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Tipe Target</th>
+              <td><?= $data['tipe_target2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Frekuensi</th>
+              <td><?= $data['frekuensi2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Polaritas</th>
+              <td><?= $data['polaritas2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Divisi</th>
+              <td><?= $data['divisi2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Pemilik</th>
+              <td><?= $data['pemilik2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Eviden</th>
+              <td><?= $data['eviden2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">Syarat & Ketentuan</th>
+              <td><?= $data['syarat_ketentuan2'] ?></td>
+            </tr>
+
+            <tr>
+              <th align="left">KPI Parent</th>
+              <td><?= $data['kpi_parent2'] ?></td>
+            </tr>
+
+
+
+            <?php
+
+              //persiapan menampilkan data
+              $no = 1;
+            $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 order by id_data2 asc");
+            while($data = mysqli_fetch_array($tampil)) :
+            ?>
+            <?php endwhile; ?>
+
+            </table>
+
+     <!--Akhir input data-->
               </div>
               <!-- /.card-body -->
             </div>
@@ -286,24 +377,5 @@ session_start();
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
 </body>
 </html>

@@ -7,8 +7,6 @@
 
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
-
-
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +14,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Export</title>
+  <title>For-Pi | Log-Data</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -35,24 +33,36 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']!="user setper"){
+	if($_SESSION['level'] != "admin pusat"){
 		header("location:../login.php?pesan=gagal");
 	}
+
+
+if (empty($_GET['hash'])){
+  header("location:juknis-adminpusat.php");
+}
+
 ?>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+   <!-- Preloader -->
+   <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" height="60" width="60">
+  </div>
+
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="user-div-setper.php" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="user-div-setper.php" class="nav-link">Home</a>
+        <a href="admin-pusat.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="juknis-user-setper.php" class="nav-link">Juknis</a>
+
       </li>
     </ul>
 
@@ -80,7 +90,8 @@ session_start();
         </div>
       </li>
 
-      <!-- Messages Dropdown Menu -->
+
+      <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <?php
@@ -90,8 +101,8 @@ session_start();
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
           <a href="keluar.php" class="dropdown-item">
-          <i class="fa-solid fa-door-open"></i>
-          logout
+          <i class="fa-solid fa-right-from-bracket"></i>
+logout
           </a>
       </li>
     </ul>
@@ -101,7 +112,7 @@ session_start();
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="user-div-setper.php" class="brand-link">
+    <a href="super-admin.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -118,7 +129,6 @@ session_start();
          echo $_SESSION['username'];
           ?></a>
         </div>
-
       </div>
 
       <!-- SidebarSearch Form -->
@@ -140,7 +150,8 @@ session_start();
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="user-div-setper.php" class="nav-link">
+               <li class="nav-item">
+            <a href="admin-pusat.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -148,14 +159,79 @@ session_start();
             </a>
           </li>
 
-           <li class="nav-item">
-            <a href="juknis-user-setper.php" class="nav-link">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Master
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">6</span>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="jabatan-adminpusat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Jabatan</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="pemilik-adminpusat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="kategori-satuan-adminpusat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kategori Satuan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tipe-kpi-adminpusat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipe Kpi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tipe-target-adminpusat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipe Target</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="frekuensi-adminpusat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Frekuensi</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="polaritas-adminpusat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Polaritas</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+           <li class="nav-item menu-open">
+            <a href="juknis-adminpusat.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="calendar-usersetper.php" class="nav-link">
+            <a href="user-adminpusat.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>              <p>User</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="calendar-adminpusat.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
@@ -175,12 +251,14 @@ session_start();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data KPI</h1>
+            <h1>Perubahan Data</h1>
           </div>
           <div class="col-sm-6">
+
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="juknis-user-setper.php">Juknis</a></li>
-              <li class="breadcrumb-item active">Export</li>
+            <li class="breadcrumb-item"><a href="admin-pusat.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="juknis-adminpusat.php">Juknis</a></li>
+              <li class="breadcrumb-item active">Perubahan Data</li>
             </ol>
           </div>
         </div>
@@ -197,47 +275,35 @@ session_start();
 
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                  <th>ID</th>
-                  <th>Deskripsi KPI</th>
-                  <th>Satuan KPI</th>
-                  <th>Kategori Satuan</th>
-                  <th>Tipe KPI</th>
-                  <th>Tipe Target</th>
-                  <th>Polaritas</th>
-                  <th>Jabatan Pemilik KPI</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <?php
+              <table class="table table-striped table:hover table-bordered">
+              <?php
 
             //persiapan menampilkan data
             $no = 1;
-          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE pemilik2= 'SETPER'");
-          while($data = mysqli_fetch_array($tampil)) :
-          ?>
-                  <tr>
-                  <td><?= $no++ ?></td>
-                  <?php
 
-                    if ($data['usulan_deskripsi2'] == '') {
-                        echo '<td>'. $data['deskripsi2']. '</td>';
-                    }else{
-                        echo '<td>'. $data['usulan_deskripsi2']. '</td>';
+          $hash = $_GET['hash'];
+
+          $tampil = mysqli_query($koneksi, "SELECT tb_data.*,tb_data2.* FROM tb_data INNER JOIN tb_data2 ON tb_data.is_updated = tb_data2.is_updated WHERE tb_data.is_updated= '$hash' AND tb_data.is_updated != ''");
+
+          while( $data = mysqli_fetch_array($tampil)):?>
+            <tr>
+            <?php
+                    if ($data['usulan_deskripsi'] != $data['usulan_deskripsi2']) {
+                      echo '<th align="left">'.'Usulan Deskripsi'.'</th>';
+                      echo '<td>'. $data['usulan_deskripsi2'] .'</td>';
+                      echo '<td>'. '<a href="detail-adminpusat.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Lihat Detail' . '</a>' .'</td>';
                     }
                     ?>
-                  <td><?= $data['satuan2'] ?></td>
-                  <td><?= $data['kategori_satuan2'] ?></td>
-                  <td><?= $data['tipe_kpi2'] ?></td>
-                  <td><?= $data['tipe_target2'] ?></td>
-                  <td><?= $data['polaritas2'] ?></td>
-                  <td><?= $data['divisi2'] ?></td>
-                  <?php endwhile; ?>
-                  </tbody>
-                </table>
+            </tr>
 
+            <tr>
+
+
+           <?php endwhile; ?>
+
+            </table>
+
+     <!--Akhir input data-->
               </div>
               <!-- /.card-body -->
             </div>
@@ -286,24 +352,5 @@ session_start();
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
 </body>
 </html>
