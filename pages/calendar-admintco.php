@@ -32,7 +32,6 @@
   <link rel="stylesheet" href="../dist/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <!-- Bootstrap Core CSS -->
-   <link href="css/bootstrap.min.css" rel="stylesheet">
 
 	<!-- FullCalendar -->
 	<link href='css/fullcalendar.css' rel='stylesheet' />
@@ -130,7 +129,7 @@ logout
     </a>
 
     <!-- Sidebar -->
-    <div class="main-sidebar sidebar">
+    <div class="sidebar">
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -228,9 +227,7 @@ logout
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-        <button class="btn-year"><a href="calendar-2020.php">2020</a></button>
-          <button class="btn-year"><a href="calendar-2021.php">2021</a></button>
-          <button class="btn-year"><a href="calendar-2022.php">2022</a></button>
+
 
 
           <div class="card-tools">

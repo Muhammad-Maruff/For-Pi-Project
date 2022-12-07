@@ -382,6 +382,14 @@ document.location='juknis-admin.php'
               <p>Juknis</p>
             </a>
           </li>
+
+
+          <li class="nav-item">
+            <a href="calendar-admintco.php" class="nav-link">
+            <i class="nav-icon far fa-calendar-alt"></i>
+              <p>Calendar</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
