@@ -35,7 +35,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level'] != "superadmin"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
@@ -403,6 +403,6 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
+
 </body>
 </html>

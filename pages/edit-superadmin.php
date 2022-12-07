@@ -168,13 +168,9 @@ document.location='juknis-superadmin.php'
     //jika edit data
     if($_GET['hal'] == "edit"){
       //tampilkan data yang akan diedit
-
-
       $tampil=mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE id_data2 = '$_GET[id]'");
-      $tampill=mysqli_query($koneksi, "SELECT * FROM tb_data WHERE id_data = '$_GET[id]'");
-
       $data = mysqli_fetch_array($tampil);
-      $dataa = mysqli_fetch_array($tampill);
+      
       if($data){
         //jika data ditemukan, maka data ditampung kedalam variabel
         $vid = $data['id_data2'];
@@ -196,28 +192,7 @@ document.location='juknis-superadmin.php'
         $vsyarat_ketentuan = $data['syarat_ketentuan2'];
         $vkpi_parent = $data['kpi_parent2'];
       }
-
-      if($dataa){
-        //jika data ditemukan, maka data ditampung kedalam variabel
-        $vid2 = $dataa['id_data'];
-        $vdeskripsi2 = $dataa['deskripsi'];
-        $vusulan_deskripsi2 = $dataa['usulan_deskripsi'];
-        $vdefinisi2 = $dataa['definisi'];
-        $vtujuan2 = $dataa['tujuan'];
-        $vsatuan2 = $dataa['satuan'];
-        $vkategori_satuan2 = $dataa['kategori_satuan'];
-        $vformula2 = $dataa['formula'];
-        $vsumber_target2 = $dataa['sumber_target'];
-        $vtipe_kpi2 = $dataa['tipe_kpi'];
-        $vtipe_target2 = $dataa['tipe_target'];
-        $vfrekuensi2 = $dataa['frekuensi'];
-        $vpolaritas2 = $dataa['polaritas'];
-        $vdivisi2 = $dataa['divisi'];
-        $vpemilik2 = $dataa['pemilik'];
-        $veviden2 = $dataa['eviden'];
-        $vsyarat_ketentuan2 = $dataa['syarat_ketentuan'];
-        $vkpi_parent2 = $dataa['kpi_parent'];
-      }
+      
     }
   }
 
@@ -254,7 +229,7 @@ document.location='juknis-superadmin.php'
 	session_start();
 
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level'] != "superadmin"){
 		header("location:../login.php?pesan=gagal");
 	}
 
@@ -681,8 +656,7 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
+
 <!-- Page specific script -->
 <script>
   $(function () {

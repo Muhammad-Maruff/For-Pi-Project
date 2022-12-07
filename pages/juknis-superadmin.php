@@ -37,7 +37,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level'] != "superadmin"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>

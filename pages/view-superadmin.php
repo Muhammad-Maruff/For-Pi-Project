@@ -8,25 +8,6 @@
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
 
-  //deklarasi variabel untuk menampung data yang akan diedit
-  $vid = "";
-  $vdeskripsi = "";
-  $vusulan_deskripsi = "";
-  $vdefinisi = "";
-  $vtujuan = "";
-  $vsatuan = "";
-  $vkategori_satuan = "";
-  $vformula = "";
-  $vsumber_target = "";
-  $vtipe_kpi = "";
-  $vtipe_target="";
-  $vfrekuensi = "";
-  $vpolaritas ="";
-  $vdivisi = "";
-  $vpemilik = "";
-  $veviden = "";
-  $vsyarat_ketentuan = "";
-  $vkpi_parent = "";
 
 
 
@@ -91,7 +72,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level'] != "superadmin"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>

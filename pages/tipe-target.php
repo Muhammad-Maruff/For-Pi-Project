@@ -14,10 +14,10 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>A
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Master</title>
+  <title>For-Pi | Master | Tipe Target</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -36,7 +36,7 @@
 <?php
 session_start();
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level'] != "superadmin"){
 		header("location:../login.php?pesan=gagal");
 	}
 ?>
@@ -293,6 +293,7 @@ logout
 </form>
 
 </div>
+<br>
 
         <table class="table table-striped table:hover table-bordered">
             <tr>
@@ -365,8 +366,6 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
@@ -384,13 +383,6 @@ logout
     });
   });
 </script>
-<script>
-var auto_complete = new Autocomplete(document.getElementById('divisi'), {
-    data:<?php echo json_encode($data); ?>,
-    maximumItems:10,
-    highlightTyped:true,
-    highlightClass : 'fw-bold text-primary'
-});
-</script>
+
 </body>
 </html>

@@ -11,63 +11,53 @@
   //jika button simpan diklik
   if(isset($_POST['btn-simpan'])){
     if(isset($_GET['hal']) == "edit"){
-      $edit = mysqli_query($koneksi, "UPDATE tb_login SET
-                                              nama = '$_POST[tnama]',
-                                              username = '$_POST[tusername]',
-                                              password = '$_POST[tpassword]',
-                                              level = '$_POST[level]'
-                                              WHERE id = '$_GET[id]'
+      $edit = mysqli_query($koneksi, "UPDATE tb_polaritas SET
+                                              polaritas = '$_POST[tpolaritas]'
+                                              WHERE id_polaritas = '$_GET[id]'
           ");
 
           if($edit){
             echo "<script>
               alert('Data berhasil edit!');
-              document.location='user-superadmin.php'
+              document.location='polaritas.php'
             </script>";
           }
           else{
             echo "<script>
               alert('Data gagal edit!');
-              document.location='user-superadmin.php'
+              document.location='polaritas.php'
             </script>";
           }
     }
     //Data akan disimpan
 
     else{
-      $simpan = mysqli_query($koneksi, "INSERT INTO tb_login (id,nama,username,password,level)
+      $simpan = mysqli_query($koneksi, "INSERT INTO tb_polaritas (polaritas)
       VALUE (
-              '$_POST[tnama]',
-              '$_POST[tusername]',
-              '$_POST[tpassword]'
-              '$_POST[level]'
+              '$_POST[tpolaritas]'
   ");
 
 //uji jika simpan data sukses
 if($simpan){
 echo "<script>
 alert('data berhasil disimpan!');
-document.location='user-superadmin.php';
+document.location='polaritas.php';
 </script>";
 } else{
 echo "<script>
 alert('Simpan data gagal');
-document.location='user-superadmin.php'
+document.location='polaritas.php'
 </script>";
 }
     }
 
-    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_login order by id asc");
+    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_polaritas order by id_polaritas asc");
             while($data = mysqli_fetch_array($tampil));
 
   }
 
   //deklarasi variabel untuk menampung data yang akan diedit
-  $vid = "";
-  $vnama = "";
-  $vusername = "";
-  $vpassword = "";
-  $vlevel = "";
+  $vpolaritas = "";
 
   //jika tombol edit diedit/hapus
   if(isset($_GET['hal'])){
@@ -76,16 +66,12 @@ document.location='user-superadmin.php'
       //tampilkan data yang akan diedit
 
 
-      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_login WHERE id = '$_GET[id]'");
+      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_polaritas WHERE id_polaritas = '$_GET[id]'");
 
       $data = mysqli_fetch_array($tampil);
       if($data){
         //jika data ditemukan, maka data ditampung kedalam variabel
-        $vid = $data['id'];
-        $vnama = $data['nama'];
-        $vusername = $data['username'];
-        $vpassword = $data['password'];
-        $vlevel = $data['level'];
+        $vpolaritas = $data['polaritas'];
       }
 
     }
@@ -103,8 +89,11 @@ document.location='user-superadmin.php'
 
         <!-- Bootstrap CSS -->
         <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
-        <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
-        <title>For-Pi | Edit User</title>
+        <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>    
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>For-Pi | Edit Pemilik</title>
+
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
@@ -117,7 +106,6 @@ document.location='user-superadmin.php'
         <link rel="stylesheet" href="../dist/css/adminlte.min.css">
         <link rel="stylesheet" href="../dist/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     </head>
 
     <?php
@@ -127,7 +115,6 @@ document.location='user-superadmin.php'
 	if($_SESSION['level'] != "superadmin"){
 		header("location:../login.php?pesan=gagal");
 	}
-
 	?>
 
 <body class="hold-transition sidebar-mini">
@@ -140,10 +127,10 @@ document.location='user-superadmin.php'
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin.php" class="nav-link">Home</a>
+        <a href="superadmin.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="juknis-admin.php" class="nav-link">Juknis</a>
+        <a href="polaritas.php" class="nav-link">Polaritas</a>
       </li>
     </ul>
 
@@ -192,7 +179,7 @@ document.location='user-superadmin.php'
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="admin.php" class="brand-link">
+    <a href="superadmin.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -238,7 +225,7 @@ document.location='user-superadmin.php'
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -249,11 +236,19 @@ document.location='user-superadmin.php'
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item menu-open">
-                <a href="jabatan-superadmin.php" class="nav-link">
+                <a href="jabatan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -272,7 +267,7 @@ document.location='user-superadmin.php'
                   <p>Tipe Target</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item menu-open">
                 <a href="frekuensi.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Frekuensi</p>
@@ -295,7 +290,7 @@ document.location='user-superadmin.php'
             </a>
           </li>
 
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>
@@ -327,7 +322,7 @@ document.location='user-superadmin.php'
 
             <div class="card">
               <div class="card-header mx-auto">
-                <h1>Edit User</h1>
+                <h1>Edit Polaritas</h1>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -336,43 +331,12 @@ document.location='user-superadmin.php'
 
 
   <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Nama</label>
+    <label for="" class="col-sm-2 col-form-label">Polaritas</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="tnama" value="<?= $vnama ?>">
+      <input type="text" class="form-control" name="tpolaritas" value="<?= $vpolaritas ?>">
     </div>
   </div>
-
-  <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Username</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="tusername" value="<?= $vusername ?>">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="tpassword" value="<?= $vpassword ?>">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="password" class="col-sm-2 col-form-label">Level</label>
-    <div class="col-sm-10">
-    <select class="form-control level" aria-label="Default select example" name="level">
-    <option selected disabled>Level</option>
-  <option value="superadmin">SUPERADMIN</option>
-  <option value="admin pusat">ADMIN PUSAT</option>
-  <option value="admin setper">ADMIN SETPER</option>
-  <option value="admin tco">ADMIN DIV TCO</option>
-  <option value="user setper">USER SETPER</option>
-  <option value="user tco">USER DIV TCO</option>
-  <option value="user">USER</option>
-</select>
-    </div>
-  </div>
-
-
+  
   <div class="text-center">
       <hr>
       <button class="btn btn-success" name="btn-simpan" type="submit">Save</button>
