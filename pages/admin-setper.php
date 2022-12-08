@@ -171,6 +171,12 @@ logout
           </li>
 
           <li class="nav-item">
+            <a href="user-adminsetper.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>              <p>User</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="calendar-adminsetper.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>

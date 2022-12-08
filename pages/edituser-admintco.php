@@ -8,45 +8,130 @@
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
 
+  //jika button simpan diklik
+  if(isset($_POST['btn-simpan'])){
+    if(isset($_GET['hal']) == "edit"){
+      $edit = mysqli_query($koneksi, "UPDATE tb_login SET
+                                              nama = '$_POST[tnama]',
+                                              username = '$_POST[tusername]',
+                                              password = '$_POST[tpassword]',
+                                              level = '$_POST[level]'
+                                              WHERE id = '$_GET[id]'
+          ");
+
+          if($edit){
+            echo "<script>
+              alert('Data berhasil edit!');
+              document.location='user-admintco.php'
+            </script>";
+          }
+          else{
+            echo "<script>
+              alert('Data gagal edit!');
+              document.location='user-admintco.php'
+            </script>";
+          }
+    }
+    //Data akan disimpan
+
+    else{
+      $simpan = mysqli_query($koneksi, "INSERT INTO tb_login (id,nama,username,password,level)
+      VALUE (
+              '$_POST[tnama]',
+              '$_POST[tusername]',
+              '$_POST[tpassword]'
+              '$_POST[level]'
+  ");
+
+//uji jika simpan data sukses
+if($simpan){
+echo "<script>
+alert('data berhasil disimpan!');
+document.location='user-admintco.php';
+</script>";
+} else{
+echo "<script>
+alert('Simpan data gagal');
+document.location='user-admintco.php'
+</script>";
+}
+    }
+
+    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_login order by id asc");
+            while($data = mysqli_fetch_array($tampil));
+
+  }
+
+  //deklarasi variabel untuk menampung data yang akan diedit
+  $vid = "";
+  $vnama = "";
+  $vusername = "";
+  $vpassword = "";
+  $vlevel = "";
+
+  //jika tombol edit diedit/hapus
+  if(isset($_GET['hal'])){
+    //jika edit data
+    if($_GET['hal'] == "edit"){
+      //tampilkan data yang akan diedit
+
+
+      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_login WHERE id = '$_GET[id]'");
+
+      $data = mysqli_fetch_array($tampil);
+      if($data){
+        //jika data ditemukan, maka data ditampung kedalam variabel
+        $vid = $data['id'];
+        $vnama = $data['nama'];
+        $vusername = $data['username'];
+        $vpassword = $data['password'];
+        $vlevel = $data['level'];
+      }
+
+    }
+  }
+
 
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-pi</title>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="../dist/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+        <!-- Bootstrap CSS -->
+        <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
+        <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
+        <title>For-Pi | Edit User</title>
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+        <link rel="stylesheet" href="../dist/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<?php
-session_start();
+    </head>
+
+    <?php
+	session_start();
+
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']!="admin setper"){
+	if($_SESSION['level'] != "admin tco"){
 		header("location:../login.php?pesan=gagal");
 	}
-?>
+
+	?>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" height="60" width="60">
-  </div>
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -55,10 +140,10 @@ session_start();
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin-setper.php" class="nav-link">Home</a>
+        <a href="admin-div-tco.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-
+        <a href="juknis-admintco.php" class="nav-link">Juknis</a>
       </li>
     </ul>
 
@@ -86,8 +171,7 @@ session_start();
         </div>
       </li>
 
-
-      <!-- Notifications Dropdown Menu -->
+      <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <?php
@@ -97,8 +181,8 @@ session_start();
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
           <a href="keluar.php" class="dropdown-item">
-          <i class="fa-solid fa-right-from-bracket"></i>
-logout
+          <i class="fa-solid fa-door-open">logout</i>
+
           </a>
       </li>
     </ul>
@@ -108,14 +192,14 @@ logout
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="admin.php" class="brand-link">
+    <a href="admin-div-tco.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
+      <!-- Sidebar -->
+      <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -139,14 +223,14 @@ logout
         </div>
       </div>
 
-     <!-- Sidebar Menu -->
-     <nav class="mt-2">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="admin-setper.php" class="nav-link">
+            <a href="admin-div-tco.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -154,22 +238,22 @@ logout
             </a>
           </li>
 
-           <li class="nav-item  menu-open">
-            <a href="juknis-admin-setper.php" class="nav-link">
+           <li class="nav-item">
+            <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
-          <li class="nav-item ">
-            <a href="user-adminsetper.php" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="user-admintco.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
-                <p>User</p>
+            <p>User</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="calendar-adminsetper.php" class="nav-link">
+            <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
@@ -184,22 +268,7 @@ logout
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Data KPI</h1>
-          </div>
-          <div class="col-sm-6">
-          <a href="create-admin-setper.php" class="btn-create">New Data+</a>
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="admin-setper.php">Home</a></li>
-              <li class="breadcrumb-item active">Juknis</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+
 
     <!-- Main content -->
     <section class="content">
@@ -208,69 +277,58 @@ logout
           <div class="col-12">
 
             <div class="card">
-
+              <div class="card-header mx-auto">
+                <h1>Edit User</h1>
+              </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                  <th>#</th>
-                  <th>Deskripsi KPI</th>
-                  <th>Satuan KPI</th>
-                  <th>Kategori Satuan</th>
-                  <th>Tipe KPI</th>
-                  <th>Tipe Target</th>
-                  <th>Polaritas</th>
-                  <th>Jabatan Pemilik KPI</th>
-                  <th>Status</th>
-                  <th>Aksi</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <?php
-
-            //persiapan menampilkan data
-            $no = 1;
-          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE Pemilik2 ='SETPER'" );
-          while($data = mysqli_fetch_array($tampil)) :
-          ?>
-                  <tr>
-                  <td><?= $no++?></td>
-                  <?php
-                    if ($data['usulan_deskripsi2'] == '') {
-                        echo '<td>'. $data['deskripsi2']. '</td>';
-                    }else{
-                        echo '<td>'. $data['usulan_deskripsi2']. '</td>';
-                    }
-                    ?>
-                  <td><?= $data['satuan2'] ?></td>
-                  <td><?= $data['kategori_satuan2'] ?></td>
-                  <td><?= $data['tipe_kpi2'] ?></td>
-                  <td><?= $data['tipe_target2'] ?></td>
-                  <td><?= $data['polaritas2'] ?></td>
-                  <td><?= $data['divisi2'] ?></td>
-                  <?php
-
-                  if ($data['usulan_deskripsi2'] == '') {
-                    echo '<td></td>';
-                  }else{
-                    echo '<td>'. '<a href="log-data-admin-setper.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Terdapat Perubahan Data' . '</a>' .'</td>';
-                  }
-                  ?>
-                  <td>
-<button class="bittun"><a href="view-admin-setper.php?hal=view&id=<?=$data['id_data2']?>"><i class="fa fa-eye"></i>View</a></button>
+                <!--Input Data-->
+        <form method="POST">
 
 
-<button class="bitton"><a href="edit-admin-setper.php?hal=edit&id=<?=$data['id_data2']?>"><i class="fa fa-pen"></i>Edit</a></button>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Nama</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="tnama" value="<?= $vnama ?>">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="tusername" value="<?= $vusername ?>">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="tpassword" value="<?= $vpassword ?>">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="password" class="col-sm-2 col-form-label">Level</label>
+    <div class="col-sm-10">
+    <select class="form-control level" aria-label="Default select example" name="level">
+  <option selected disabled>Level</option>
+
+  <option value="user tco">USER DIV TCO</option>
+ </select>
+    </div>
+  </div>
 
 
-<button class="bitten"><a href="delete-admin-setper.php?hal=delete&id=<?=$data['id_data2']?>" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">  <i class="fa fa-trash"></i>Delete</a></button>
-
-                  </td>
-                  <?php endwhile; ?>
-                  </tbody>
-                </table>
-                <a href="export-admin-setper.php"><button class="btn btn-success">Export</button></a>
+  <div class="text-center">
+      <hr>
+      <button class="btn btn-success" name="btn-simpan" type="submit">Save</button>
+      <button class="btn btn-danger" name="btn-clear" type="reset">Clear</button>
+     </div>
+</form>
+        </div>
+     <!--Akhir input data-->
+        </div>
+     <!--Akhir input data-->
               </div>
               <!-- /.card-body -->
             </div>
@@ -285,12 +343,6 @@ logout
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -319,23 +371,6 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+
 </body>
 </html>

@@ -169,6 +169,13 @@ logout
               <p>Juknis</p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="user-admintco.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>

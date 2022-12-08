@@ -179,6 +179,13 @@ logout
           </li>
 
           <li class="nav-item menu-open">
+            <a href="user-admintco.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+                <p>User</p>
+            </a>
+          </li>
+
+          <li class="nav-item menu-open">
             <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
