@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <!-- Bootstrap Core CSS -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
- 
+
 	<!-- FullCalendar -->
 	<link href='css/fullcalendar.css' rel='stylesheet' />
 
@@ -193,7 +193,7 @@ logout
                   <p>Pemilik</p>
                 </a>
               </li>
-              
+
               <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -237,7 +237,7 @@ logout
 
           <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>              
+            <i class="nav-icon fas fa-users"></i>
             <p>User</p>
             </a>
           </li>
@@ -317,7 +317,7 @@ $events = $req->fetchAll();
 
 
 
-    
+
 
     <!-- Page Content -->
     <div class="container">
@@ -362,7 +362,7 @@ $events = $req->fetchAll();
     </div>
     <!-- /.container -->
 
-    
+
 
 
 
@@ -379,9 +379,9 @@ $events = $req->fetchAll();
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
+      <b>PLN Kantor Pusat</b>
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2022 <a href="#">PT PLN (PERSERO)</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -435,20 +435,20 @@ $events = $req->fetchAll();
 <script>
 
 $(document).ready(function() {
-    
+
     $('#calendar').fullCalendar({
         header: {
             left: 'prev,next today',
             center: 'title',
             right: 'month,basicWeek,basicDay'
         },
-  
+
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         selectable: true,
         selectHelper: true,
         select: function(start, end) {
-            
+
             $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
             $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
             $('#ModalAdd').modal('show');
@@ -472,8 +472,8 @@ $(document).ready(function() {
 
         },
         events: [
-        <?php foreach($events as $event): 
-        
+        <?php foreach($events as $event):
+
             $start = explode(" ", $event['start']);
             $end = explode(" ", $event['end']);
             if($start[1] == '00:00:00'){
@@ -497,7 +497,7 @@ $(document).ready(function() {
         <?php endforeach; ?>
         ]
     });
-    
+
     function edit(event){
         start = event.start.format('YYYY-MM-DD HH:mm:ss');
         if(event.end){
@@ -505,14 +505,14 @@ $(document).ready(function() {
         }else{
             end = start;
         }
-        
+
         id =  event.id;
-        
+
         Event = [];
         Event[0] = id;
         Event[1] = start;
         Event[2] = end;
-        
+
         $.ajax({
          url: 'editEventDate.php',
          type: "POST",
@@ -521,12 +521,12 @@ $(document).ready(function() {
                 if(rep == 'OK'){
                     alert('Saved');
                 }else{
-                    alert('Could not be saved. try again.'); 
+                    alert('Could not be saved. try again.');
                 }
             }
         });
     }
-    
+
 });
 
 </script>
