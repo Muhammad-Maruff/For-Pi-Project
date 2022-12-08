@@ -360,14 +360,13 @@ document.location='user-superadmin.php'
     <label for="password" class="col-sm-2 col-form-label">Level</label>
     <div class="col-sm-10">
     <select class="form-control level" aria-label="Default select example" name="level">
-    <option selected disabled>Level</option>
+  <option selected disabled>Level</option>
   <option value="superadmin">SUPERADMIN</option>
   <option value="admin pusat">ADMIN PUSAT</option>
   <option value="admin setper">ADMIN SETPER</option>
   <option value="admin tco">ADMIN DIV TCO</option>
-  <option value="user setper">USER SETPER</option>
-  <option value="user tco">USER DIV TCO</option>
   <option value="user">USER</option>
+
 </select>
     </div>
   </div>
