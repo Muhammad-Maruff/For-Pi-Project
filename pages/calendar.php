@@ -268,7 +268,7 @@ logout
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="superadmin.php">Home</a></li>
-              <li class="breadcrumb-item active">Jabatan</li>
+              <li class="breadcrumb-item active">Calendar</li>
             </ol>
           </div>
         </div>
@@ -323,6 +323,36 @@ $events = $req->fetchAll();
     <!-- Page Content -->
     <div class="container">
 
+    <table class="table table-striped table:hover table-bordered">
+      <tr>
+        <th>Color</th>
+        <th>Keterangan</th>
+      </tr>
+
+      <tr>
+      <td>
+        <span style="background-color:red;text-align:center;color:red" class="table-color">color</span>
+      </td>
+      <td>Sangat Segera</td>
+      </tr>
+
+      <tr>
+      <td>
+        <span style="background-color:#c3d2bd;text-align:center;color:#c3d2bd" class="table-color">color</span>
+      </td>
+      <td>Segera</td>
+      </tr>
+
+      <tr>
+      <td>
+        <span style="background-color:green;text-align:center;color:green" class="table-color">color</span>
+      </td>
+      <td>Biasa</td>
+      </tr>
+    </table>
+
+
+
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h1>FullCalendar BS3 PHP MySQL</h1>
@@ -355,16 +385,11 @@ $events = $req->fetchAll();
 				  <div class="form-group">
 					<label for="color" class="col-sm-2 control-label">Color</label>
 					<div class="col-sm-10">
-					  <select name="color" class="form-control" id="color">
+          <select name="color" class="form-control" id="color">
 						  <option value="">Choose</option>
-						  <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
-						  <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
-						  <option style="color:#008000;" value="#008000">&#9724; Green</option>
-						  <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
-						  <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
-						  <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
-						  <option style="color:#000;" value="#000">&#9724; Black</option>
-
+						  <option style="color:black;" value="green">Biasa</option>
+						  <option style="color:black;" value="#c3d2bd">Segera</option>
+						  <option style="color:black;" value="red">Sangat Segera</option>
 						</select>
 					</div>
 				  </div>
@@ -415,14 +440,9 @@ $events = $req->fetchAll();
 					<div class="col-sm-10">
 					  <select name="color" class="form-control" id="color">
 						  <option value="">Choose</option>
-						  <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
-						  <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
-						  <option style="color:#008000;" value="#008000">&#9724; Green</option>
-						  <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
-						  <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
-						  <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
-						  <option style="color:#000;" value="#000">&#9724; Black</option>
-
+              <option style="color:black;" value="green">Biasa</option>
+						  <option style="color:black;" value="#c3d2bd">Segera</option>
+						  <option style="color:black;" value="red">Sangat Segera</option>
 						</select>
 					</div>
 				  </div>
