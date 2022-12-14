@@ -16,7 +16,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-pi</title>
+  <title>For-pi | Juknis</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -153,15 +153,25 @@ logout
               </p>
             </a>
           </li>
-
-           <li class="nav-item  menu-open">
+          <li class="nav-item">
+            <a href="jabatan-admin-tco.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
+           <li class="nav-item menu-open">
             <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
-
+          <li class="nav-item">
+            <a href="user-admintco.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>

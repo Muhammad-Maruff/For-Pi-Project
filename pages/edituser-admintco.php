@@ -237,7 +237,12 @@ document.location='user-admintco.php'
               </p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="jabatan-admin-tco.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
            <li class="nav-item">
             <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -251,13 +256,13 @@ document.location='user-admintco.php'
             <p>User</p>
             </a>
           </li>
-
           <li class="nav-item">
             <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
           </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

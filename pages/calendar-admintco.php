@@ -76,6 +76,9 @@ session_start();
       <li class="nav-item d-none d-sm-inline-block">
         <a href="admin-div-tco.php" class="nav-link">Home</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="calendar-admintco.php" class="nav-link">Calendar</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -156,7 +159,7 @@ logout
 
      <!-- Sidebar Menu -->
      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
@@ -168,9 +171,12 @@ logout
               </p>
             </a>
           </li>
-
-
-
+          <li class="nav-item">
+            <a href="jabatan-admin-tco.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
            <li class="nav-item">
             <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -178,13 +184,12 @@ logout
             </a>
           </li>
 
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="user-admintco.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
-                <p>User</p>
+            <p>User</p>
             </a>
           </li>
-
           <li class="nav-item menu-open">
             <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
@@ -206,12 +211,12 @@ logout
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Karyawan</h1>
+            <h1>Calendar</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="admin-div-tco.php">Home</a></li>
-              <li class="breadcrumb-item active">Jabatan</li>
+              <li class="breadcrumb-item active">Calendar</li>
             </ol>
           </div>
         </div>
@@ -256,18 +261,40 @@ $events = $req->fetchAll();
 ?>
 
 
-
-
-
-
-
     <!-- Page Content -->
     <div class="container">
+    <table class="table table-striped table:hover table-bordered">
+      <tr>
+        <th>Color</th>
+        <th>Keterangan</th>
+      </tr>
+
+      <tr>
+      <td>
+        <span style="background-color:red;text-align:center;color:red" class="table-color">color</span>
+      </td>
+      <td>Sangat Segera</td>
+      </tr>
+
+      <tr>
+      <td>
+        <span style="background-color:#c3d2bd;text-align:center;color:#c3d2bd" class="table-color">color</span>
+      </td>
+      <td>Segera</td>
+      </tr>
+
+      <tr>
+      <td>
+        <span style="background-color:green;text-align:center;color:green" class="table-color">color</span>
+      </td>
+      <td>Biasa</td>
+      </tr>
+    </table>
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>Calendar</h1>
-                <p class="lead"></p>
+                <h1>CALENDAR</h1>
+                <p class="lead">CALENDAR PT PLN (PERSERO)</p>
                 <div id="calendar" class="col-centered">
                 </div>
             </div>

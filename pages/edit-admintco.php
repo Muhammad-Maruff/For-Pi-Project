@@ -376,20 +376,32 @@ document.location='juknis-admin.php'
               </p>
             </a>
           </li>
-           <li class="nav-item  menu-open">
+          <li class="nav-item">
+            <a href="jabatan-admin-tco.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
+           <li class="nav-item menu-open">
             <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
-
+          <li class="nav-item">
+            <a href="user-admintco.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
           </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -141,25 +141,34 @@ if (empty($_GET['hash'])){
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="admin-setper.php" class="nav-link">
+            <a href="admin-div-tco.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
               </p>
             </a>
           </li>
-
-
-
+          <li class="nav-item">
+            <a href="jabatan-admin-tco.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
            <li class="nav-item menu-open">
-            <a href="juknis-admin-setper.php" class="nav-link">
+            <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="calendar-adminsetper.php" class="nav-link">
+            <a href="user-admintco.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
@@ -192,7 +201,7 @@ if (empty($_GET['hash'])){
           $data = mysqli_fetch_array($tampil);
           ?>
               <?php
-              echo '<li class="breadcrumb-item">'. '<a href="log-data-admin-setper.php?hash='.$data['is_updated'].'" >' . 'Perubahan Data' . '</a>' .'</li>';
+              echo '<li class="breadcrumb-item">'. '<a href="log-data-admintco.php?hash='.$data['is_updated'].'" >' . 'Perubahan Data' . '</a>' .'</li>';
               ?>
 
               <li class="breadcrumb-item active">Details</li>

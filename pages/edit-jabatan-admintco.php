@@ -143,10 +143,10 @@ document.location='jabatan-admin-tco.php';
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin-pusat.php" class="nav-link">Home</a>
+        <a href="admin-div-tco.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="jabatan-adminpusat.php" class="nav-link">Jabatan</a>
+        <a href="jabatan-admin-tco.php" class="nav-link">Jabatan</a>
       </li>
     </ul>
 

@@ -49,7 +49,7 @@ session_start();
         <a class="nav-link" data-widget="pushmenu" href="admin-setper.php" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin-setper.php" class="nav-link">Home</a>
+        <a href="admin-div-tco.php" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -137,30 +137,38 @@ session_start();
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-            <a href="admin-setper.php" class="nav-link">
+            <a href="admin-div-tco.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
               </p>
             </a>
           </li>
-
-           <li class="nav-item">
-            <a href="juknis-admin-setper.php" class="nav-link">
+          <li class="nav-item">
+            <a href="jabatan-admin-tco.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
+           <li class="nav-item menu-open">
+            <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
-
+          <li class="nav-item">
+            <a href="user-admintco.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
           </li>
-
-
 
         </ul>
       </nav>
@@ -180,7 +188,7 @@ session_start();
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="juknis-admin-setper.php">Juknis</a></li>
+              <li class="breadcrumb-item"><a href="juknis-admintco.php">Juknis</a></li>
               <li class="breadcrumb-item active">Export</li>
             </ol>
           </div>
@@ -216,7 +224,7 @@ session_start();
 
             //persiapan menampilkan data
             $no = 1;
-          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE pemilik2= 'SETPER (SEKRETARIAT PERUSAHAAN)'");
+          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE pemilik2= 'SETPER'");
           while($data = mysqli_fetch_array($tampil)) :
           ?>
                   <tr>

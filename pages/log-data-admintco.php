@@ -59,7 +59,7 @@ if (empty($_GET['hash'])){
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="superadmin.php" class="nav-link">Home</a>
+        <a href="admin-div-tco.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
 
@@ -150,32 +150,38 @@ logout
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-               <li class="nav-item">
-            <a href="superadmin.php" class="nav-link">
+            <a href="admin-div-tco.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
               </p>
             </a>
           </li>
-
-
-
+          <li class="nav-item">
+            <a href="jabatan-admin-tco.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
            <li class="nav-item menu-open">
-            <a href="juknis-superadmin.php" class="nav-link">
+            <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
           <li class="nav-item">
+            <a href="user-admintco.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="calendar-admintco.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
           </li>
-
-
 
         </ul>
       </nav>
@@ -196,8 +202,8 @@ logout
           <div class="col-sm-6">
 
             <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="admin-setper.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="juknis-admin-setper.php">Juknis</a></li>
+            <li class="breadcrumb-item"><a href="admin-div-tco.php">Home</a></li>
+              <li class="breadcrumb-item"><a href="juknis-admintco.php">Juknis</a></li>
               <li class="breadcrumb-item active">Perubahan Data</li>
             </ol>
           </div>
@@ -231,7 +237,7 @@ logout
                     if ($data['usulan_deskripsi'] != $data['usulan_deskripsi2']) {
                       echo '<th align="left">'.'Usulan Deskripsi'.'</th>';
                       echo '<td>'. $data['usulan_deskripsi2'] .'</td>';
-                      echo '<td>'. '<a href="detail-admin-setper.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Lihat Detail' . '</a>' .'</td>';
+                      echo '<td>'. '<a href="detail-admintco.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Lihat Detail' . '</a>' .'</td>';
                     }
 
                     ?>
