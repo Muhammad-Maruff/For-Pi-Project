@@ -159,7 +159,7 @@ session_start();
               <p>
                 Master
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -182,7 +182,7 @@ session_start();
               <p>
                 Atribut
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
+                <span class="badge badge-info right">5</span>
               </p>
             </a>
 
