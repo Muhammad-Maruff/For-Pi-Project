@@ -89,7 +89,7 @@ document.location='pemilik-adminpusat.php'
 
         <!-- Bootstrap CSS -->
         <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
-        <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>    
+        <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>For-Pi | Edit Pemilik</title>
@@ -216,7 +216,7 @@ document.location='pemilik-adminpusat.php'
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item">
+               <li class="nav-item menu-open">
             <a href="admin-pusat.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -225,16 +225,22 @@ document.location='pemilik-adminpusat.php'
             </a>
           </li>
 
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Master
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item menu-open">
+                <a href="pemilik-adminpusat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
               <li class="nav-item menu-open">
                 <a href="jabatan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -243,13 +249,17 @@ document.location='pemilik-adminpusat.php'
               </li>
 
               <li class="nav-item">
-                <a href="pemilik-adminpusat.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pemilik</p>
-                </a>
-              </li>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Atribut
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">5</span>
+              </p>
+            </a>
 
-              <li class="nav-item">
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
                 <a href="kategori-satuan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori Satuan</p>
@@ -262,46 +272,48 @@ document.location='pemilik-adminpusat.php'
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tipe-target.php" class="nav-link">
+                <a href="tipe-target-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tipe Target</p>
                 </a>
               </li>
-              <li class="nav-item menu-open">
-                <a href="frekuensi.php" class="nav-link">
+              <li class="nav-item">
+                <a href="frekuensi-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Frekuensi</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="polaritas.php" class="nav-link">
+                <a href="polaritas-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Polaritas</p>
                 </a>
               </li>
-
+            </ul>
             </ul>
           </li>
 
            <li class="nav-item">
-            <a href="juknis-superadmin.php" class="nav-link">
+            <a href="juknis-adminpusat.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="user-superadmin.php" class="nav-link">
+            <a href="user-adminpusat.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="calendar.php" class="nav-link">
+            <a href="calendar-adminpusat.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
           </li>
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -336,7 +348,7 @@ document.location='pemilik-adminpusat.php'
       <input type="text" class="form-control" name="tpemilik" value="<?= $vpemilik ?>">
     </div>
   </div>
-  
+
   <div class="text-center">
       <hr>
       <button class="btn btn-success" name="btn-simpan" type="submit">Save</button>

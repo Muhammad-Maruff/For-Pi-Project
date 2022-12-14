@@ -238,7 +238,7 @@ logout
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item">
+               <li class="nav-item menu-open">
             <a href="superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -253,17 +253,35 @@ logout
               <p>
                 Master
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item menu-open">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
               <li class="nav-item menu-open">
                 <a href="jabatan-superadmin.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
               </li>
+
               <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Atribut
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">5</span>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori Satuan</p>
@@ -293,11 +311,11 @@ logout
                   <p>Polaritas</p>
                 </a>
               </li>
-
+            </ul>
             </ul>
           </li>
 
-           <li class="nav-item menu-open">
+           <li class="nav-item">
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>

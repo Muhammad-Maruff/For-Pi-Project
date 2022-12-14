@@ -202,7 +202,7 @@ logout
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item">
+               <li class="nav-item menu-open">
             <a href="admin-pusat.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -217,11 +217,17 @@ logout
               <p>
                 Master
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <li class="nav-item menu-open">
+                <a href="pemilik-adminpusat.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
+              <li class="nav-item menu-open">
                 <a href="jabatan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
@@ -229,13 +235,17 @@ logout
               </li>
 
               <li class="nav-item">
-                <a href="pemilik-adminpusat.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pemilik</p>
-                </a>
-              </li>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Atribut
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">5</span>
+              </p>
+            </a>
 
-              <li class="nav-item">
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
                 <a href="kategori-satuan-adminpusat.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori Satuan</p>
@@ -265,11 +275,11 @@ logout
                   <p>Polaritas</p>
                 </a>
               </li>
-
+            </ul>
             </ul>
           </li>
 
-           <li class="nav-item menu-open">
+           <li class="nav-item">
             <a href="juknis-adminpusat.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
@@ -278,17 +288,17 @@ logout
 
           <li class="nav-item">
             <a href="user-adminpusat.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>User</p>
+            <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="calendar.php" class="nav-link">
+            <a href="calendar-adminpusat.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
             </a>
           </li>
+
 
         </ul>
       </nav>

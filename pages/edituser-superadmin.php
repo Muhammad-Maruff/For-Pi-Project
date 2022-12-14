@@ -140,10 +140,10 @@ document.location='user-superadmin.php'
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin.php" class="nav-link">Home</a>
+        <a href="superadmin.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="juknis-admin.php" class="nav-link">Juknis</a>
+        <a href="juknis-superadmin.php" class="nav-link">Juknis</a>
       </li>
     </ul>
 
@@ -192,7 +192,7 @@ document.location='user-superadmin.php'
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="admin.php" class="brand-link">
+    <a href="superadmin.php" class="brand-link">
       <img src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" class="brand-image img-rectangle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
@@ -229,7 +229,7 @@ document.location='user-superadmin.php'
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item">
+               <li class="nav-item menu-open">
             <a href="superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -244,17 +244,35 @@ document.location='user-superadmin.php'
               <p>
                 Master
                 <i class="fas fa-angle-left right"></i>
-                <span class="badge badge-info right">6</span>
+                <span class="badge badge-info right">2</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item menu-open">
+                <a href="pemilik.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pemilik</p>
+                </a>
+              </li>
               <li class="nav-item menu-open">
                 <a href="jabatan-superadmin.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
               </li>
+
               <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Atribut
+                <i class="fas fa-angle-left right"></i>
+                <span class="badge badge-info right">5</span>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+            <li class="nav-item">
                 <a href="kategori-satuan.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kategori Satuan</p>
@@ -284,7 +302,7 @@ document.location='user-superadmin.php'
                   <p>Polaritas</p>
                 </a>
               </li>
-
+            </ul>
             </ul>
           </li>
 
@@ -295,7 +313,7 @@ document.location='user-superadmin.php'
             </a>
           </li>
 
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>
@@ -307,6 +325,8 @@ document.location='user-superadmin.php'
               <p>Calendar</p>
             </a>
           </li>
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
