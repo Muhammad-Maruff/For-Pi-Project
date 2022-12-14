@@ -8,43 +8,130 @@
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
 
+  //jika button simpan diklik
+  if(isset($_POST['btn-simpan'])){
+    if(isset($_GET['hal']) == "edit"){
+
+      $edit = mysqli_query($koneksi, "UPDATE tb_divisi SET
+
+                                              divisi = '$_POST[tdivisi]',
+                                              pemilik = '$_POST[tpemilik]'
+                                              
+                                              WHERE id = '$_GET[id]'
+          ");
+
+          if($edit){
+            echo "<script>
+              alert('Data berhasil edit!');
+              document.location='jabatan-admin-tco.php'
+            </script>";
+          }
+          else{
+            echo "<script>
+              alert('Data gagal edit!');
+              document.location='jabatan-admin-tco.php'
+            </script>";
+          }
+    }
+    //Data akan disimpan
+
+    else{
+      $simpan = mysqli_query($koneksi, "INSERT INTO tb_divisi (divisi,pemilik)
+      VALUE ( ]
+              '$_POST[tdivisi]',
+              '$_POST[tpemilik]'
+
+  ");
+
+//uji jika simpan data sukses
+if($simpan){
+echo "<script>
+alert('data berhasil disimpan!');
+document.location='jabatan-admin-tco.php';
+</script>";
+} else{
+echo "<script>
+alert('Simpan data gagal');
+document.location='jabatan-admin-tco.php';
+</script>";
+}
+    }
+
+    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_divisi order by id asc");
+            while($data = mysqli_fetch_array($tampil));
+
+  }
+
+  //deklarasi variabel untuk menampung data yang akan diedit
+  $vdivisi = "";
+  $vpemilik = "";
+
+
+  //jika tombol edit diedit/hapus
+  if(isset($_GET['hal'])){
+    //jika edit data
+    if($_GET['hal'] == "edit"){
+      //tampilkan data yang akan diedit
+
+
+      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_divisi WHERE id = '$_GET[id]'");
+
+      $data = mysqli_fetch_array($tampil);
+      if($data){
+        //jika data ditemukan, maka data ditampung kedalam variabel
+
+        $vdivisi = $data['divisi'];
+        $vpemilik = $data['pemilik'];
+
+      }
+
+
+    }
+  }
+
 
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Jabatan</title>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="../dist/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+        <!-- Bootstrap CSS -->
+        <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
+        <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
+        <script src="../library/autocomplete.js"></script>
+          <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+        <link rel="stylesheet" href="../dist/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>For-Pi | Edit Jabatan</title>
+    </head>
 
-<?php
-session_start();
+    <?php
+	session_start();
+
 	// cek apakah yang mengakses halaman ini sudah login
 	if($_SESSION['level'] != "admin tco"){
 		header("location:../login.php?pesan=gagal");
 	}
-?>
+
+	?>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
- <!-- Preloader -->
- <!-- Preloader -->
- <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" height="60" width="60">
   </div>
 
@@ -56,10 +143,10 @@ session_start();
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="admin-setper.php" class="nav-link">Home</a>
+        <a href="admin-pusat.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="jabatan-admin-setper.php" class="nav-link">Jabatan</a>
+        <a href="jabatan-adminpusat.php" class="nav-link">Jabatan</a>
       </li>
     </ul>
 
@@ -87,7 +174,8 @@ session_start();
         </div>
       </li>
 
-      <!-- Messages Dropdown Menu -->
+
+      <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <?php
@@ -113,9 +201,9 @@ logout
       <span class="brand-text font-weight-light">For-Pi</span>
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
+      <!-- Sidebar -->
+      <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -139,9 +227,8 @@ logout
         </div>
       </div>
 
-     <!-- Sidebar Menu -->
-     <!-- Sidebar Menu -->
-     <nav class="mt-2">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -182,7 +269,7 @@ logout
 
         </ul>
       </nav>
-       <!-- /.sidebar-menu -->
+      <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
@@ -190,120 +277,65 @@ logout
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1></h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Master</a></li>
-              <li class="breadcrumb-item active">Jabatan</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+
 
     <!-- Main content -->
     <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Tambahkan Data Jabatan </h3>
+            <div class="card">
+              <div class="card-header mx-auto">
+                <h1>Edit Data Jabatan</h1>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <!--Input Data-->
+        <form method="POST">
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div>
-        <div class="card-body">
 
-        <form action="connect-jabatantco.php" method="post">
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Jabatan</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="tdivisi" value="<?= $vdivisi ?>">
+    </div>
+  </div> 
 
-<div class="row mb-3">
-<label for="nama" class="col-sm-2 col-form-label nama" name="nama">Jabatan</label>
-<div class="col-sm-10">
-<input type="text" class="form-control" name="divisi" id="divisi">
-</div>
-</div>
-
-<div class="row mb-3">
-<label for="nama" class="col-sm-2 col-form-label nama" name="nama">Divisi</label>
-<div class="col-sm-10">
-<select class="form-control level" aria-label="Default select example" name="pemilik">
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Divisi</label>
+    <div class="col-sm-10">
+      <select class="form-control level" aria-label="Default select example" name="tpemilik">
   <option selected disabled>Divisi</option>
-
   <option value="DIV TCO">DIV TCO</option>
-
 </select>
-</div>
-</div>
-
-<div class="text-center">
-<input type="submit" class="btn btn-primary btn-register">
-
-</form>
-
-
-</div>
-<br>
-
-        <table class="table table-striped table:hover table-bordered">
-            <tr>
-              <th>#</th>
-              <th>Jabatan</th>
-              <th>Divisi</th>
-              <th>Aksi</th>
-
-            </tr>
-            <?php
-            $no = 1;
-              //persiapan menampilkan data
-            $user = mysqli_query($koneksi, "SELECT * FROM tb_divisi WHERE pemilik = 'DIV TCO'");
-            while($data = mysqli_fetch_array($user)) :
-            ?>
-
-            <tr>
-              <td><?= $no++ ?></td>
-              <td><?= $data['divisi'] ?></td>
-              <td><?= $data['pemilik'] ?></td>
-              <td>
-                <a href="edit-jabatan-admintco.php?hal=edit&id=<?=$data['id']?>" class="btn btn-warning">Edit</a>
-
-                <a href="delete-jabatan-admintco.php?hal=delete&id=<?=$data['id']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
-
-              </td>            </tr>
-            <?php endwhile; ?>
-
-
-      </table>
-
-        <!-- /.card-body -->
-              <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
     </div>
   </div>
-</div>
-</section>
+
+  <div class="text-center">
+      <hr>
+      <button class="btn btn-success" name="btn-simpan" type="submit">Save</button>
+      <button class="btn btn-danger" name="btn-clear" type="reset">Clear</button>
+     </div>
+</form>
+        </div>
+     <!--Akhir input data-->
+        </div>
+     <!--Akhir input data-->
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>PLN Kantor Pusat</b>
-    </div>
-    <strong>Copyright &copy; 2022 <a href="#">PT PLN (PERSERO)</a>.</strong> All rights reserved.
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -332,22 +364,7 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+<!-- AdminLTE for demo purposes -->
+
 </body>
 </html>
