@@ -247,7 +247,8 @@ logout
 
           <li class="nav-item">
             <a href="user-superadmin.php" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>              <p>User</p>
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
             </a>
           </li>
 
@@ -364,13 +365,12 @@ $events = $req->fetchAll();
 
 
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>FullCalendar BS3 PHP MySQL</h1>
-                <p class="lead">Complete with pre-defined file paths that you won't have to change!</p>
+            <div class="coel-lg-12 text-center">
+                <h1>CALENDAR</h1>
+                <p class="lead">CALENDAR PT PLN (PERSERO)</p>
                 <div id="calendar" class="col-centered">
                 </div>
             </div>
-
         </div>
         <!-- /.row -->
 

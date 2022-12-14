@@ -198,7 +198,7 @@ logout
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Master</a></li>
+
               <li class="breadcrumb-item active">Jabatan</li>
             </ol>
           </div>
@@ -228,7 +228,7 @@ logout
         </div>
         <div class="card-body">
 
-        <form action="connect-jabatanpusat.php" method="post">
+        <form action="connect-jabatansetper.php" method="post">
 
 <div class="row mb-3">
 <label for="nama" class="col-sm-2 col-form-label nama" name="nama">Jabatan</label>
@@ -264,9 +264,9 @@ logout
               <td><?= $no++ ?></td>
               <td><?= $data['divisi'] ?></td>
               <td>
-                <a href="edit-jabatan-adminpusat.php?hal=edit&id=<?=$data['id']?>" class="btn btn-warning">Edit</a>
+                <a href="edit-jabatan-adminsetper.php?hal=edit&id=<?=$data['id']?>" class="btn btn-warning">Edit</a>
 
-                <a href="delete-jabatan-adminpusat.php?hal=delete&id=<?=$data['id']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
+                <a href="delete-jabatan-adminseptper.php?hal=delete&id=<?=$data['id']?>" class="btn btn-danger" onclick="return confirm('Apakah anda ingin menghapus data ini ?')">Delete</a>
 
               </td>            </tr>
             <?php endwhile; ?>

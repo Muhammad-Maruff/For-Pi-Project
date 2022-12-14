@@ -154,6 +154,13 @@ logout
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="jabatan-admin-setper.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
+
            <li class="nav-item  menu-open">
             <a href="juknis-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
