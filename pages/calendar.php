@@ -161,7 +161,7 @@ logout
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item menu-open">
+               <li class="nav-item">
             <a href="superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -252,7 +252,7 @@ logout
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="calendar.php" class="nav-link">
             <i class="nav-icon far fa-calendar-alt"></i>
               <p>Calendar</p>
@@ -295,9 +295,6 @@ logout
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-        <button class="btn-year"><a href="calendar-2020.php">2020</a></button>
-          <button class="btn-year"><a href="calendar-2021.php">2021</a></button>
-          <button class="btn-year"><a href="calendar-2022.php">2022</a></button>
 
 
           <div class="card-tools">

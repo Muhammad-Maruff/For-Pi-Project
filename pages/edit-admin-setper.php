@@ -235,7 +235,7 @@ document.location='juknis-admin-setper.php'
         <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
         <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
         <script src="../library/autocomplete.js"></script>
-        <title>Typeahead Autocomplete using JavaScript in PHP for Bootstrap 5</title>
+        <title>Edit Admin Setper</title>
     </head>
 
     <?php
@@ -376,10 +376,26 @@ document.location='juknis-admin-setper.php'
               </p>
             </a>
           </li>
+
+          <li class="nav-item ">
+            <a href="jabatan-admin-setper.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
+
+
            <li class="nav-item  menu-open">
             <a href="juknis-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="user-adminsetper.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
             </a>
           </li>
 

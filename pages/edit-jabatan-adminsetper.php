@@ -248,7 +248,7 @@ logout
             </a>
           </li>
            <li class="nav-item">
-            <a href="juknis-adminsetper.php" class="nav-link">
+            <a href="juknis-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
             </a>

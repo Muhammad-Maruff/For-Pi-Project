@@ -159,12 +159,26 @@ logout
             </a>
           </li>
 
+          <li class="nav-item ">
+            <a href="jabatan-admin-setper.php" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>Jabatan</p>
+            </a>
+          </li>
+
 
 
            <li class="nav-item menu-open">
             <a href="juknis-adminsetper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="user-adminsetper.php" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>User</p>
             </a>
           </li>
 

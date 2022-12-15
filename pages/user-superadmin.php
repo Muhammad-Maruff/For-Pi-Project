@@ -57,9 +57,7 @@ session_start();
       <li class="nav-item d-none d-sm-inline-block">
         <a href="superadmin.php" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="user-superadmin.php" class="nav-link">User</a>
-      </li>
+
     </ul>
 
     <!-- Right navbar links -->
@@ -144,7 +142,7 @@ logout
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item menu-open">
+               <li class="nav-item">
             <a href="superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -228,7 +226,7 @@ logout
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="user-superadmin.php" class="nav-link">
             <i class="nav-icon fas fa-users"></i>              <p>User</p>
             </a>

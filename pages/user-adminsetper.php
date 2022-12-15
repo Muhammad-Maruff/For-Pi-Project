@@ -57,9 +57,7 @@ session_start();
       <li class="nav-item d-none d-sm-inline-block">
         <a href="admin-setper.php" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="user-adminsetper.php" class="nav-link">User</a>
-      </li>
+
     </ul>
 
     <!-- Right navbar links -->
