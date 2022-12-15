@@ -238,7 +238,7 @@ logout
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item menu-open">
+               <li class="nav-item">
             <a href="admin-pusat.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -247,7 +247,7 @@ logout
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -270,7 +270,7 @@ logout
                 </a>
               </li>
 
-              <li class="nav-item">
+              <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -424,62 +424,6 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../dist/js/demo.js"></script>
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
-<script>
-var auto_complete = new Autocomplete(document.getElementById('divisi'), {
-    data:<?php echo json_encode($data); ?>,
-    maximumItems:10,
-    highlightTyped:true,
-    highlightClass : 'fw-bold text-primary'
-});
 
-var auto_pemilik = new Autocomplete(document.getElementById('pemilik'), {
-    data:<?php echo json_encode($data); ?>,
-    maximumItems:10,
-    highlightTyped:true,
-    highlightClass : 'fw-bold text-primary'
-});
-
-</script>
-<script src="../library/autocomplete.js"></script>
-<script src="../ckeditor/ckeditor.js"></script>
-<script>
-  CKEDITOR.replace('tdefinisi');
-  CKEDITOR.replace('ttujuan');
-  CKEDITOR.replace('tformula');
-  CKEDITOR.replace('teviden');
-  CKEDITOR.replace('tsyarat');
-  CKEDITOR.replace('tparent');
-</script>
-
-<script type="text/javascript">
-$(function() {
-    $('#your_textarea').ckeditor({
-        toolbar: 'Full',
-        enterMode : CKEDITOR.ENTER_BR,
-        shiftEnterMode: CKEDITOR.ENTER_P
-    });
-});
-CKEDITOR.config.autoParagraph = false;
-</script>
 </body>
 </html>
