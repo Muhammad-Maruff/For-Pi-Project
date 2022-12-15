@@ -233,7 +233,7 @@ logout
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item menu-open">
+               <li class="nav-item">
             <a href="superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -242,7 +242,7 @@ logout
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -252,20 +252,20 @@ logout
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="pemilik.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pemilik</p>
                 </a>
               </li>
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="jabatan-superadmin.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
               </li>
 
-              <li class="nav-item">
+              <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -419,26 +419,6 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-
-<!-- Page specific script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
-</script>
 
 </body>
 </html>

@@ -216,7 +216,7 @@ document.location='polaritas.php'
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item menu-open">
+               <li class="nav-item">
             <a href="superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -225,7 +225,7 @@ document.location='polaritas.php'
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -235,20 +235,20 @@ document.location='polaritas.php'
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="pemilik.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pemilik</p>
                 </a>
               </li>
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="jabatan-superadmin.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
                 </a>
               </li>
 
-              <li class="nav-item">
+              <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>

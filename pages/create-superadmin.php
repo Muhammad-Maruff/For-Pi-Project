@@ -251,7 +251,7 @@ foreach($resultt as $row)
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item menu-open">
+               <li class="nav-item">
             <a href="superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -270,13 +270,13 @@ foreach($resultt as $row)
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="pemilik.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pemilik</p>
                 </a>
               </li>
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="jabatan-superadmin.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jabatan</p>
@@ -328,7 +328,7 @@ foreach($resultt as $row)
             </ul>
           </li>
 
-           <li class="nav-item">
+           <li class="nav-item menu-open">
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
