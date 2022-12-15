@@ -148,7 +148,7 @@ session_start();
             </a>
           </li>
 
-           <li class="nav-item">
+           <li class="nav-item menu-open">
             <a href="juknis-user-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
