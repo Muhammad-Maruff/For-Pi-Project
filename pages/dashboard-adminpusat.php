@@ -7,6 +7,8 @@
 
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
+
+
 ?>
 
 <!DOCTYPE html>
@@ -292,6 +294,55 @@ session_start();
 
               <!-- /.card-header -->
               <div class="card-body text-center">
+            <form action="connect-dashboard-adminpusat.php" method="post">
+                  <div class="row mb-3">
+                  <label for="password" class="col-sm-2 col-form-label">Divisi</label>
+                  <div class="col-sm-10">
+                  <select class="form-control" aria-label="Default select example" name="divisi">
+                  <option selected disabled>Divisi</option>
+                  <?php
+                  $records = mysqli_query($koneksi, "SELECT * FROM tb_pemilik");
+                  while($data = mysqli_fetch_array($records)){
+                    echo "<option value='".$data['pemilik']."'>".$data['pemilik']."</option>";
+                  }
+                  ?>
+                </select>
+                    </div>
+                  </div>
+
+                    <div class="row mb-3">
+                    <label for="" class="col-sm-2 col-form-label">Upload Data</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="upload_data">
+                    </div>
+                  </div>
+
+                    <div class="row mb-3">
+                    <label for="" class="col-sm-2 col-form-label">Upload KPI</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="upload_kpi">
+                    </div>
+                  </div>
+
+                    <div class="row mb-3">
+                    <label for="" class="col-sm-2 col-form-label">Inspirasi KPI</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="inspirasi_kpi">
+                    </div>
+                  </div>
+
+                    <div class="row mb-3">
+                    <label for="" class="col-sm-2 col-form-label">Approval</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="approval">
+                    </div>
+                  </div>
+                  <input type="submit" class="btn btn-primary btn-register">
+              </div>
+              </form>
+
+
+              <div class="card-body text-center">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -300,17 +351,45 @@ session_start();
                   <th>Upload KPI</th>
                   <th>Inspirasi KPI</th>
                   <th>Approval</th>
+                  <th>Status</th>
                   </tr>
                   </thead>
+                  
                   <tbody>
-                  <td>
-                    aaaaa
-                  </td>
+                    <?php 
+                       $user = mysqli_query($koneksi, "SELECT * FROM tb_dashboard order by id asc");
+                       while($data = mysqli_fetch_array($user)) :
+                    ?>
+                  <tr>
+                    <td><?= $data['divisi'] ?></td>
+                    <td><?= $data['upload_data'] ?></td>
+                    <td><?= $data['upload_kpi'] ?></td>
+                    <td><?= $data['inspirasi_kpi'] ?></td>
+                    <td><?= $data['approval'] ?></td>
+                    <?php
+                    $hitung = ($data['upload_data'] + $data['upload_kpi'] + $data['inspirasi_kpi'] + $data['approval']) / 4;
+                    $total = $hitung;
+                    if($total == 100){
+                      echo '<td>'. '<button class="btn btn-success">' . 'Selesai' .'</button>' .'</td>';
+                    }
+                    else if($total >= 50 && $total <= 100){
+                      echo '<td>'. '<button class="btn btn-warning">' . 'Segera Selesai' . '</button>' . '</td>';
+                    }
+
+                    else if($total <= 50){
+                      echo '<td>'. '<button class="btn btn-danger">' . 'Belum Selesai' . '</button>' . '</td>';
+                    }
+                  
+                    else{
+                      echo '<td>'.'</td>';
+                    }
+                    ?>
+                  <?php endwhile; ?>
 
                   </tbody>
                 </table>
-                <a href="export-adminpusat.php"><button class="btn btn-success">Export</button></a>
               </div>
+              <!-- /.card-body -->
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
