@@ -39,7 +39,7 @@
 
     else{
       $simpan = mysqli_query($koneksi, "INSERT INTO tb_dashboard (upload_data,upload_kpi,inspirasi_kpi,approval)
-      VALUE ( 
+      VALUE (
               '$_POST[upload_data]',
               '$_POST[upload_kpi]',
               '$_POST[inspirasi_kpi]',
@@ -70,7 +70,7 @@ document.location='dashboard-adminpusat.php';
   $vupload_kpi = "";
   $vinspirasi_kpi = "";
   $vapproval = "";
-  
+
 
   //jika tombol edit diedit/hapus
   if(isset($_GET['hal'])){
@@ -129,7 +129,7 @@ document.location='dashboard-adminpusat.php';
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Tipe Target</title>
+  <title>For-Pi | Edit</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -161,9 +161,7 @@ document.location='dashboard-adminpusat.php';
       <li class="nav-item d-none d-sm-inline-block">
         <a href="admin-pusat.php" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="tipe-target-adminpusat.php" class="nav-link">Tipe Target</a>
-      </li>
+
     </ul>
 
     <!-- Right navbar links -->
@@ -259,6 +257,15 @@ logout
           </li>
 
           <li class="nav-item menu-open">
+            <a href="dashboard-adminpusat.php" class="nav-link">
+              <i class="nav-icon fas fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -367,7 +374,7 @@ logout
 
             <div class="card">
               <div class="card-header mx-auto">
-                <h1>Edit Tipe Target</h1>
+                <h1>Edit Data</h1>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
