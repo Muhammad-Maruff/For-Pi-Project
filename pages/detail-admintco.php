@@ -148,6 +148,16 @@ if (empty($_GET['hash'])){
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="dashboard-admintco.php" class="nav-link">
+              <i class="nav-icon fas fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          
           <li class="nav-item">
             <a href="jabatan-admin-tco.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>

@@ -14,8 +14,7 @@
 
       $edit = mysqli_query($koneksi, "UPDATE tb_divisi SET
 
-                                              divisi = '$_POST[tdivisi]',
-                                              pemilik = '$_POST[tpemilik]'
+                                              divisi = '$_POST[tdivisi]'
                                               
                                               WHERE id = '$_GET[id]'
           ");
@@ -39,7 +38,6 @@
       $simpan = mysqli_query($koneksi, "INSERT INTO tb_divisi (divisi,pemilik)
       VALUE ( ]
               '$_POST[tdivisi]',
-              '$_POST[tpemilik]'
 
   ");
 
@@ -64,8 +62,6 @@ document.location='jabatan-admin-tco.php';
 
   //deklarasi variabel untuk menampung data yang akan diedit
   $vdivisi = "";
-  $vpemilik = "";
-
 
   //jika tombol edit diedit/hapus
   if(isset($_GET['hal'])){
@@ -81,7 +77,6 @@ document.location='jabatan-admin-tco.php';
         //jika data ditemukan, maka data ditampung kedalam variabel
 
         $vdivisi = $data['divisi'];
-        $vpemilik = $data['pemilik'];
 
       }
 
@@ -241,12 +236,23 @@ logout
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="dashboard-admintco.php" class="nav-link">
+              <i class="nav-icon fas fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          
           <li class="nav-item  menu-open">
             <a href="jabatan-admin-tco.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Jabatan</p>
             </a>
           </li>
+
            <li class="nav-item">
             <a href="juknis-admintco.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
@@ -301,16 +307,6 @@ logout
       <input type="text" class="form-control" name="tdivisi" value="<?= $vdivisi ?>">
     </div>
   </div> 
-
-  <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Divisi</label>
-    <div class="col-sm-10">
-      <select class="form-control level" aria-label="Default select example" name="tpemilik">
-  <option selected disabled>Divisi</option>
-  <option value="DIV TCO">DIV TCO</option>
-</select>
-    </div>
-  </div>
 
   <div class="text-center">
       <hr>
