@@ -355,6 +355,15 @@ logout
           </li>
 
           <li class="nav-item">
+            <a href="dashboard-superadmin.php" class="nav-link">
+              <i class="nav-icon fas fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -364,7 +373,7 @@ logout
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item menu-open">
+              <li class="nav-item">
                 <a href="pemilik.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pemilik</p>
@@ -422,7 +431,7 @@ logout
             </ul>
           </li>
 
-           <li class="nav-item menu-open" >
+           <li class="nav-item menu-open">
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>

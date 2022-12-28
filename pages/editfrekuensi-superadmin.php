@@ -227,6 +227,15 @@ document.location='frekuensi.php'
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="dashboard-superadmin.php" class="nav-link">
+              <i class="nav-icon fas fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>

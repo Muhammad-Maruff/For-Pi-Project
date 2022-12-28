@@ -319,7 +319,7 @@ session_start();
                     }
                     ?>
                     <td>
-                      <a href="editdashboard-admintco.php?hal=edit&id=<?=$data['id']?>" class="btn btn-warning">Edit</a>
+                      <a href="editdashboard-admintco.php?hal=edit&id=<?=$data['id']?>" class="btn btn-info">Edit</a>
                     </td>
                   <?php endwhile; ?>
                   </tbody>
