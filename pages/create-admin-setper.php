@@ -351,74 +351,47 @@ foreach($resultt as $row)
   <div class="row mb-3">
     <label for="" class="col-sm-2 col-form-label">Kategori Satuan</label>
     <div class="col-sm-10">
-    <select class="form-control" aria-label="Default select example" name="tkategori">
-                  <option selected disabled>Kategori Satuan</option>
-                  <?php
-                  $records = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
-                  while($data = mysqli_fetch_array($records)){
-                    echo "<option value='".$data['kategori_satuan']."'>".$data['kategori_satuan']."</option>";
-                  }
-                  ?>
-                </select>
+    <select class="form-select" aria-label="Default select example" name="tkategori">
+  <option selected disabled>Kategori Satuan</option>
+  <option value="Jumlah">Jumlah</option>
+  <option value="Persentase">Persentase</option>
+  <option value="Rupiah">Rupiah</option>
+</select>
 </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Formula</label>
-    <div class="col-sm-10">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tformula"></textarea>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Sumber Target</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="tsumber">
-    </div>
   </div>
 
   <div class="row mb-3">
     <label for="" class="col-sm-2 col-form-label">Tipe KPI</label>
     <div class="col-sm-10">
-    <select class="form-control" aria-label="Default select example" name="ttipe">
-                  <option selected disabled>Tipe KPI</option>
-                  <?php
-                  $records = mysqli_query($koneksi, "SELECT * FROM tb_tipekpi");
-                  while($data = mysqli_fetch_array($records)){
-                    echo "<option value='".$data['tipe_kpi']."'>".$data['tipe_kpi']."</option>";
-                  }
-                  ?>
-                </select>
+    <select class="form-select" aria-label="Default select example" name="ttipe">
+  <option selected disabled>Tipe KPI</option>
+  <option value="EXACT">EXACT</option>
+  <option value="PROXY">PROXY</option>
+  <option value="ACTIVITY">ACTIVITY</option>
+</select>
 </div>
   </div>
 
   <div class="row mb-3">
     <label for="" class="col-sm-2 col-form-label">Tipe Target</label>
     <div class="col-sm-10">
-    <select class="form-control" aria-label="Default select example" name="ttarget">
-                  <option selected disabled>Tipe Target</option>
-                  <?php
-                  $records = mysqli_query($koneksi, "SELECT * FROM tb_tipetarget");
-                  while($data = mysqli_fetch_array($records)){
-                    echo "<option value='".$data['tipe_target']."'>".$data['tipe_target']."</option>";
-                  }
-                  ?>
-                </select>
+    <select class="form-select" aria-label="Default select example" name="ttarget">
+  <option selected disabled>Tipe Target</option>
+  <option value="Akumulatif">Akumulatif</option>
+  <option value="Non Akumulatif">Non Akumulatif</option>
+</select>
 </div>
   </div>
 
   <div class="row mb-3">
     <label for="" class="col-sm-2 col-form-label">Frekuensi</label>
     <div class="col-sm-10">
-    <select class="form-control" aria-label="Default select example" name="tfrekuensi">
-                  <option selected disabled>Frekuensi</option>
-                  <?php
-                  $records = mysqli_query($koneksi, "SELECT * FROM tb_frekuensi");
-                  while($data = mysqli_fetch_array($records)){
-                    echo "<option value='".$data['frekuensi']."'>".$data['frekuensi']."</option>";
-                  }
-                  ?>
-                </select>
+    <select class="form-select" aria-label="Default select example" name="tfrekuensi">
+  <option selected disabled>Frekuensi</option>
+  <option value="Bulanan">Bulanan</option>
+  <option value="Triwulan">Triwulan</option>
+  <option value="Semesteran">Semesteran</option>
+</select>
 </div>
   </div>
 
@@ -426,18 +399,15 @@ foreach($resultt as $row)
   <div class="row mb-3">
     <label for="" class="col-sm-2 col-form-label">Polaritas</label>
     <div class="col-sm-10">
-    <select class="form-control" aria-label="Default select example" name="tpolaritas">
-                  <option selected disabled>Polaritas</option>
-                  <?php
-                  $records = mysqli_query($koneksi, "SELECT * FROM tb_polaritas");
-                  while($data = mysqli_fetch_array($records)){
-                    echo "<option value='".$data['polaritas']."'>".$data['polaritas']."</option>";
-                  }
-                  ?>
-                </select>
+    <select class="form-select" aria-label="Default select example" name="tpolaritas">
+  <option selected disabled>Polaritas</option>
+  <option value="POSITIF">POSITIF</option>
+  <option value="NEGATIF">NEGATIF</option>
+  <option value="RANGE">RANGE</option>
+</select>
 </div>
   </div>
-
+  
   <div class="row mb-3">
       <label for="" class="col-sm-2 col-form-label">Jabatan Pemilik KPI</label>
       <div class="col-sm-10">
