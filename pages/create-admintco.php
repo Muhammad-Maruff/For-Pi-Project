@@ -416,6 +416,23 @@ foreach($resultt as $row)
   </div>
   
   <div class="row mb-3">
+      <label for="" class="col-sm-2 col-form-label">Jabatan Pemilik KPI</label>
+      <div class="col-sm-10">
+          <input type="text" name="tdivisi" id="divisi" class="form-control"/>
+      </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Pemilik</label>
+    <div class="col-sm-10">
+    <select class="form-select" aria-label="Default select example" name="tpemilik">
+  <option selected disabled>Pemilik</option>
+  <option value="DIV TCO">DIV TCO</option>
+</select>
+</div>
+  </div>
+
+  <div class="row mb-3">
     <label for="" class="col-sm-2 col-form-label">Eviden</label>
     <div class="col-sm-10">
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="teviden"></textarea>

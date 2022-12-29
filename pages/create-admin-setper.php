@@ -415,19 +415,14 @@ foreach($resultt as $row)
       </div>
   </div>
 
-    <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Pemilik KPI</label>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Pemilik</label>
     <div class="col-sm-10">
-    <select class="form-control" aria-label="Default select example" name="tpemilik">
-                  <option selected disabled>Divisi</option>
-                  <?php
-                  $records = mysqli_query($koneksi, "SELECT * FROM tb_pemilik WHERE pemilik='SETPER'");
-                  while($data = mysqli_fetch_array($records)){
-                    echo "<option value='".$data['pemilik']."'>".$data['pemilik']."</option>";
-                  }
-                  ?>
-                </select>
-    </div>
+    <select class="form-select" aria-label="Default select example" name="tpemilik">
+  <option selected disabled>Pemilik</option>
+  <option value="SETPER">SETPER</option>
+</select>
+</div>
   </div>
 
   <div class="row mb-3">
