@@ -11,7 +11,7 @@
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <img  src="../dist/img/Logo pln_1.png"  alt="">
+    <img  src="dist/img/Logo pln_1.png"  alt="">
     <a class="navbar-brand" href="#">Formula Performance Indicators</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@
         <h1 class= "text-white" data-aos="fade-up"
      data-aos-anchor-placement="center-bottom" >Selamat datang di For-Pi</h1>
         <br>
-        <a href="../login.php" class="btn btn-primary" data-aos="fade-up"
+        <a href="login.php" class="btn btn-primary" data-aos="fade-up"
      data-aos-anchor-placement="center-bottom" > Login </a>
       </div>
     </div>
