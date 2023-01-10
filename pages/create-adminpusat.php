@@ -409,7 +409,7 @@ foreach($resultt as $row)
     </div>
   </div>
 
-  <div class="row mb-3">
+ <div class="row mb-3">
     <label for="" class="col-sm-2 col-form-label">Kategori Satuan</label>
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="tkategori">
@@ -419,20 +419,6 @@ foreach($resultt as $row)
   <option value="Rupiah">Rupiah</option>
 </select>
 </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Formula</label>
-    <div class="col-sm-10">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tformula"></textarea>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Sumber Target</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="tsumber">
-    </div>
   </div>
 
   <div class="row mb-3">

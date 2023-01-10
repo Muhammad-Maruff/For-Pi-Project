@@ -7,47 +7,138 @@
 
   //buat koneksi
   $koneksi = mysqli_connect($server, $user, $password, $database) or die(mysqli_error($koneksi));
+
+  //jika button simpan diklik
+  if(isset($_POST['btn-simpan'])){
+    if(isset($_GET['hal']) == "edit"){
+
+      $edit = mysqli_query($koneksi, "UPDATE tb_dashboard SET
+
+                                            upload_data = '$_POST[upload_data]',
+                                            upload_kpi = '$_POST[upload_kpi]',
+                                            inspirasi_kpi = '$_POST[inspirasi_kpi]',
+                                            approval = '$_POST[approval]'
+
+                                      WHERE id = '$_GET[id]'
+          ");
+
+          if($edit){
+            echo "<script>
+              alert('Data berhasil edit!');
+              document.location='dashboard-superadmin.php'
+            </script>";
+          }
+          else{
+            echo "<script>
+              alert('Data gagal edit!');
+              document.location='dashboard-superadmin.php'
+            </script>";
+          }
+    }
+    //Data akan disimpan
+
+    else{
+      $simpan = mysqli_query($koneksi, "INSERT INTO tb_dashboard (upload_data,upload_kpi,inspirasi_kpi,approval)
+      VALUE (
+              '$_POST[upload_data]',
+              '$_POST[upload_kpi]',
+              '$_POST[inspirasi_kpi]',
+              '$_POST[approval]'
+  ");
+
+//uji jika simpan data sukses
+if($simpan){
+echo "<script>
+alert('data berhasil disimpan!');
+document.location='dashboard-superadmin.php';
+</script>";
+} else{
+echo "<script>
+alert('Simpan data gagal');
+document.location='dashboard-superadmin.php';
+</script>";
+}
+    }
+
+    $tampil = mysqli_query($koneksi, "SELECT * FROM tb_dashboard order by id asc");
+            while($data = mysqli_fetch_array($tampil));
+
+  }
+
+  //deklarasi variabel untuk menampung data yang akan diedit
+  $vupload_data = "";
+  $vupload_kpi = "";
+  $vinspirasi_kpi = "";
+  $vapproval = "";
+
+
+  //jika tombol edit diedit/hapus
+  if(isset($_GET['hal'])){
+    //jika edit data
+    if($_GET['hal'] == "edit"){
+      //tampilkan data yang akan diedit
+
+
+      $tampil=mysqli_query($koneksi, "SELECT * FROM tb_dashboard WHERE id = '$_GET[id]'");
+
+      $data = mysqli_fetch_array($tampil);
+      if($data){
+        //jika data ditemukan, maka data ditampung kedalam variabel
+
+        $vupload_data = $data['upload_data'];
+        $vupload_kpi = $data['upload_kpi'];
+        $vinspirasi_kpi = $data['inspirasi_kpi'];
+        $vapproval = $data['approval'];
+
+      }
+
+
+    }
+  }
+
+
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For-Pi | Log-Data</title>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="../dist/css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+        <!-- Bootstrap CSS -->
+        <link href="../library/bootstrap-5/bootstrap.min.css" rel="stylesheet" />
+        <script src="../library/bootstrap-5/bootstrap.bundle.min.js"></script>
+        <script src="../library/autocomplete.js"></script>
+          <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+        <link rel="stylesheet" href="../dist/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>For-Pi | Edit Dashboard</title>
+    </head>
 
-<?php
-session_start();
+    <?php
+	session_start();
+
 	// cek apakah yang mengakses halaman ini sudah login
-	if($_SESSION['level']==""){
+	if($_SESSION['level'] != "superadmin"){
 		header("location:../login.php?pesan=gagal");
 	}
 
-
-if (empty($_GET['hash'])){
-  header("location:juknis-admin.php");
-}
-
-?>
+	?>
 
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-   <!-- Preloader -->
-   <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="../dist/img/Logo_PLNN.png" alt="PLNLOGO" height="60" width="60">
   </div>
 
@@ -61,9 +152,7 @@ if (empty($_GET['hash'])){
       <li class="nav-item d-none d-sm-inline-block">
         <a href="superadmin.php" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
 
-      </li>
     </ul>
 
     <!-- Right navbar links -->
@@ -158,7 +247,7 @@ logout
             </a>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="dashboard-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-dashboard"></i>
               <p>
@@ -235,7 +324,7 @@ logout
             </ul>
           </li>
 
-           <li class="nav-item menu-open">
+           <li class="nav-item">
             <a href="juknis-superadmin.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
@@ -266,23 +355,7 @@ logout
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Perubahan Data</h1>
-          </div>
-          <div class="col-sm-6">
 
-            <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="superadmin.php">Home</a></li>
-              <li class="breadcrumb-item"><a href="juknis-superadmin.php">Juknis</a></li>
-              <li class="breadcrumb-item active">Perubahan Data</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -291,37 +364,51 @@ logout
           <div class="col-12">
 
             <div class="card">
-
+              <div class="card-header mx-auto">
+                <h1>Edit Data</h1>
+              </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <table class="table table-striped table:hover table-bordered">
-              <?php
-
-            //persiapan menampilkan data
-            $no = 1;
-
-          $hash = $_GET['hash'];
-
-          $tampil = mysqli_query($koneksi, "SELECT tb_data.*,tb_data2.* FROM tb_data INNER JOIN tb_data2 ON tb_data.is_updated = tb_data2.is_updated WHERE tb_data.is_updated= '$hash' AND tb_data.is_updated != ''");
-
-          while( $data = mysqli_fetch_array($tampil)):?>
-            <tr>
-            <?php
-                    if ($data['usulan_deskripsi'] != $data['usulan_deskripsi2']) {
-                      echo '<th align="left">'.'Usulan Deskripsi'.'</th>';
-                      echo '<td>'. $data['usulan_deskripsi2'] .'</td>';
-                      echo '<td>'. '<a href="detail-superadmin.php?hash='.$data['is_updated'].'" class="btn btn-info">' . 'Lihat Detail' . '</a>' .'</td>';
-                    }
-                    ?>
-            </tr>
-
-            <tr>
+                <!--Input Data-->
+        <form method="POST">
 
 
-           <?php endwhile; ?>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Upload Data</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="upload_data" value="<?= $vupload_data ?>">
+    </div>
+  </div>
 
-            </table>
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Upload KPI</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="upload_kpi" value="<?= $vupload_kpi ?>">
+    </div>
+  </div>
 
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Inspirasi KPI</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="inspirasi_kpi" value="<?= $vinspirasi_kpi ?>">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label for="" class="col-sm-2 col-form-label">Approval</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="approval" value="<?= $vapproval ?>">
+    </div>
+  </div>
+
+  <div class="text-center">
+      <hr>
+      <button class="btn btn-success" name="btn-simpan" type="submit">Save</button>
+     </div>
+</form>
+        </div>
+     <!--Akhir input data-->
+        </div>
      <!--Akhir input data-->
               </div>
               <!-- /.card-body -->
@@ -331,18 +418,12 @@ logout
           <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div>
+
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>PLN Kantor Pusat</b>
-    </div>
-    <strong>Copyright &copy; 2022 <a href="#">PT PLN (PERSERO)</a>.</strong> All rights reserved.
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -371,5 +452,6 @@ logout
 <script src="../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+
 </body>
 </html>

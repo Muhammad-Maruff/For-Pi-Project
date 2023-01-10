@@ -206,8 +206,8 @@ foreach($resultt as $row)
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
           <a href="keluar.php" class="dropdown-item">
-          <i class="fa-solid fa-door-open">logout</i>
-
+          <i class="fa-solid fa-door-open"></i>
+            logout
           </a>
       </li>
     </ul>
@@ -361,20 +361,6 @@ foreach($resultt as $row)
   </div>
 
   <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Formula</label>
-    <div class="col-sm-10">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tformula"></textarea>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Sumber Target</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" name="tsumber">
-    </div>
-  </div>
-
-  <div class="row mb-3">
     <label for="" class="col-sm-2 col-form-label">Tipe KPI</label>
     <div class="col-sm-10">
     <select class="form-select" aria-label="Default select example" name="ttipe">
@@ -421,18 +407,22 @@ foreach($resultt as $row)
 </select>
 </div>
   </div>
-
+  
   <div class="row mb-3">
       <label for="" class="col-sm-2 col-form-label">Jabatan Pemilik KPI</label>
       <div class="col-sm-10">
           <input type="text" name="tdivisi" id="divisi" class="form-control"/>
       </div>
   </div>
+
   <div class="row mb-3">
-    <label for="" class="col-sm-2 col-form-label">Pemilik KPI</label>
+    <label for="" class="col-sm-2 col-form-label">Pemilik</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="tpemilik" id="pemilik">
-    </div>
+    <select class="form-select" aria-label="Default select example" name="tpemilik">
+  <option selected disabled>Pemilik</option>
+  <option value="SETPER">SETPER</option>
+</select>
+</div>
   </div>
 
   <div class="row mb-3">
