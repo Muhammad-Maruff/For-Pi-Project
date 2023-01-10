@@ -268,6 +268,16 @@ session_start();
             </a>
           </li>
 
+
+          <li class="nav-item">
+            <a href="dashboard-adminsetper.php" class="nav-link">
+              <i class="nav-icon fas fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item ">
             <a href="jabatan-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
