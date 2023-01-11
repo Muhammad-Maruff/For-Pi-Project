@@ -169,7 +169,7 @@ logout
             </a>
           </li>
 
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="dashboard-adminsetper.php" class="nav-link">
               <i class="nav-icon fas fa-dashboard"></i>
               <p>

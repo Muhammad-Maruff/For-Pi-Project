@@ -146,6 +146,15 @@ session_start();
           </li>
 
           <li class="nav-item">
+            <a href="dashboard-adminsetper.php" class="nav-link">
+              <i class="nav-icon fas fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="jabatan-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Jabatan</p>
@@ -153,7 +162,7 @@ session_start();
           </li>
 
 
-           <li class="nav-item">
+           <li class="nav-item menu-open">
             <a href="juknis-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>Juknis</p>
@@ -229,7 +238,7 @@ session_start();
 
             //persiapan menampilkan data
             $no = 1;
-          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE pemilik2= 'SETPER (SEKRETARIAT PERUSAHAAN)'");
+          $tampil = mysqli_query($koneksi, "SELECT * FROM tb_data2 WHERE pemilik2= 'SETPER'");
           while($data = mysqli_fetch_array($tampil)) :
           ?>
                   <tr>

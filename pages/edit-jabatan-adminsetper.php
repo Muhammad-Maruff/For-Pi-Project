@@ -145,6 +145,8 @@ document.location='jabatan-admin-setper.php';
       <li class="nav-item d-none d-sm-inline-block">
         <a href="admin-setper.php" class="nav-link">Home</a>
       </li>
+      
+
       <li class="nav-item d-none d-sm-inline-block">
         <a href="jabatan-admin-setper.php" class="nav-link">Jabatan</a>
       </li>
@@ -241,12 +243,23 @@ logout
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="dashboard-adminsetper.php" class="nav-link">
+              <i class="nav-icon fas fa-dashboard"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item  menu-open">
             <a href="jabatan-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Jabatan</p>
             </a>
           </li>
+          
            <li class="nav-item">
             <a href="juknis-admin-setper.php" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
